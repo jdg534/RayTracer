@@ -117,6 +117,8 @@ public:
 //[/comment]
 #define MAX_RAY_DEPTH 5
 
+#define NUM_FRAMES_TO_RENDER 100
+
 float mix(const float &a, const float &b, const float &mix)
 {
 	return b * mix + a * (1 - mix);
@@ -215,6 +217,22 @@ Vec3f trace(
 	return surfaceColor + sphere->emissionColor;
 }
 
+std::string FrameIndexStr(int index)
+{
+	// just dealing with three Decimal places, for now
+	std::stringstream ss;
+	if (index < 10)
+	{
+		ss << "00";
+	}
+	else if (index < 100)
+	{
+		ss << "0";
+	}
+	ss << index;
+	return ss.str();
+}
+
 //[comment]
 // Main rendering function. We compute a camera ray for each pixel of the image
 // trace it and return a color. If the ray hits a sphere, we return the color of the
@@ -245,7 +263,7 @@ void render(const std::vector<Sphere> &spheres, int iteration)
 	}
 	// Save result to a PPM image (keep these flags if you compile under Windows)
 	std::stringstream ss;
-	ss << "./spheres" << iteration << ".ppm";
+	ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
 	std::string tempString = ss.str();
 	char* filename = (char*)tempString.c_str();
 
@@ -323,14 +341,14 @@ void SmoothScaling()
 	std::vector<Sphere> spheres;
 	// Vector structure for Sphere (position, radius, surface color, reflectivity, transparency, emission color)
 
-	for (float r = 0; r <= 100; r++)
+	for (float r = 0; r <= NUM_FRAMES_TO_RENDER; r++)
 	{
 		spheres.push_back(Sphere(Vec3f(0.0, -10004, -20), 10000, Vec3f(0.20, 0.20, 0.20), 0, 0.0));
 		spheres.push_back(Sphere(Vec3f(0.0, 0, -20), r / 100, Vec3f(1.00, 0.32, 0.36), 1, 0.5)); // Radius++ change here
 		spheres.push_back(Sphere(Vec3f(5.0, -1, -15), 2, Vec3f(0.90, 0.76, 0.46), 1, 0.0));
 		spheres.push_back(Sphere(Vec3f(5.0, 0, -25), 3, Vec3f(0.65, 0.77, 0.97), 1, 0.0));
 		render(spheres, r);
-		std::cout << "Rendered and saved spheres" << r << ".ppm" << std::endl;
+		std::cout << "Rendered and saved spheres" << FrameIndexStr(r)  << ".ppm" << std::endl;
 		// Dont forget to clear the Vector holding the spheres.
 		spheres.clear();
 
@@ -348,6 +366,8 @@ int main(int argc, char **argv)
 	//BasicRender();
 	//SimpleShrinking();
 	SmoothScaling();
+
+	system("ffmpeg -i spheres%03d.ppm outVideo.avi");
 
 	return 0;
 }

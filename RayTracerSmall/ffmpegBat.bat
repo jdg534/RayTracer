@@ -1,0 +1,1 @@
+ffmpeg -i spheres%03d.ppm outVideo.avi
