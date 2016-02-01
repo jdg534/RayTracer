@@ -32,97 +32,25 @@
 #include <sstream>
 #include <string.h>
 
-#if defined __linux__ || defined __APPLE__
-// "Compiled for Linux
-#else
-// Windows doesn't define these values by default, Linux does
-#define M_PI 3.141592653589793
-#define INFINITY 1e8
-#endif
+#include "Vec3.h"
+#include "Sphere.h"
+#include "Renderer.h"
 
-template<typename T>
-class Vec3
-{
-public:
-	T x, y, z;
-	Vec3() : x(T(0)), y(T(0)), z(T(0)) {}
-	Vec3(T xx) : x(xx), y(xx), z(xx) {}
-	Vec3(T xx, T yy, T zz) : x(xx), y(yy), z(zz) {}
-	Vec3& normalize()
-	{
-		T nor2 = length2();
-		if (nor2 > 0) {
-			T invNor = 1 / sqrt(nor2);
-			x *= invNor, y *= invNor, z *= invNor;
-		}
-		return *this;
-	}
-	Vec3<T> operator * (const T &f) const { return Vec3<T>(x * f, y * f, z * f); }
-	Vec3<T> operator * (const Vec3<T> &v) const { return Vec3<T>(x * v.x, y * v.y, z * v.z); }
-	T dot(const Vec3<T> &v) const { return x * v.x + y * v.y + z * v.z; }
-	Vec3<T> operator - (const Vec3<T> &v) const { return Vec3<T>(x - v.x, y - v.y, z - v.z); }
-	Vec3<T> operator + (const Vec3<T> &v) const { return Vec3<T>(x + v.x, y + v.y, z + v.z); }
-	Vec3<T>& operator += (const Vec3<T> &v) { x += v.x, y += v.y, z += v.z; return *this; }
-	Vec3<T>& operator *= (const Vec3<T> &v) { x *= v.x, y *= v.y, z *= v.z; return *this; }
-	Vec3<T> operator - () const { return Vec3<T>(-x, -y, -z); }
-	T length2() const { return x * x + y * y + z * z; }
-	T length() const { return sqrt(length2()); }
-	friend std::ostream & operator << (std::ostream &os, const Vec3<T> &v)
-	{
-		os << "[" << v.x << " " << v.y << " " << v.z << "]";
-		return os;
-	}
-};
 
-typedef Vec3<float> Vec3f;
-
-class Sphere
-{
-public:
-	Vec3f center;                           /// position of the sphere
-	float radius, radius2;                  /// sphere radius and radius^2
-	Vec3f surfaceColor, emissionColor;      /// surface color and emission (light)
-	float transparency, reflection;         /// surface transparency and reflectivity
-	Sphere(
-		const Vec3f &c,
-		const float &r,
-		const Vec3f &sc,
-		const float &refl = 0,
-		const float &transp = 0,
-		const Vec3f &ec = 0) :
-		center(c), radius(r), radius2(r * r), surfaceColor(sc), emissionColor(ec),
-		transparency(transp), reflection(refl)
-	{ /* empty */
-	}
-	//[comment]
-	// Compute a ray-sphere intersection using the geometric solution
-	//[/comment]
-	bool intersect(const Vec3f &rayorig, const Vec3f &raydir, float &t0, float &t1) const
-	{
-		Vec3f l = center - rayorig;
-		float tca = l.dot(raydir);
-		if (tca < 0) return false;
-		float d2 = l.dot(l) - tca * tca;
-		if (d2 > radius2) return false;
-		float thc = sqrt(radius2 - d2);
-		t0 = tca - thc;
-		t1 = tca + thc;
-
-		return true;
-	}
-};
 
 //[comment]
 // This variable controls the maximum recursion depth
 //[/comment]
 #define MAX_RAY_DEPTH 5
 
-#define NUM_FRAMES_TO_RENDER 100
+#define NUM_FRAMES_TO_RENDER 500
 
 float mix(const float &a, const float &b, const float &mix)
 {
 	return b * mix + a * (1 - mix);
 }
+
+
 
 //[comment]
 // This is the main trace function. It takes a ray as argument (defined by its origin
@@ -209,13 +137,14 @@ Vec3f trace(
 					}
 				}
 				surfaceColor += sphere->surfaceColor * transmission *
-					std::max(float(0), nhit.dot(lightDirection)) * spheres[i].emissionColor;
+					Renderer::maxFunc(float(0), nhit.dot(lightDirection)) * spheres[i].emissionColor;
 			}
 		}
 	}
 
 	return surfaceColor + sphere->emissionColor;
 }
+
 
 std::string FrameIndexStr(int index)
 {
@@ -238,6 +167,8 @@ std::string FrameIndexStr(int index)
 // trace it and return a color. If the ray hits a sphere, we return the color of the
 // sphere at the intersection point, else we return the background color.
 //[/comment]
+
+
 void render(const std::vector<Sphere> &spheres, int iteration)
 {
 	// quick and dirty
@@ -270,13 +201,18 @@ void render(const std::vector<Sphere> &spheres, int iteration)
 	std::ofstream ofs(filename, std::ios::out | std::ios::binary);
 	ofs << "P6\n" << width << " " << height << "\n255\n";
 	for (unsigned i = 0; i < width * height; ++i) {
-		ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
-			(unsigned char)(std::min(float(1), image[i].y) * 255) <<
-			(unsigned char)(std::min(float(1), image[i].z) * 255);
+		ofs << (unsigned char)(Renderer::minFunc(float(1), image[i].x) * 255) <<
+			(unsigned char)(Renderer::minFunc(float(1), image[i].y) * 255) <<
+			(unsigned char)(Renderer::minFunc(float(1), image[i].z) * 255);
 	}
+
+	std::cout << "Rendered: " << tempString.c_str() << std::endl;
+
 	ofs.close();
 	delete[] image;
 }
+
+
 
 void BasicRender()
 {
@@ -292,6 +228,8 @@ void BasicRender()
 	render(spheres, 1);
 
 }
+
+
 
 void SimpleShrinking()
 {
@@ -354,6 +292,8 @@ void SmoothScaling()
 
 	}
 }
+
+
 //[comment]
 // In the main function, we will create the scene which is composed of 5 spheres
 // and 1 light (which is also a sphere). Then, once the scene description is complete
@@ -363,11 +303,28 @@ int main(int argc, char **argv)
 {
 	// This sample only allows one choice per program execution. Feel free to improve upon this
 	srand(13);
-	//BasicRender();
-	//SimpleShrinking();
-	SmoothScaling();
+	BasicRender();
+	// SimpleShrinking();
+	//SmoothScaling();
 
-	system("ffmpeg -i spheres%03d.ppm outVideo.avi");
+
+	
+	system("ffmpeg -y -i spheres%03d.ppm outVideo.avi"); // use ffmpeg to convert the 
+	//system("del \"*.ppm\""); // delete the .ppm files
+	//system("outVideo.avi"); // play the output video with the default video player
+	
+
+	Renderer r;
+	//r.setFrameFileName("SPHERE");
+	/*r.setFrameWidth(640);
+	r.setFrameHeight(480);
+	r.setMaxRayDepth(5);
+	r.setNumFramesToRender(50);
+	r.setOutputFile("ooOutTest.avi");
+
+	r.smoothScalingExample();
+	r.finshRendering();*/
+	r.BasicRenderExample();
 
 	return 0;
 }
