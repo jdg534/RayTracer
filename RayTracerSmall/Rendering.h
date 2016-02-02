@@ -12,11 +12,20 @@
 //[/comment]
 #define MAX_RAY_DEPTH 5
 
-#define NUM_FRAMES_TO_RENDER 100 // not needed here
+// #define NUM_FRAMES_TO_RENDER 100 // not needed here
+
+#ifdef _DEBUG
+#define FRAME_WIDTH 640
+#define FRAME_HEIGHT 480
+#else
+#define FRAME_WIDTH 1920
+#define FRAME_HEIGHT 1080
+// 1920 x 1080 = "Full HD"
+#endif
 
 namespace rendering
 {
-	unsigned int g_targetFps = 30; // can be overriden
+	// unsigned int g_targetFps = 30; // can be overriden, this is only for when converting the still frames using FFMPEG
 
 
 	float mix(const float &a, const float &b, const float &mix)
@@ -117,6 +126,7 @@ namespace rendering
 		return surfaceColor + sphere->emissionColor;
 	}
 
+	
 	std::string FrameIndexStr(int index)
 	{
 		// just dealing with three Decimal places, for now
@@ -141,7 +151,7 @@ namespace rendering
 	void render(const std::vector<Sphere> &spheres, int iteration)
 	{
 		// quick and dirty
-		unsigned width = 640, height = 480;
+		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
 		// Recommended Testing Resolution
 		//unsigned width = 640, height = 480;
 
@@ -163,7 +173,8 @@ namespace rendering
 		}
 		// Save result to a PPM image (keep these flags if you compile under Windows)
 		std::stringstream ss;
-		ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
+		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
+		ss << "./spheres" << iteration << ".ppm";
 		std::string tempString = ss.str();
 		char* filename = (char*)tempString.c_str();
 
@@ -178,7 +189,9 @@ namespace rendering
 		delete[] image;
 	}
 
-	void renderToFolderAndFileName(std::string folderStr, std::string fileStr)
+
+
+	void finshRenderToFolderAndFileName(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30)
 	{
 		// code this!!!
 	}

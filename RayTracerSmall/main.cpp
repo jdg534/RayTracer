@@ -54,14 +54,14 @@ int main(int argc, char **argv)
 	// This sample only allows one choice per program execution. Feel free to improve upon this
 	srand(13);
 
-	// system("del \"*.ppm\""); // clear out any old images, bad idea will want 
+	// system("del \"*.ppm\""); // clear out any old images, bad idea will want to keep the files 
 
 	//BasicRender();
 	//SimpleShrinking();
 	ExampleScenes::SmoothScaling();
 
-	
-	system("ffmpeg -y -i spheres%03d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
+	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded
+	system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
 	system("outVideo.avi"); // plays the video using the default player
 
 

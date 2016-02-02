@@ -143,10 +143,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
+    <ClInclude Include="MathTypes.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vec3.h" />

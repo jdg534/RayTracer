@@ -7,6 +7,7 @@
 
 #include <vector>
 
+#define NUM_FRAMES_TO_RENDER 100
 
 namespace ExampleScenes
 {
@@ -81,6 +82,7 @@ namespace ExampleScenes
 			spheres.push_back(Sphere(Vec3f(5.0, 0, -25), 3, Vec3f(0.65, 0.77, 0.97), 1, 0.0));
 			rendering::render(spheres, r);
 			// std::cout << "Rendered and saved spheres" << FrameIndexStr(r) << ".ppm" << std::endl;
+			std::cout << "Rendered and saved spheres" << r << ".ppm" << std::endl;
 			// Dont forget to clear the Vector holding the spheres.
 			spheres.clear();
 
