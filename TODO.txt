@@ -1,3 +1,5 @@
+// rember render to be it's own file (not a class)
+
 1. figure out how to stich the .ppm files into a video via FFMPEG
 
 2. figure out how to alter positions & size of the spheres (on a frame by frame basis)

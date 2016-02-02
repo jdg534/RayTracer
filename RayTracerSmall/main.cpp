@@ -39,7 +39,7 @@
 
 #include "Rendering.h"
 
-
+#include "ExampleScenes.h"
 
 
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 
 	//BasicRender();
 	//SimpleShrinking();
-	rendering::SmoothScaling();
+	ExampleScenes::SmoothScaling();
 
 	
 	system("ffmpeg -y -i spheres%03d.ppm outVideo.avi"); // -y for overide output video if there's a conflict

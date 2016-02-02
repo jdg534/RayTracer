@@ -37,5 +37,8 @@
     <ClInclude Include="Sphere.h">
       <Filter>Source Files\SceneObject</Filter>
     </ClInclude>
+    <ClInclude Include="ExampleScenes.h">
+      <Filter>Source Files\Renndering</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
