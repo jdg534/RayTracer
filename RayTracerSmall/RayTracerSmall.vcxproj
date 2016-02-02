@@ -152,6 +152,7 @@
     <ClInclude Include="MathTypes.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="TestScenes.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,7 +3,7 @@
 
 ffmpeg -r (int fps here) -y (if want to default override out file) -i "input file string" "output file string"
 
-use: ffmpeg -i "abc%03d.ppm" if abc001
+use: ffmpeg -i "abc%03d.ppm" if abc001.ppm ... abc134.ppm
 
 use: ffmpeg -i "abc%d.ppm" if abc0.ppm ... ab134.ppm
 

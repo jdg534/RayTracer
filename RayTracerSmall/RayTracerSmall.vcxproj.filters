@@ -18,10 +18,10 @@
     <Filter Include="Source Files\Math\JoshMaths">
       <UniqueIdentifier>{024d9e66-d25f-4969-ad9c-57ec3ec9c809}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene">
+    <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{3c5fd76e-c4c4-43b1-9e6d-07d860826b9b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\SceneObject">
+    <Filter Include="Source Files\Scene\SceneObject">
       <UniqueIdentifier>{e22d8751-846b-40d3-8474-e4c6805f004b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -44,7 +44,7 @@
       <Filter>Source Files\Renndering</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
-      <Filter>Scene\SceneObject</Filter>
+      <Filter>Source Files\Scene\SceneObject</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Source Files\Math\JoshMaths</Filter>
@@ -53,7 +53,10 @@
       <Filter>Source Files\Math\JoshMaths</Filter>
     </ClInclude>
     <ClInclude Include="ExampleScenes.h">
-      <Filter>Scene</Filter>
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScenes.h">
+      <Filter>Source Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

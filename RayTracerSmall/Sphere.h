@@ -2,6 +2,8 @@
 
 #include "Vec3.h"
 
+#include <string> // may need to replace when going for PS4
+
 class Sphere
 {
 public:
@@ -9,6 +11,9 @@ public:
 	float radius, radius2;                  /// sphere radius and radius^2
 	Vec3f surfaceColor, emissionColor;      /// surface color and emission (light)
 	float transparency, reflection;         /// surface transparency and reflectivity
+
+	std::string m_id;
+
 	Sphere(
 		const Vec3f &c,
 		const float &r,
@@ -19,6 +24,7 @@ public:
 		center(c), radius(r), radius2(r * r), surfaceColor(sc), emissionColor(ec),
 		transparency(transp), reflection(refl)
 	{ /* empty */
+		m_id = "noId";
 	}
 	//[comment]
 	// Compute a ray-sphere intersection using the geometric solution

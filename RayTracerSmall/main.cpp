@@ -40,7 +40,7 @@
 #include "Rendering.h"
 
 #include "ExampleScenes.h"
-
+#include "TestScenes.h"
 
 
 
@@ -58,11 +58,19 @@ int main(int argc, char **argv)
 
 	//BasicRender();
 	//SimpleShrinking();
-	ExampleScenes::SmoothScaling();
+	// ExampleScenes::SmoothScaling();
+
+	// TestScenes::renderSceneForTime(10.0f, 24);
+	
+	// duration in seconds, frames per second, folder string, output video file string, start of frame file name
+	
+	// TestScenes::renderSceneForTimeSpecificOutput(120.0f, 30, "TestFrame", "TestVid.avi", "TestRenderFolder"); 
+
+	TestScenes::renderSceneForTimeSpecificOutput(5.0f, 24, "TestFrame", "TestVid.avi", "TestRenderFolder");
 
 	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded
-	system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
-	system("outVideo.avi"); // plays the video using the default player
+	// system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
+	// system("outVideo.avi"); // plays the video using the default player
 
 
 	return 0;
