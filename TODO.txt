@@ -1,5 +1,15 @@
 // rember render to be it's own file (not a class)
 
-1. figure out how to stich the .ppm files into a video via FFMPEG
+
+ffmpeg -r (int fps here) -y (if want to default override out file) -i "input file string" "output file string"
+
+
+1. figure out how to stich the .ppm files into a video via FFMPEG, // done but need to improve, out to directory, 
 
 2. figure out how to alter positions & size of the spheres (on a frame by frame basis)
+
+
+
+// key frame animation, via text file  
+feedback: "Good idea, will also give something to write about in the portfolio"
+

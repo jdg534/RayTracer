@@ -4,16 +4,21 @@
 
 #include "Sphere.h"
 
+#include <string> // might not be available on PS4
+
 
 //[comment]
 // This variable controls the maximum recursion depth
 //[/comment]
 #define MAX_RAY_DEPTH 5
 
-#define NUM_FRAMES_TO_RENDER 100
+#define NUM_FRAMES_TO_RENDER 100 // not needed here
 
 namespace rendering
 {
+	unsigned int g_targetFps = 30; // can be overriden
+
+
 	float mix(const float &a, const float &b, const float &mix)
 	{
 		return b * mix + a * (1 - mix);
@@ -173,5 +178,8 @@ namespace rendering
 		delete[] image;
 	}
 
-	
+	void renderToFolderAndFileName(std::string folderStr, std::string fileStr)
+	{
+		// code this!!!
+	}
 };

@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	// This sample only allows one choice per program execution. Feel free to improve upon this
 	srand(13);
 
-	system("del \"*.ppm\""); // clear out any old images
+	// system("del \"*.ppm\""); // clear out any old images, bad idea will want 
 
 	//BasicRender();
 	//SimpleShrinking();
