@@ -129,10 +129,33 @@ namespace TestScenes
 		std::ifstream inFile(sceneFile);
 		if (!inFile.good())
 		{
+			std::cout << "Error " << sceneFile << " not found" << std::endl;
 			return;
 		}
 
+		// parse the file for the scene information
+		// duration in seconds, FPS, ppm file name(just first bit), output video file name, outputFolder
+		std::string currentBit = "";
 
+		std::vector<Sphere> spheres;
+
+		std::string outputFolder = "DEFAULT_OUTPUT_FOLDER";
+		int fps = 24;
+		float videoDuration = 10.0f;
+		std::string ppmFileNameStart = "DEFAULT_PPM_";
+		std::string statsOutputFileName = "DEFAULT_STATS_OUTPUT.txt";
+
+		while (currentBit != "END_SCENE_FILE")
+		{
+			inFile >> currentBit;
+			if (currentBit == "outputFolder:")
+			{
+				inFile >> outputFolder;
+			}
+			// continue codeing this based staticScene.txt
+		}
+
+		// side note compiler optimisation, only works on Relese Builds
 	}
 };
 

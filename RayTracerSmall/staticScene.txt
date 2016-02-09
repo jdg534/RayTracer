@@ -1,0 +1,15 @@
+START_SCENE_FILE
+
+outputFolder: fromFileOut
+framesPerSecond: 24
+sceneDuration: 10.5
+frameFileNameStart: fromFileFrame
+statsOutFile: outputStats.txt
+
+// now define the spheres
+
+
+
+// after defining the spheres, define key frames
+
+END_SCENE_FILE
