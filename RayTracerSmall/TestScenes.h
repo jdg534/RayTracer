@@ -153,6 +153,27 @@ namespace TestScenes
 				inFile >> outputFolder;
 			}
 			// continue codeing this based staticScene.txt
+			else if (currentBit == "framesPerSecond:")
+			{
+				inFile >> fps;
+			}
+			else if (currentBit == "sceneDuration:")
+			{
+				inFile >> videoDuration;
+			}
+			else if (currentBit == "frameFileNameStart:")
+			{
+				inFile >> ppmFileNameStart;
+			}
+			else if (currentBit == "statsOutFile:")
+			{
+				inFile >> statsOutputFileName;
+			}
+
+			// next deal with Sphere definitions
+
+
+
 		}
 
 		// side note compiler optimisation, only works on Relese Builds
