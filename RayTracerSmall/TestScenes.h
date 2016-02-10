@@ -144,6 +144,7 @@ namespace TestScenes
 		float videoDuration = 10.0f;
 		std::string ppmFileNameStart = "DEFAULT_PPM_";
 		std::string statsOutputFileName = "DEFAULT_STATS_OUTPUT.txt";
+		std::string outputVideoFile = "DEFAUL_OUT.avi";
 
 		while (currentBit != "END_SCENE_FILE")
 		{
@@ -169,8 +170,12 @@ namespace TestScenes
 			{
 				inFile >> statsOutputFileName;
 			}
+			else if (currentBit == "outputFile:")
+			{
+				inFile >> outputVideoFile;
+			}
 			// next deal with Sphere definitions
-			if (currentBit == "NEW_SPHERE")
+			else if (currentBit == "NEW_SPHERE")
 			{
 				Vec3f postion;
 				postion.x = 0.0f;
@@ -187,13 +192,88 @@ namespace TestScenes
 				emissiveColour.x = 0.0f;
 				emissiveColour.y = 0.0f;
 				emissiveColour.z = 0.0f;
-
+				std::string sphereID = "DEFAULT_SPHERE_ID";
 				// next have while loop to override the above values, see: staticScene.txt for reference
+				while (currentBit != "END_SPHERE")
+				{
+					inFile >> currentBit;
+					if (currentBit == "POSITION")
+					{
+						inFile >> postion.x;
+						inFile >> postion.y;
+						inFile >> postion.z;
+					}
+					else if (currentBit == "RADIUS")
+					{
+						inFile >> radius;
+					}
+					else if (currentBit == "SURFACE_COLOUR")
+					{
+						inFile >> surfaceColour.x;
+						inFile >> surfaceColour.y;
+						inFile >> surfaceColour.z;
+					}
+					else if (currentBit == "REFLECTION_VALUE")
+					{
+						inFile >> reflectionValue;
+					}
+					else if (currentBit == "TRANSPARENCY_VALUE ")
+					{
+						inFile >> transparancy;
+					}
+					else if (currentBit == "EMISSIVE_COLOUR")
+					{
+						inFile >> emissiveColour.x;
+						inFile >> emissiveColour.y;
+						inFile >> emissiveColour.z;
+					}
+					else if (currentBit == "ID")
+					{
+						inFile >> sphereID;
+					}
+				}
+				// now add the sphere
+				Sphere tmpS(postion, radius,surfaceColour, reflectionValue, transparancy, emissiveColour);
+				tmpS.m_id = sphereID;
+				// add the std::vector
+				spheres.push_back(tmpS);
 			}
 		}
 
-		// side note compiler optimisation, only works on Relese Builds
+		// now that loaded the scene information, it's drawing time
+		std::cout << "Loaded Scene from: " << sceneFile << std::endl;
+		std::cout << "Output folder: " << outputFolder << std::endl;
+		std::cout << "Frames Per Second to use on Video: " << fps << std::endl;
+		std::cout << "Start of output file name: " << ppmFileNameStart << std::endl;
+		std::cout << "video Duration: " << videoDuration << std::endl;
+		std::cout << "Output video file: " << outputVideoFile << std::endl;
+
+		// calculate number of frames to render
+		unsigned int nFramesToRender = (unsigned int)(videoDuration * (float)fps);
+		using namespace std::chrono;
+
+		steady_clock::time_point timeAtStartOfRender = steady_clock::now();
+
+		for (int frame = 0; frame < nFramesToRender; frame++)
+		{
+			steady_clock::time_point timeAtStartOfFrame = steady_clock::now();
+
+			rendering::renderToFolder(ppmFileNameStart, outputFolder, spheres, frame);
+
+			steady_clock::time_point timeAtEndOfFrame = steady_clock::now();
+		}
+
+		rendering::finshRenderToFolderAndFileName(outputFolder, ppmFileNameStart, outputVideoFile, fps);
+
+		steady_clock::time_point timeAtEndOfRender = steady_clock::now();
 	}
+	
+	
+
+
+
 };
+
+// side note compiler optimisation, only works on Relese Builds
 
 #endif
