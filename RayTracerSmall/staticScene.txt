@@ -7,6 +7,17 @@ frameFileNameStart: fromFileFrame
 statsOutFile: outputStats.txt
 
 // now define the spheres
+// center point Vec3f, radius float, surface colour vec3f, reflectionValue float,  transparancyValue float, emmisive colour vec3f, id string
+
+NEW_SPHERE
+	POSITION 0.0 -10004.0 -20.0
+	RADIUS 1000
+	SURFACE_COLOUR 0.20 0.20 0.20
+	REFLECTION_VALUE 0.0
+	TRANSPARENCY_VALUE 0.0
+	EMISSIVE_COLOUR 0.0 0.0 0.0
+	ID testSphetr1
+END_SPHERE
 
 
 

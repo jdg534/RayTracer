@@ -169,11 +169,27 @@ namespace TestScenes
 			{
 				inFile >> statsOutputFileName;
 			}
-
 			// next deal with Sphere definitions
+			if (currentBit == "NEW_SPHERE")
+			{
+				Vec3f postion;
+				postion.x = 0.0f;
+				postion.y = 0.0f;
+				postion.z = 0.0f;
+				float radius = 1.0f;
+				Vec3f surfaceColour;
+				surfaceColour.x = 1.0f;
+				surfaceColour.y = 1.0f;
+				surfaceColour.z = 1.0f;
+				float reflectionValue = 0.0f;
+				float transparancy = 0.0f;
+				Vec3f emissiveColour;
+				emissiveColour.x = 0.0f;
+				emissiveColour.y = 0.0f;
+				emissiveColour.z = 0.0f;
 
-
-
+				// next have while loop to override the above values, see: staticScene.txt for reference
+			}
 		}
 
 		// side note compiler optimisation, only works on Relese Builds
