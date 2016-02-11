@@ -254,18 +254,37 @@ namespace TestScenes
 
 		steady_clock::time_point timeAtStartOfRender = steady_clock::now();
 
-		for (int frame = 0; frame < nFramesToRender; frame++)
+		for (unsigned int frame = 0; frame < nFramesToRender; frame++)
 		{
 			steady_clock::time_point timeAtStartOfFrame = steady_clock::now();
 
 			rendering::renderToFolder(ppmFileNameStart, outputFolder, spheres, frame);
 
 			steady_clock::time_point timeAtEndOfFrame = steady_clock::now();
-		}
 
+			unsigned framesLeftToRender = nFramesToRender - frame;
+			// calculate time taken the draw the frame
+			steady_clock::duration timeTakenToRenderFrame = timeAtEndOfFrame - timeAtStartOfFrame;
+			milliseconds tttrfMS = duration_cast<milliseconds>(timeTakenToRenderFrame);
+			predictNumSecondsToFinshRendering(tttrfMS.count(), framesLeftToRender);
+		}
+		steady_clock::time_point finaliseRenderStart = steady_clock::now();
 		rendering::finshRenderToFolderAndFileName(outputFolder, ppmFileNameStart, outputVideoFile, fps);
+		steady_clock::time_point finaliseRenderEnd = steady_clock::now();
+		steady_clock::duration finialiseRenderDuration = finaliseRenderEnd - finaliseRenderStart;
+		milliseconds frdMS = duration_cast<milliseconds>(finialiseRenderDuration);
+
+		std::cout << "Time to convert frames to video: " << frdMS.count() << "ms" << std::endl;
 
 		steady_clock::time_point timeAtEndOfRender = steady_clock::now();
+
+
+
+		steady_clock::duration fullRenderDuration = timeAtEndOfRender - timeAtStartOfRender;
+		seconds frdSec = duration_cast<seconds>(fullRenderDuration);
+		std::cout << "Time to render the entire scene " << frdSec.count() << " seconds" << std::endl;
+		char e;
+		std::cin >> e;
 	}
 	
 	

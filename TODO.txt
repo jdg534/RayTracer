@@ -10,7 +10,11 @@ use: ffmpeg -i "abc%d.ppm" if abc0.ppm ... ab134.ppm
 
 1. figure out how to stich the .ppm files into a video via FFMPEG, // done but need to improve, out to directory, 
 
-2. figure out how to alter positions & size of the spheres (on a frame by frame basis)
+2. figure out how to load & render the scene to a folder, based on data in a text file
+
+3. have the scene use keyframe animation
+
+// 2. figure out how to alter positions & size of the spheres (on a frame by frame basis)
 
 
 
