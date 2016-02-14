@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
     <ClInclude Include="MathTypes.h" />

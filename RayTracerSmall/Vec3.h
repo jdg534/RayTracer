@@ -31,6 +31,17 @@ public:
 		os << "[" << v.x << " " << v.y << " " << v.z << "]";
 		return os;
 	}
+
+	bool operator ==(const Vec3<T> & v)
+	{
+		if (x != v.x)
+			return false;
+		if (y != v.y)
+			return false;
+		if (z != v.z)
+			return false;
+		return true;
+	}
 };
 
 typedef Vec3<float> Vec3f;

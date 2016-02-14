@@ -68,7 +68,11 @@ int main(int argc, char **argv)
 
 	// TestScenes::renderSceneForTimeSpecificOutput(5.0f, 24, "TestFrame", "TestVid.avi", "TestRenderFolder");
 	
-	TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
+	// TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
+
+	TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
+
+	
 
 	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded
 	// system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict

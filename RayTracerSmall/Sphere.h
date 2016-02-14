@@ -42,4 +42,57 @@ public:
 
 		return true;
 	}
+
+	bool operator ==(const Sphere & a)
+	{
+		return m_id == a.m_id;
+	}
+
+	void operator =(const Sphere & a)
+	{
+		center = a.center;
+		radius = a.radius;
+		radius2 = a.radius2;
+		surfaceColor = a.surfaceColor;
+		emissionColor = a.emissionColor;
+		transparency = a.transparency;
+		reflection = a.reflection;
+		m_id = a.m_id;
+	}
+
+	static bool diffMathOnly(const Sphere  & a, const Sphere & b)
+	{
+		if (a.center.x != b.center.x
+			|| a.center.y != b.center.y
+			|| a.center.z != b.center.z)
+		{
+			return true;
+		}
+		else if (a.radius != b.radius)
+		{
+			return true;
+		}
+		// skip radius2
+		else if (a.surfaceColor.x != b.surfaceColor.x
+			|| a.surfaceColor.y != b.surfaceColor.y
+			|| a.surfaceColor.z != b.surfaceColor.z)
+		{
+			return true;
+		}
+		else if (a.emissionColor.x != b.emissionColor.x
+			|| a.emissionColor.y != b.emissionColor.y
+			|| a.emissionColor.z != b.emissionColor.z)
+		{
+			return true;
+		}
+		else if (a.transparency != b.transparency)
+		{
+			return true;
+		}
+		else if (a.reflection != b.reflection)
+		{
+			return true;
+		}
+		return false;
+	}
 };
