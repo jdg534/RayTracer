@@ -70,7 +70,9 @@ int main(int argc, char **argv)
 	
 	// TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
 
-	TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
+	
+	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
+	TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
 
 	
 

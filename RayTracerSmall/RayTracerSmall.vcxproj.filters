@@ -65,7 +65,7 @@
       <Filter>Source Files\Renndering</Filter>
     </ClInclude>
     <ClInclude Include="Frame.h">
-      <Filter>Source Files\Renndering</Filter>
+      <Filter>Source Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

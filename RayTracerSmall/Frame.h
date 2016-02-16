@@ -16,7 +16,7 @@ struct Frame
 	std::string startOfFrameFileNameString;
 	std::vector<Sphere> frameData;
 
-	bool operator<(const Frame & other)
+	bool operator<(const Frame & other) const
 	{
 		return frameNumber < other.frameNumber;
 	}
