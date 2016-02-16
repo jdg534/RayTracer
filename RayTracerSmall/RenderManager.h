@@ -87,7 +87,7 @@ public:
 		
 		unsigned int nFramesToRenderPerThread = nFramesToRender / m_nThreadsSupportedByPlatform;
 
-		unsigned int nFramesToRenderOnMainThread = 0;
+		
 		unsigned int frameIndexForMainThread = 0;
 		
 		std::vector<std::thread *> renderingThreads;
@@ -102,7 +102,7 @@ public:
 
 			if (i == m_nThreadsSupportedByPlatform - 1)
 			{
-				nFramesToRenderOnMainThread = nFramesToRender - endFrameIndex; // not needed
+				
 				frameIndexForMainThread = endFrameIndex + 1;
 			}
 			// create a thread that runs
