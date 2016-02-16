@@ -147,10 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="Frame.h" />
     <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
     <ClInclude Include="MathTypes.h" />
+    <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="TestScenes.h" />

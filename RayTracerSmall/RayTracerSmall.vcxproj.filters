@@ -61,5 +61,11 @@
     <ClInclude Include="KeyFrame.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>Source Files\Renndering</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Source Files\Renndering</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

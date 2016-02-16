@@ -1,40 +1,10 @@
-// rember render to be it's own file (not a class)
+// rember render to be it's own file (not a class), for now
+
+// look into the profiling, (compiler optimisations)
+
+implerment the RenderManager, and appropriate code to use it
 
 
-ffmpeg -r (int fps here) -y (if want to default override out file) -i "input file string" "output file string"
-
-use: ffmpeg -i "abc%03d.ppm" if abc001.ppm ... abc134.ppm
-
-use: ffmpeg -i "abc%d.ppm" if abc0.ppm ... ab134.ppm
-
-
-1. figure out how to stich the .ppm files into a video via FFMPEG, // done but need to improve, out to directory, 
-
-2. figure out how to load & render the scene to a folder, based on data in a text file
-
-3. have the scene use keyframe animation
-
-// 2. figure out how to alter positions & size of the spheres (on a frame by frame basis)
-
-
-
-// key frame animation, via text file  
-feedback: "Good idea, will also give something to write about in the portfolio"
-
-
-// recomended stuff to implerment: (as of week 3)
-
-•	Save output .ppm files to their own directory.
-•	Have FFMPEG convert the .ppm files into .mp4 at the end of a release build
-•	Ensure you have lower quality output for debug builds
-•	Write code to ensure you can render the scene for any number of seconds
-•	Write some code to move a given sphere on the x,y,z axis
-•	Write some code to scale a given sphere
-•	Write some code to manipulate the light sources of your scene
-
-// scene object manipulation could be done via LERP on the position
-
-// relative folder referencing recomended
 
 PS4 free BSD based
 

@@ -1,0 +1,3007 @@
+Loaded Scene from: keyFrameScene.txt
+Output folder: KFO2
+Frames Per Second to use on Video: 25
+Start of output file name: KFO_FRAME_
+video Duration: 15
+Output video file: KFO.avi
+Total key frames (number in the file + 1): 5
+------------------------
+key frame: 0
+Time point: 0
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION 5 0 -25
+	RADIUS 3
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+------------------------
+key frame: 1
+Time point: 2.5
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION 5 0 -25
+	RADIUS 6
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+------------------------
+key frame: 2
+Time point: 5
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION 5 0 -25
+	RADIUS 3
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+------------------------
+key frame: 3
+Time point: 8
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION -5 0 -25
+	RADIUS 3
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+------------------------
+key frame: 4
+Time point: 9
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 3 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.1 0.21 0.57
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION -5 0 -25
+	RADIUS 3
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+Stats for Frame: 0
+Time point: 0
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3
+Stats for Frame: 1
+Time point: 0.04
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.016
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.048
+Stats for Frame: 2
+Time point: 0.08
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.032
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.096
+Stats for Frame: 3
+Time point: 0.12
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.048
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.144
+Stats for Frame: 4
+Time point: 0.16
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.064
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.192
+Stats for Frame: 5
+Time point: 0.2
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.08
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.24
+Stats for Frame: 6
+Time point: 0.24
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.096
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.288
+Stats for Frame: 7
+Time point: 0.28
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.112
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.336
+Stats for Frame: 8
+Time point: 0.32
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.128
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.384
+Stats for Frame: 9
+Time point: 0.36
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.144
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.432
+Stats for Frame: 10
+Time point: 0.4
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.16
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.48
+Stats for Frame: 11
+Time point: 0.44
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.176
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.528
+Stats for Frame: 12
+Time point: 0.48
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.192
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.576
+Stats for Frame: 13
+Time point: 0.52
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.208
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.624
+Stats for Frame: 14
+Time point: 0.56
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.224
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.672
+Stats for Frame: 15
+Time point: 0.6
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.24
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.72
+Stats for Frame: 16
+Time point: 0.64
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.256
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.768
+Stats for Frame: 17
+Time point: 0.68
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.272
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.816
+Stats for Frame: 18
+Time point: 0.72
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.288
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.864
+Stats for Frame: 19
+Time point: 0.76
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.304
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.912
+Stats for Frame: 20
+Time point: 0.8
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.32
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 3.96
+Stats for Frame: 21
+Time point: 0.84
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.336
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.008
+Stats for Frame: 22
+Time point: 0.88
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.352
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.056
+Stats for Frame: 23
+Time point: 0.92
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.368
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.104
+Stats for Frame: 24
+Time point: 0.96
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.384
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.152
+Stats for Frame: 25
+Time point: 1
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.4
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.2
+Stats for Frame: 26
+Time point: 1.04
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.416
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.248
+Stats for Frame: 27
+Time point: 1.08
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.432
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.296
+Stats for Frame: 28
+Time point: 1.12
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.448
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.344
+Stats for Frame: 29
+Time point: 1.16
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.464
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.392
+Stats for Frame: 30
+Time point: 1.2
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.48
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.44
+Stats for Frame: 31
+Time point: 1.24
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.496
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.488
+Stats for Frame: 32
+Time point: 1.28
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.512
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.536
+Stats for Frame: 33
+Time point: 1.32
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.528
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.584
+Stats for Frame: 34
+Time point: 1.36
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.544
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.632
+Stats for Frame: 35
+Time point: 1.4
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.56
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.68
+Stats for Frame: 36
+Time point: 1.44
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.576
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.728
+Stats for Frame: 37
+Time point: 1.48
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.592
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.776
+Stats for Frame: 38
+Time point: 1.52
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.608
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.824
+Stats for Frame: 39
+Time point: 1.56
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.624
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.872
+Stats for Frame: 40
+Time point: 1.6
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.64
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.92
+Stats for Frame: 41
+Time point: 1.64
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.656
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 4.968
+Stats for Frame: 42
+Time point: 1.68
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.672
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.016
+Stats for Frame: 43
+Time point: 1.72
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.688
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.064
+Stats for Frame: 44
+Time point: 1.76
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.704
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.112
+Stats for Frame: 45
+Time point: 1.8
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.72
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.16
+Stats for Frame: 46
+Time point: 1.84
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.736
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.208
+Stats for Frame: 47
+Time point: 1.88
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.752
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.256
+Stats for Frame: 48
+Time point: 1.92
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.768
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.304
+Stats for Frame: 49
+Time point: 1.96
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.784
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.352
+Stats for Frame: 50
+Time point: 2
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.8
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.4
+Stats for Frame: 51
+Time point: 2.04
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.816
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.448
+Stats for Frame: 52
+Time point: 2.08
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.832
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.496
+Stats for Frame: 53
+Time point: 2.12
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.848
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.544
+Stats for Frame: 54
+Time point: 2.16
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.864
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.592
+Stats for Frame: 55
+Time point: 2.2
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.88
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.64
+Stats for Frame: 56
+Time point: 2.24
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.896
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.688
+Stats for Frame: 57
+Time point: 2.28
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.912
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.736
+Stats for Frame: 58
+Time point: 2.32
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.928
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.784
+Stats for Frame: 59
+Time point: 2.36
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.944
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.832
+Stats for Frame: 60
+Time point: 2.4
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.96
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.88
+Stats for Frame: 61
+Time point: 2.44
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.976
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.928
+Stats for Frame: 62
+Time point: 2.48
+First Key frame starting point: 0
+Second Key frame starting point: 2.5
+Lerp Value: 0.992
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 3 | 6 | 5.976
+Stats for Frame: 63
+Time point: 2.52
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.00799999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.976
+Stats for Frame: 64
+Time point: 2.56
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.024
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.928
+Stats for Frame: 65
+Time point: 2.6
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.04
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.88
+Stats for Frame: 66
+Time point: 2.64
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.0559999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.832
+Stats for Frame: 67
+Time point: 2.68
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.0719999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.784
+Stats for Frame: 68
+Time point: 2.72
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.088
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.736
+Stats for Frame: 69
+Time point: 2.76
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.104
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.688
+Stats for Frame: 70
+Time point: 2.8
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.12
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.64
+Stats for Frame: 71
+Time point: 2.84
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.136
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.592
+Stats for Frame: 72
+Time point: 2.88
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.152
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.544
+Stats for Frame: 73
+Time point: 2.92
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.168
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.496
+Stats for Frame: 74
+Time point: 2.96
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.184
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.448
+Stats for Frame: 75
+Time point: 3
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.2
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.4
+Stats for Frame: 76
+Time point: 3.04
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.216
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.352
+Stats for Frame: 77
+Time point: 3.08
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.232
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.304
+Stats for Frame: 78
+Time point: 3.12
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.248
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.256
+Stats for Frame: 79
+Time point: 3.16
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.264
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.208
+Stats for Frame: 80
+Time point: 3.2
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.28
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.16
+Stats for Frame: 81
+Time point: 3.24
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.296
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.112
+Stats for Frame: 82
+Time point: 3.28
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.312
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.064
+Stats for Frame: 83
+Time point: 3.32
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.328
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 5.016
+Stats for Frame: 84
+Time point: 3.36
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.344
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.968
+Stats for Frame: 85
+Time point: 3.4
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.36
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.92
+Stats for Frame: 86
+Time point: 3.44
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.376
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.872
+Stats for Frame: 87
+Time point: 3.48
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.392
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.824
+Stats for Frame: 88
+Time point: 3.52
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.408
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.776
+Stats for Frame: 89
+Time point: 3.56
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.424
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.728
+Stats for Frame: 90
+Time point: 3.6
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.44
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.68
+Stats for Frame: 91
+Time point: 3.64
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.456
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.632
+Stats for Frame: 92
+Time point: 3.68
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.472
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.584
+Stats for Frame: 93
+Time point: 3.72
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.488
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.536
+Stats for Frame: 94
+Time point: 3.76
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.504
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.488
+Stats for Frame: 95
+Time point: 3.8
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.52
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.44
+Stats for Frame: 96
+Time point: 3.84
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.536
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.392
+Stats for Frame: 97
+Time point: 3.88
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.552
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.344
+Stats for Frame: 98
+Time point: 3.92
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.568
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.296
+Stats for Frame: 99
+Time point: 3.96
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.584
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.248
+Stats for Frame: 100
+Time point: 4
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.6
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.2
+Stats for Frame: 101
+Time point: 4.04
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.616
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.152
+Stats for Frame: 102
+Time point: 4.08
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.632
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.104
+Stats for Frame: 103
+Time point: 4.12
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.648
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.056
+Stats for Frame: 104
+Time point: 4.16
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.664
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 4.008
+Stats for Frame: 105
+Time point: 4.2
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.68
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.96
+Stats for Frame: 106
+Time point: 4.24
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.696
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.912
+Stats for Frame: 107
+Time point: 4.28
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.712
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.864
+Stats for Frame: 108
+Time point: 4.32
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.728
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.816
+Stats for Frame: 109
+Time point: 4.36
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.744
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.768
+Stats for Frame: 110
+Time point: 4.4
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.76
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.72
+Stats for Frame: 111
+Time point: 4.44
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.776
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.672
+Stats for Frame: 112
+Time point: 4.48
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.792
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.624
+Stats for Frame: 113
+Time point: 4.52
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.808
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.576
+Stats for Frame: 114
+Time point: 4.56
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.824
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.528
+Stats for Frame: 115
+Time point: 4.6
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.84
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.48
+Stats for Frame: 116
+Time point: 4.64
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.856
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.432
+Stats for Frame: 117
+Time point: 4.68
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.872
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.384
+Stats for Frame: 118
+Time point: 4.72
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.888
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.336
+Stats for Frame: 119
+Time point: 4.76
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.904
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.288
+Stats for Frame: 120
+Time point: 4.8
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.92
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.24
+Stats for Frame: 121
+Time point: 4.84
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.936
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.192
+Stats for Frame: 122
+Time point: 4.88
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.952
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.144
+Stats for Frame: 123
+Time point: 4.92
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.968
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.096
+Stats for Frame: 124
+Time point: 4.96
+First Key frame starting point: 2.5
+Second Key frame starting point: 5
+Lerp Value: 0.984
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		RADIUS 6 | 3 | 3.048
+Stats for Frame: 125
+Time point: 5
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [5 0 -25]
+Stats for Frame: 126
+Time point: 5.04
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0133333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.86667 0 -25]
+Stats for Frame: 127
+Time point: 5.08
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0266666
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.73333 0 -25]
+Stats for Frame: 128
+Time point: 5.12
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.04
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.6 0 -25]
+Stats for Frame: 129
+Time point: 5.16
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0533333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.46667 0 -25]
+Stats for Frame: 130
+Time point: 5.2
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0666666
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.33333 0 -25]
+Stats for Frame: 131
+Time point: 5.24
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0799999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.2 0 -25]
+Stats for Frame: 132
+Time point: 5.28
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.0933332
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [4.06667 0 -25]
+Stats for Frame: 133
+Time point: 5.32
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.106667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.93333 0 -25]
+Stats for Frame: 134
+Time point: 5.36
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.12
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.8 0 -25]
+Stats for Frame: 135
+Time point: 5.4
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.133333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.66667 0 -25]
+Stats for Frame: 136
+Time point: 5.44
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.146667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.53333 0 -25]
+Stats for Frame: 137
+Time point: 5.48
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.16
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.4 0 -25]
+Stats for Frame: 138
+Time point: 5.52
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.173333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.26667 0 -25]
+Stats for Frame: 139
+Time point: 5.56
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.186667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3.13333 0 -25]
+Stats for Frame: 140
+Time point: 5.6
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.2
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [3 0 -25]
+Stats for Frame: 141
+Time point: 5.64
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.213333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.86667 0 -25]
+Stats for Frame: 142
+Time point: 5.68
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.226667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.73333 0 -25]
+Stats for Frame: 143
+Time point: 5.72
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.24
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.6 0 -25]
+Stats for Frame: 144
+Time point: 5.76
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.253333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.46667 0 -25]
+Stats for Frame: 145
+Time point: 5.8
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.266667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.33333 0 -25]
+Stats for Frame: 146
+Time point: 5.84
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.28
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.2 0 -25]
+Stats for Frame: 147
+Time point: 5.88
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.293333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [2.06667 0 -25]
+Stats for Frame: 148
+Time point: 5.92
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.306667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.93333 0 -25]
+Stats for Frame: 149
+Time point: 5.96
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.32
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.8 0 -25]
+Stats for Frame: 150
+Time point: 6
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.333333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.66667 0 -25]
+Stats for Frame: 151
+Time point: 6.04
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.346667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.53333 0 -25]
+Stats for Frame: 152
+Time point: 6.08
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.36
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.4 0 -25]
+Stats for Frame: 153
+Time point: 6.12
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.373333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.26667 0 -25]
+Stats for Frame: 154
+Time point: 6.16
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.386667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1.13333 0 -25]
+Stats for Frame: 155
+Time point: 6.2
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.4
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [1 0 -25]
+Stats for Frame: 156
+Time point: 6.24
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.413333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.866667 0 -25]
+Stats for Frame: 157
+Time point: 6.28
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.426667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.733334 0 -25]
+Stats for Frame: 158
+Time point: 6.32
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.44
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.600001 0 -25]
+Stats for Frame: 159
+Time point: 6.36
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.453333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.466667 0 -25]
+Stats for Frame: 160
+Time point: 6.4
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.466667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.333334 0 -25]
+Stats for Frame: 161
+Time point: 6.44
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.48
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.2 0 -25]
+Stats for Frame: 162
+Time point: 6.48
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.493333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [0.0666666 0 -25]
+Stats for Frame: 163
+Time point: 6.52
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.506667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.0666666 0 -25]
+Stats for Frame: 164
+Time point: 6.56
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.52
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.2 0 -25]
+Stats for Frame: 165
+Time point: 6.6
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.533333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.333333 0 -25]
+Stats for Frame: 166
+Time point: 6.64
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.546667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.466666 0 -25]
+Stats for Frame: 167
+Time point: 6.68
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.56
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.599999 0 -25]
+Stats for Frame: 168
+Time point: 6.72
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.573333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.733333 0 -25]
+Stats for Frame: 169
+Time point: 6.76
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.586667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.866666 0 -25]
+Stats for Frame: 170
+Time point: 6.8
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.6
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-0.999999 0 -25]
+Stats for Frame: 171
+Time point: 6.84
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.613333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.13333 0 -25]
+Stats for Frame: 172
+Time point: 6.88
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.626667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.26667 0 -25]
+Stats for Frame: 173
+Time point: 6.92
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.64
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.4 0 -25]
+Stats for Frame: 174
+Time point: 6.96
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.653333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.53333 0 -25]
+Stats for Frame: 175
+Time point: 7
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.666667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.66667 0 -25]
+Stats for Frame: 176
+Time point: 7.04
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.68
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.8 0 -25]
+Stats for Frame: 177
+Time point: 7.08
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.693333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-1.93333 0 -25]
+Stats for Frame: 178
+Time point: 7.12
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.706667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.06667 0 -25]
+Stats for Frame: 179
+Time point: 7.16
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.72
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.2 0 -25]
+Stats for Frame: 180
+Time point: 7.2
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.733333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.33333 0 -25]
+Stats for Frame: 181
+Time point: 7.24
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.746667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.46667 0 -25]
+Stats for Frame: 182
+Time point: 7.28
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.76
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.6 0 -25]
+Stats for Frame: 183
+Time point: 7.32
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.773333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.73333 0 -25]
+Stats for Frame: 184
+Time point: 7.36
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.786667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-2.86667 0 -25]
+Stats for Frame: 185
+Time point: 7.4
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.8
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3 0 -25]
+Stats for Frame: 186
+Time point: 7.44
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.813333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.13333 0 -25]
+Stats for Frame: 187
+Time point: 7.48
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.826667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.26667 0 -25]
+Stats for Frame: 188
+Time point: 7.52
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.84
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.4 0 -25]
+Stats for Frame: 189
+Time point: 7.56
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.853333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.53333 0 -25]
+Stats for Frame: 190
+Time point: 7.6
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.866667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.66667 0 -25]
+Stats for Frame: 191
+Time point: 7.64
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.88
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.8 0 -25]
+Stats for Frame: 192
+Time point: 7.68
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.893333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-3.93333 0 -25]
+Stats for Frame: 193
+Time point: 7.72
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.906667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.06667 0 -25]
+Stats for Frame: 194
+Time point: 7.76
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.92
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.2 0 -25]
+Stats for Frame: 195
+Time point: 7.8
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.933333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.33333 0 -25]
+Stats for Frame: 196
+Time point: 7.84
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.946667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.46667 0 -25]
+Stats for Frame: 197
+Time point: 7.88
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.96
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.6 0 -25]
+Stats for Frame: 198
+Time point: 7.92
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.973333
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.73333 0 -25]
+Stats for Frame: 199
+Time point: 7.96
+First Key frame starting point: 5
+Second Key frame starting point: 8
+Lerp Value: 0.986667
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 0 -25] | [-5 0 -25] | [-4.86667 0 -25]
+Stats for Frame: 200
+Time point: 8
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -1 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.9 0.76 0.46]
+Stats for Frame: 201
+Time point: 8.04
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.04
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.84 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.868 0.738 0.4644]
+Stats for Frame: 202
+Time point: 8.08
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.0799999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.68 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.836 0.716 0.4688]
+Stats for Frame: 203
+Time point: 8.12
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.12
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.52 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.804 0.694 0.4732]
+Stats for Frame: 204
+Time point: 8.16
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.16
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.360001 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.772 0.672 0.4776]
+Stats for Frame: 205
+Time point: 8.2
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.2
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.200001 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.74 0.65 0.482]
+Stats for Frame: 206
+Time point: 8.24
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.24
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 -0.0400009 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.708 0.628 0.4864]
+Stats for Frame: 207
+Time point: 8.28
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.28
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.119999 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.676 0.606 0.4908]
+Stats for Frame: 208
+Time point: 8.32
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.32
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.279999 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.644 0.584 0.4952]
+Stats for Frame: 209
+Time point: 8.36
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.36
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.439999 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.612 0.562 0.4996]
+Stats for Frame: 210
+Time point: 8.4
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.4
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.599998 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.58 0.54 0.504]
+Stats for Frame: 211
+Time point: 8.44
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.44
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.759998 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.548 0.518 0.5084]
+Stats for Frame: 212
+Time point: 8.48
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.48
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 0.919998 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.516 0.496 0.5128]
+Stats for Frame: 213
+Time point: 8.52
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.52
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.08 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.484 0.474 0.5172]
+Stats for Frame: 214
+Time point: 8.56
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.559999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.24 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.452 0.452 0.5216]
+Stats for Frame: 215
+Time point: 8.6
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.599999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.4 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.42 0.43 0.526]
+Stats for Frame: 216
+Time point: 8.64
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.639999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.56 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.388 0.408 0.5304]
+Stats for Frame: 217
+Time point: 8.68
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.679999
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.72 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.356001 0.386 0.5348]
+Stats for Frame: 218
+Time point: 8.72
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.72
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 1.88 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.324 0.364 0.5392]
+Stats for Frame: 219
+Time point: 8.76
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.76
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.04 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.292 0.342 0.5436]
+Stats for Frame: 220
+Time point: 8.8
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.8
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.2 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.26 0.32 0.548]
+Stats for Frame: 221
+Time point: 8.84
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.84
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.36 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.228 0.298 0.5524]
+Stats for Frame: 222
+Time point: 8.88
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.88
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.52 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.196 0.276 0.5568]
+Stats for Frame: 223
+Time point: 8.92
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.92
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.68 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.164 0.254 0.5612]
+Stats for Frame: 224
+Time point: 8.96
+First Key frame starting point: 8
+Second Key frame starting point: 9
+Lerp Value: 0.96
+sphere difference: 
+		________________________________________
+		Key frame 1 | key frame 2 | lerped value
+		POSITION [5 -1 -15] | [5 3 -15] | [5 2.84 -15]
+		SURFACE_COLOUR [0.9 0.76 0.46] | [0.1 0.21 0.57] | [0.132 0.232 0.5656]
+Stats for Frame: 225
+Time point: 9
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 226
+Time point: 9.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 227
+Time point: 9.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 228
+Time point: 9.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 229
+Time point: 9.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 230
+Time point: 9.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 231
+Time point: 9.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 232
+Time point: 9.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 233
+Time point: 9.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 234
+Time point: 9.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 235
+Time point: 9.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 236
+Time point: 9.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 237
+Time point: 9.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 238
+Time point: 9.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 239
+Time point: 9.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 240
+Time point: 9.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 241
+Time point: 9.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 242
+Time point: 9.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 243
+Time point: 9.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 244
+Time point: 9.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 245
+Time point: 9.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 246
+Time point: 9.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 247
+Time point: 9.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 248
+Time point: 9.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 249
+Time point: 9.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 250
+Time point: 10
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 251
+Time point: 10.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 252
+Time point: 10.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 253
+Time point: 10.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 254
+Time point: 10.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 255
+Time point: 10.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 256
+Time point: 10.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 257
+Time point: 10.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 258
+Time point: 10.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 259
+Time point: 10.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 260
+Time point: 10.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 261
+Time point: 10.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 262
+Time point: 10.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 263
+Time point: 10.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 264
+Time point: 10.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 265
+Time point: 10.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 266
+Time point: 10.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 267
+Time point: 10.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 268
+Time point: 10.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 269
+Time point: 10.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 270
+Time point: 10.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 271
+Time point: 10.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 272
+Time point: 10.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 273
+Time point: 10.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 274
+Time point: 10.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 275
+Time point: 11
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 276
+Time point: 11.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 277
+Time point: 11.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 278
+Time point: 11.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 279
+Time point: 11.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 280
+Time point: 11.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 281
+Time point: 11.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 282
+Time point: 11.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 283
+Time point: 11.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 284
+Time point: 11.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 285
+Time point: 11.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 286
+Time point: 11.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 287
+Time point: 11.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 288
+Time point: 11.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 289
+Time point: 11.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 290
+Time point: 11.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 291
+Time point: 11.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 292
+Time point: 11.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 293
+Time point: 11.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 294
+Time point: 11.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 295
+Time point: 11.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 296
+Time point: 11.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 297
+Time point: 11.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 298
+Time point: 11.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 299
+Time point: 11.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 300
+Time point: 12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 301
+Time point: 12.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 302
+Time point: 12.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 303
+Time point: 12.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 304
+Time point: 12.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 305
+Time point: 12.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 306
+Time point: 12.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 307
+Time point: 12.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 308
+Time point: 12.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 309
+Time point: 12.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 310
+Time point: 12.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 311
+Time point: 12.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 312
+Time point: 12.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 313
+Time point: 12.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 314
+Time point: 12.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 315
+Time point: 12.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 316
+Time point: 12.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 317
+Time point: 12.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 318
+Time point: 12.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 319
+Time point: 12.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 320
+Time point: 12.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 321
+Time point: 12.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 322
+Time point: 12.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 323
+Time point: 12.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 324
+Time point: 12.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 325
+Time point: 13
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 326
+Time point: 13.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 327
+Time point: 13.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 328
+Time point: 13.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 329
+Time point: 13.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 330
+Time point: 13.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 331
+Time point: 13.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 332
+Time point: 13.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 333
+Time point: 13.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 334
+Time point: 13.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 335
+Time point: 13.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 336
+Time point: 13.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 337
+Time point: 13.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 338
+Time point: 13.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 339
+Time point: 13.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 340
+Time point: 13.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 341
+Time point: 13.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 342
+Time point: 13.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 343
+Time point: 13.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 344
+Time point: 13.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 345
+Time point: 13.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 346
+Time point: 13.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 347
+Time point: 13.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 348
+Time point: 13.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 349
+Time point: 13.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 350
+Time point: 14
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 351
+Time point: 14.04
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 352
+Time point: 14.08
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 353
+Time point: 14.12
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 354
+Time point: 14.16
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 355
+Time point: 14.2
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 356
+Time point: 14.24
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 357
+Time point: 14.28
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 358
+Time point: 14.32
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 359
+Time point: 14.36
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 360
+Time point: 14.4
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 361
+Time point: 14.44
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 362
+Time point: 14.48
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 363
+Time point: 14.52
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 364
+Time point: 14.56
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 365
+Time point: 14.6
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 366
+Time point: 14.64
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 367
+Time point: 14.68
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 368
+Time point: 14.72
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 369
+Time point: 14.76
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 370
+Time point: 14.8
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 371
+Time point: 14.84
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 372
+Time point: 14.88
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 373
+Time point: 14.92
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1
+Stats for Frame: 374
+Time point: 14.96
+First Key frame starting point: 9
+Second Key frame starting point: 9
+Lerp Value: 1

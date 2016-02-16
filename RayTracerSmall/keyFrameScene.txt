@@ -1,8 +1,8 @@
 START_SCENE_FILE
 
-outputFolder: KeyFrameOut1
+outputFolder: KFO2
 framesPerSecond: 25
-sceneDuration: 10.0
+sceneDuration: 15.0
 frameFileNameStart: KFO_FRAME_
 statsOutFile: outputStats.txt
 outputFile: KFO.avi
@@ -86,6 +86,17 @@ START_KEY_FRAME
 	START_SPHERE_STATE
 		ID testSphere4
 		POSITION -5.0 0.0 -25.0 // move to the left
+	END_SPHERE_STATE
+END_KEY_FRAME
+
+START_KEY_FRAME
+	TIME_POINT 9.0
+
+
+	START_SPHERE_STATE
+		ID testSphere3
+		POSITION 5.0 3.0 -15.0 // move to the left
+		SURFACE_COLOUR 0.1 0.21 0.57
 	END_SPHERE_STATE
 END_KEY_FRAME
 
