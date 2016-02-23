@@ -6,6 +6,7 @@
 
 #include <string> // might not be available on PS4
 
+#include <thread>
 
 //[comment]
 // This variable controls the maximum recursion depth
@@ -55,11 +56,15 @@ namespace rendering
 		float tnear = INFINITY;
 		const Sphere* sphere = NULL;
 		// find intersection of this ray with the sphere in the scene
-		for (unsigned i = 0; i < spheres.size(); ++i) {
+		for (unsigned i = 0; i < spheres.size(); ++i) 
+		{
 			float t0 = INFINITY, t1 = INFINITY;
-			if (spheres[i].intersect(rayorig, raydir, t0, t1)) {
-				if (t0 < 0) t0 = t1;
-				if (t0 < tnear) {
+			if (spheres[i].intersect(rayorig, raydir, t0, t1)) 
+			{
+				if (t0 < 0)
+					t0 = t1;
+				if (t0 < tnear) 
+				{
 					tnear = t0;
 					sphere = &spheres[i];
 				}
@@ -102,18 +107,24 @@ namespace rendering
 				reflection * fresneleffect +
 				refraction * (1 - fresneleffect) * sphere->transparency) * sphere->surfaceColor;
 		}
-		else {
+		else 
+		{
 			// it's a diffuse object, no need to raytrace any further
-			for (unsigned i = 0; i < spheres.size(); ++i) {
-				if (spheres[i].emissionColor.x > 0) {
+			for (unsigned i = 0; i < spheres.size(); ++i) 
+			{
+				if (spheres[i].emissionColor.x > 0)
+				{
 					// this is a light
 					Vec3f transmission = 1;
 					Vec3f lightDirection = spheres[i].center - phit;
 					lightDirection.normalize();
-					for (unsigned j = 0; j < spheres.size(); ++j) {
-						if (i != j) {
+					for (unsigned j = 0; j < spheres.size(); ++j) 
+					{
+						if (i != j)
+						{
 							float t0, t1;
-							if (spheres[j].intersect(phit + nhit * bias, lightDirection, t0, t1)) {
+							if (spheres[j].intersect(phit + nhit * bias, lightDirection, t0, t1)) 
+							{
 								transmission = 0;
 								break;
 							}
@@ -245,9 +256,57 @@ namespace rendering
 		delete[] image;
 	}
 
+	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, int nAvailableThreads)
+	{
+		// quick and dirty
+		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
+		// Recommended Testing Resolution
+		//unsigned width = 640, height = 480;
+
+		// Recommended Production Resolution
+		//unsigned width = 1920, height = 1080;
+		Vec3f *image = new Vec3f[width * height], *pixel = image;
+		float invWidth = 1 / float(width), invHeight = 1 / float(height);
+		float fov = 30, aspectratio = width / float(height);
+		float angle = tan(M_PI * 0.5 * fov / 180.);
+
+		// std::vector<std::thread *> threads;
+
+
+
+		// Trace rays
+		for (unsigned y = 0; y < height; ++y)
+		{
+			for (unsigned x = 0; x < width; ++x, ++pixel)
+			{
+				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
+				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
+				Vec3f raydir(xx, yy, -1);
+				raydir.normalize();
+				*pixel = trace(Vec3f(0), raydir, spheres, 0);
+			}
+		}
+		// Save result to a PPM image (keep these flags if you compile under Windows)
+		std::stringstream ss;
+		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
+		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		std::string tempString = ss.str();
+		char* filename = (char*)tempString.c_str();
+
+		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
+		ofs << "P6\n" << width << " " << height << "\n255\n";
+		for (unsigned i = 0; i < width * height; ++i) {
+			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].y) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].z) * 255);
+		}
+		ofs.close();
+		delete[] image;
+	}
+
 	void finshRenderToFolderAndFileName(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30)
 	{
-		// code this!!!
+		
 		std::stringstream ss;
 		ss << "ffmpeg -r " << outputFps << " -y ";
 		ss << "-i \"" << folderStr << OS_FOLDER_SEPERATOR << framefileNameStartStr << "%d.ppm\"";

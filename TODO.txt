@@ -2,8 +2,9 @@
 
 // look into the profiling, (compiler optimisations)
 
-implerment the RenderManager, and appropriate code to use it
+// after find way the have multi threads used to render a frame instead of multiple frames done per thread
 
+rember trying to do realtime rendering more important
 
 
 PS4 free BSD based
