@@ -72,9 +72,8 @@ int main(int argc, char **argv)
 
 	
 	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
-	/// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
-	// TestScenes::renderKeyFrameSceneFromFileSingleThread("keyFrameSceneSingleThread.txt");
-	TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameSceneMultiThread.txt");
+	TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
+
 	
 
 	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded

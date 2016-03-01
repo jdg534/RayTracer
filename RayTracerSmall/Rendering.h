@@ -6,7 +6,9 @@
 
 #include <string> // might not be available on PS4
 
-#include <thread>
+#include <thread> // might not be available on PS4
+
+#include "MathTypes.h" // my library :)
 
 //[comment]
 // This variable controls the maximum recursion depth
@@ -29,7 +31,10 @@
 namespace rendering
 {
 	// unsigned int g_targetFps = 30; // can be overriden, this is only for when converting the still frames using FFMPEG
-
+	struct RenderAreaRect
+	{
+		unsigned int top, bottom, left, Right;
+	};
 
 	float mix(const float &a, const float &b, const float &mix)
 	{
@@ -56,15 +61,11 @@ namespace rendering
 		float tnear = INFINITY;
 		const Sphere* sphere = NULL;
 		// find intersection of this ray with the sphere in the scene
-		for (unsigned i = 0; i < spheres.size(); ++i) 
-		{
+		for (unsigned i = 0; i < spheres.size(); ++i) {
 			float t0 = INFINITY, t1 = INFINITY;
-			if (spheres[i].intersect(rayorig, raydir, t0, t1)) 
-			{
-				if (t0 < 0)
-					t0 = t1;
-				if (t0 < tnear) 
-				{
+			if (spheres[i].intersect(rayorig, raydir, t0, t1)) {
+				if (t0 < 0) t0 = t1;
+				if (t0 < tnear) {
 					tnear = t0;
 					sphere = &spheres[i];
 				}
@@ -107,24 +108,18 @@ namespace rendering
 				reflection * fresneleffect +
 				refraction * (1 - fresneleffect) * sphere->transparency) * sphere->surfaceColor;
 		}
-		else 
-		{
+		else {
 			// it's a diffuse object, no need to raytrace any further
-			for (unsigned i = 0; i < spheres.size(); ++i) 
-			{
-				if (spheres[i].emissionColor.x > 0)
-				{
+			for (unsigned i = 0; i < spheres.size(); ++i) {
+				if (spheres[i].emissionColor.x > 0) {
 					// this is a light
 					Vec3f transmission = 1;
 					Vec3f lightDirection = spheres[i].center - phit;
 					lightDirection.normalize();
-					for (unsigned j = 0; j < spheres.size(); ++j) 
-					{
-						if (i != j)
-						{
+					for (unsigned j = 0; j < spheres.size(); ++j) {
+						if (i != j) {
 							float t0, t1;
-							if (spheres[j].intersect(phit + nhit * bias, lightDirection, t0, t1)) 
-							{
+							if (spheres[j].intersect(phit + nhit * bias, lightDirection, t0, t1)) {
 								transmission = 0;
 								break;
 							}
@@ -256,7 +251,84 @@ namespace rendering
 		delete[] image;
 	}
 
-	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, int nAvailableThreads)
+	Vector2D getPixelCoord(unsigned int imageWidth, unsigned int imageHeight, unsigned index)
+	{
+		unsigned int rowsDown = index / imageWidth;
+		unsigned int pixelsAccross = index - (rowsDown * imageWidth);
+		Vector2D rv;
+		rv.x = (float)pixelsAccross;
+		rv.y = (float)rowsDown;
+		return rv;
+	}
+
+	unsigned int getPixelIndex(unsigned int imageWidth, unsigned int imageHeight, Vector2D pixelCoord)
+	{
+		unsigned int rv = 0;
+		rv += imageWidth * pixelCoord.y;
+		rv += floorf(pixelCoord.x);
+		return rv;
+	}
+
+	void traceRaysInRenderArea(Vec3f * img, unsigned int imgWidth, unsigned int imgHeight, const std::vector<Sphere> &spheres, RenderAreaRect rar)
+	{
+		float invWidth = 1 / float(imgWidth), invHeight = 1 / float(imgHeight);
+		float fov = 30, aspectratio = imgWidth / float(imgHeight);
+		float angle = tan(M_PI * 0.5 * fov / 180.);
+
+				
+		for (int y = rar.top; y < rar.bottom; y++)
+		{
+			for (int x = rar.left; x < rar.Right; x++)
+			{
+				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
+				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
+				Vec3f raydir(xx, yy, -1);
+				raydir.normalize();
+				Vec3f pixelValue = trace(Vec3f(0), raydir, spheres, 0);
+				
+				Vec3f * px = img + (imgWidth * y) + x; // this might need to be changed
+				
+				*px = pixelValue;
+			}
+		}
+	}
+
+	void traceRaysInRange(Vec3f * img, unsigned int imgWidth, unsigned int imgHeight, const std::vector<Sphere> &spheres, unsigned int rangeStart, unsigned int rangeEnd)
+	{
+		// Vec3f *startPtr = img + rangeStart;
+		float invWidth = 1 / float(imgWidth), invHeight = 1 / float(imgHeight);
+		float fov = 30, aspectratio = imgWidth / float(imgHeight);
+		float angle = tan(M_PI * 0.5 * fov / 180.);
+
+
+		// there's no guarentee that won't just have bits of lines
+		for (int i = rangeStart; i < rangeEnd; i++)
+		{
+			Vector2D pxCoord = getPixelCoord(imgWidth, imgHeight, i);
+
+			float xx = (2 * ((pxCoord.x + 0.5) * invWidth) - 1) * angle * aspectratio;
+			float yy = (1 - 2 * ((pxCoord.y + 0.5) * invHeight)) * angle;
+			Vec3f raydir(xx, yy, -1);
+			raydir.normalize();
+
+			Vec3f * pxInImage = img + i;
+			*pxInImage = trace(Vec3f(0), raydir, spheres, 0);
+		}
+	}
+
+	void determineDrawArea(unsigned int w, unsigned int h, unsigned int startRay, unsigned int endRay, RenderAreaRect & output)
+	{
+		Vector2D topLeft = getPixelCoord(w, h, startRay);
+		Vector2D bottomRight = getPixelCoord(w, h, endRay);
+		output.top = topLeft.y;
+		output.left = topLeft.x;
+		output.Right = bottomRight.x;
+		output.bottom = bottomRight.y;
+	}
+
+	
+
+	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
 	{
 		// quick and dirty
 		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
@@ -270,11 +342,63 @@ namespace rendering
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);
 
-		// std::vector<std::thread *> threads;
+		unsigned int nAvailableThreads = std::thread::hardware_concurrency();
+
+		unsigned int nRaysToTrace = width * height;
+
+		unsigned int nRaysPerThread = nRaysToTrace / nAvailableThreads;
 
 
+		// test run the traceRaysInRange approach
+		// traceRaysInRange(image, width, height, spheres, 0, width * height); // would do things this way if only wanted single thread. IT WORKED!!!
+
+
+		std::vector<std::thread *> traceThreads;
+
+		unsigned int toRaysToAllocate = nRaysToTrace;
+		unsigned int allocatedRays = 0;
+
+		// just devide into multiple render area rects
+		for (int i = 0; i < nAvailableThreads; i++)
+		{
+			// deal with this first
+
+
+			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+			
+			
+			std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+
+			allocatedRays += nRaysPerThread;
+
+			traceThreads.push_back(tPtr);
+		}
+
+		// have the main thread deal with any left overs, if any
+		if (allocatedRays < nRaysToTrace)
+		{
+			traceRaysInRange(image, width, height, spheres, allocatedRays, nRaysToTrace);
+		}
+
+		// rejoin & clean up the threads
+		for (int i = 0; i < traceThreads.size(); i++)
+		{
+			if (traceThreads[i]->joinable())
+			{
+				traceThreads[i]->join();
+				delete traceThreads[i];
+			}
+			else
+			{
+				// the thread is still working
+				i--;
+			}
+		}
+
+		traceThreads.clear();
 
 		// Trace rays
+		/* (Old Single Threaded code)
 		for (unsigned y = 0; y < height; ++y)
 		{
 			for (unsigned x = 0; x < width; ++x, ++pixel)
@@ -286,6 +410,8 @@ namespace rendering
 				*pixel = trace(Vec3f(0), raydir, spheres, 0);
 			}
 		}
+		*/
+
 		// Save result to a PPM image (keep these flags if you compile under Windows)
 		std::stringstream ss;
 		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
@@ -304,9 +430,10 @@ namespace rendering
 		delete[] image;
 	}
 
+
 	void finshRenderToFolderAndFileName(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30)
 	{
-		
+		// code this!!!
 		std::stringstream ss;
 		ss << "ffmpeg -r " << outputFps << " -y ";
 		ss << "-i \"" << folderStr << OS_FOLDER_SEPERATOR << framefileNameStartStr << "%d.ppm\"";

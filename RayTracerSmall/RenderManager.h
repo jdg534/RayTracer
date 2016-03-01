@@ -1,5 +1,5 @@
-#ifndef _RAY_TRACER_H_
-#define _RAY_TRACER_H_
+#ifndef _RENDER_MANAGER_H_
+#define _RENDER_MANAGER_H_
 
 #include "Rendering.h"
 #include "Frame.h"
@@ -87,7 +87,7 @@ public:
 		
 		unsigned int nFramesToRenderPerThread = nFramesToRender / m_nThreadsSupportedByPlatform;
 
-		
+		unsigned int nFramesToRenderOnMainThread = 0;
 		unsigned int frameIndexForMainThread = 0;
 		
 		std::vector<std::thread *> renderingThreads;
@@ -102,7 +102,7 @@ public:
 
 			if (i == m_nThreadsSupportedByPlatform - 1)
 			{
-				
+				nFramesToRenderOnMainThread = nFramesToRender - endFrameIndex; // not needed
 				frameIndexForMainThread = endFrameIndex + 1;
 			}
 			// create a thread that runs
@@ -151,6 +151,42 @@ public:
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
+
+		timeToRenderEntireScene.end = std::chrono::steady_clock::now();
+		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
+	}
+
+	void renderFramesMultiThreadPerFrame(std::string outputVideoFile, unsigned int fps)
+	{
+		std::sort(m_toRender.begin(), m_toRender.end());
+		unsigned int nFramesToRender = m_toRender.size();
+		m_statsOutput << "\n___START_RENDERING_INFORMATION___\n";
+		RenderDuration timeToRenderEntireScene;
+		timeToRenderEntireScene.start = std::chrono::steady_clock::now();
+		
+		
+		
+		// renderFrameRange(0, nFramesToRender);
+
+		for (int i = 0; i < nFramesToRender; i++)
+		{
+			FrameRenderDuration frd;
+			frd.start = std::chrono::steady_clock::now();
+			rendering::renderToFolderMultiThread(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber);
+			frd.end = std::chrono::steady_clock::now();
+			frd.frameNumber = i;
+			m_frameRenderStats.push(frd);
+			std::cout << "Rendered frame: " << m_toRender[i].frameNumber << std::endl;
+		}
+
+
+
+		RenderDuration timeToConvertToVideo;
+		timeToConvertToVideo.start = std::chrono::steady_clock::now();
+
+		rendering::finshRenderToFolderAndFileName(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps);
+
+		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
 		timeToRenderEntireScene.end = std::chrono::steady_clock::now();
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
