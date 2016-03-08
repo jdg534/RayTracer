@@ -72,7 +72,8 @@ int main(int argc, char **argv)
 
 	
 	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
-	TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
+	// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
+	TestScenes::renderKeyFrameSceneFromFileMultiThreadPreFrame("keyFrameScene.txt");
 
 	
 
