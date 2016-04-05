@@ -471,7 +471,7 @@ namespace rendering
 			// will delete the ppm files
 			std::string deleteCmdStr = ""; // del <folder path here>\*.ppm
 			std::stringstream delSS;
-			delSS << "del " << folderStr << OS_FOLDER_SEPERATOR << "*.ppm";
+			delSS << "del " << folderStr << "\\" << "*.ppm";
 			deleteCmdStr = delSS.str();
 
 			std::cout << "Delete command exercuted: " << deleteCmdStr;
