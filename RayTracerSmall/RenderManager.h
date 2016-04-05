@@ -184,7 +184,9 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderAndFileName(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps);
+
+
+		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, true);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 

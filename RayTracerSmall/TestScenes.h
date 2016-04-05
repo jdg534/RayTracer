@@ -1586,6 +1586,9 @@ namespace TestScenes
 			// add to the renderManager
 		}
 
+
+
+
 		// rm now stores all of the data needed to render every frame
 		// rm.renderFramesSingleThread(outputVideoFile, fps);
 		// rm.renderFramesMultiThread(outputVideoFile, fps);

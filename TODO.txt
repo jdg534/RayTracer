@@ -2,7 +2,8 @@
 
 // look into the profiling, (compiler optimisations)
 
-implerment the RenderManager, and appropriate code to use it
+
+port to PS4
 
 
 

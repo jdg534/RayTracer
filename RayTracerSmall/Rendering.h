@@ -451,4 +451,33 @@ namespace rendering
 		system(ffmpegCmd.c_str());
 
 	}
+
+	void finshRenderToFolderWithCleanUp(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30, bool deletePPMFiles = true)
+	{
+		// code this!!!
+		std::stringstream ss;
+		ss << "ffmpeg -r " << outputFps << " -y ";
+		ss << "-i \"" << folderStr << OS_FOLDER_SEPERATOR << framefileNameStartStr << "%d.ppm\"";
+		ss << " \"" << folderStr << OS_FOLDER_SEPERATOR << outputFileName << "\"";
+
+		std::string ffmpegCmd = ss.str();
+
+		std::cout << "FFMPEG command:\n" << ffmpegCmd << std::endl;
+
+		system(ffmpegCmd.c_str());
+
+		if (deletePPMFiles)
+		{
+			// will delete the ppm files
+			std::string deleteCmdStr = ""; // del <folder path here>\*.ppm
+			std::stringstream delSS;
+			delSS << "del " << folderStr << OS_FOLDER_SEPERATOR << "*.ppm";
+			deleteCmdStr = delSS.str();
+
+			std::cout << "Delete command exercuted: " << deleteCmdStr;
+			system(deleteCmdStr.c_str());
+		}
+
+	}
+
 };
