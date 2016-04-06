@@ -27,6 +27,9 @@
 #include <vector>
 #include <iostream>
 #include <cassert>
+
+#include <fstream>
+
 // Windows only
 #include <algorithm>
 #include <sstream>
@@ -49,6 +52,24 @@
 // and 1 light (which is also a sphere). Then, once the scene description is complete
 // we render that scene, by calling the render() function.
 //[/comment]
+
+std::vector<std::string> parseIndexFile(std::string indexFile)
+{
+	std::ifstream in(indexFile);
+	std::vector<std::string> files;
+	if (in.good())
+	{
+		std::string f = "";
+		while (!in.eof())
+		{
+			in >> f;
+			files.push_back(f);
+		}
+	}
+	in.close();
+	return files;
+}
+
 int main(int argc, char **argv)
 {
 	// This sample only allows one choice per program execution. Feel free to improve upon this
@@ -73,8 +94,14 @@ int main(int argc, char **argv)
 	
 	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
 	// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
-	TestScenes::renderKeyFrameSceneFromFileMultiThreadPreFrame("keyFrameScene.txt");
 
+	std::vector<std::string> scenes = parseIndexFile("index.txt");
+
+	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");
+	for (auto i = 0; i < scenes.size(); i++)
+	{
+		TestScenes::renderKeyFrameScene(scenes[i]);
+	}
 	
 
 	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded

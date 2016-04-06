@@ -53,7 +53,7 @@ public:
 		m_toRender.push_back(frameToRender);
 	}
 
-	void renderFramesSingleThread(std::string outputVideoFile, unsigned int fps)
+	void renderFramesSingleThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
 	{
 		std::sort(m_toRender.begin(), m_toRender.end());
 		unsigned int nFramesToRender = m_toRender.size();
@@ -66,7 +66,7 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderAndFileName(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps);
+		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -74,7 +74,7 @@ public:
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
 	}
 
-	void renderFramesMultiThread(std::string outputVideoFile, unsigned int fps)
+	void renderFramesMultiThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
 	{
 		std::sort(m_toRender.begin(), m_toRender.end());
 
@@ -147,7 +147,7 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderAndFileName(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outVidFile, fps);
+		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outVidFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -156,7 +156,7 @@ public:
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
 	}
 
-	void renderFramesMultiThreadPerFrame(std::string outputVideoFile, unsigned int fps)
+	void renderFramesMultiThreadPerFrame(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
 	{
 		std::sort(m_toRender.begin(), m_toRender.end());
 		unsigned int nFramesToRender = m_toRender.size();
@@ -171,9 +171,10 @@ public:
 		for (int i = 0; i < nFramesToRender; i++)
 		{
 			FrameRenderDuration frd;
-			frd.start = std::chrono::steady_clock::now();
-			rendering::renderToFolderMultiThread(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber);
-			frd.end = std::chrono::steady_clock::now();
+			// frd.start = std::chrono::steady_clock::now();
+			rendering::renderToFolderMultiThreadProfileable(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber, &frd.start, &frd.end);
+			
+			// frd.end = std::chrono::steady_clock::now();
 			frd.frameNumber = i;
 			m_frameRenderStats.push(frd);
 			std::cout << "Rendered frame: " << m_toRender[i].frameNumber << std::endl;
@@ -186,12 +187,22 @@ public:
 
 
 
-		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, true);
+		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
 		timeToRenderEntireScene.end = std::chrono::steady_clock::now();
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
+	}
+
+	void clearForNextScene()
+	{
+		m_toRender.clear();
+		while (!m_frameRenderStats.empty())
+		{
+			m_frameRenderStats.pop();
+		}
+		g_FRDs.clear();
 	}
 
 private:
@@ -253,9 +264,12 @@ private:
 		for (unsigned int i = start; i < end; i++)
 		{
 			FrameRenderDuration frd;
-			frd.start = std::chrono::steady_clock::now();
-			rendering::renderToFolder(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber);
-			frd.end = std::chrono::steady_clock::now();
+			// frd.start = std::chrono::steady_clock::now();
+			// rendering::renderToFolder(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber);
+			// frd.end = std::chrono::steady_clock::now();
+
+			rendering::renderToFolderProfileable(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber, &frd.start, &frd.end);
+
 			frd.frameNumber = i;
 			m_frameRenderStats.push(frd);
 			std::cout << "Rendered frame: " << m_toRender[i].frameNumber << std::endl;
@@ -267,9 +281,10 @@ private:
 		for (unsigned int i = start; i < end; i++)
 		{
 			FrameRenderDuration frd;
-			frd.start = std::chrono::steady_clock::now();
-			rendering::renderToFolder(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber);
-			frd.end = std::chrono::steady_clock::now();
+			// frd.start = std::chrono::steady_clock::now();
+			// rendering::renderToFolder(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber);
+			rendering::renderToFolderProfileable(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber, &frd.start, &frd.end);
+			// frd.end = std::chrono::steady_clock::now();
 			// m_frameRenderStats.push(frd);
 			frd.frameNumber = i;
 			g_FRDs.push_back(frd); // this could be an issue

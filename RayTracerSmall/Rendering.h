@@ -256,6 +256,51 @@ namespace rendering
 		delete[] image;
 	}
 
+	void renderToFolderProfileable(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, std::chrono::steady_clock::time_point * startTimePoint, std::chrono::steady_clock::time_point * endTimePoint)
+	{
+		*startTimePoint = std::chrono::steady_clock::now();
+		// quick and dirty
+		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
+		// Recommended Testing Resolution
+		//unsigned width = 640, height = 480;
+
+		// Recommended Production Resolution
+		//unsigned width = 1920, height = 1080;
+		Vec3f *image = new Vec3f[width * height], *pixel = image;
+		float invWidth = 1 / float(width), invHeight = 1 / float(height);
+		float fov = 30, aspectratio = width / float(height);
+		float angle = tan(M_PI * 0.5 * fov / 180.);
+		// Trace rays
+		for (unsigned y = 0; y < height; ++y) {
+			for (unsigned x = 0; x < width; ++x, ++pixel) {
+				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
+				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
+				Vec3f raydir(xx, yy, -1);
+				raydir.normalize();
+				*pixel = trace(Vec3f(0), raydir, spheres, 0);
+			}
+		}
+
+		*endTimePoint = std::chrono::steady_clock::now();
+
+		// Save result to a PPM image (keep these flags if you compile under Windows)
+		std::stringstream ss;
+		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
+		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		std::string tempString = ss.str();
+		char* filename = (char*)tempString.c_str();
+
+		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
+		ofs << "P6\n" << width << " " << height << "\n255\n";
+		for (unsigned i = 0; i < width * height; ++i) {
+			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].y) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].z) * 255);
+		}
+		ofs.close();
+		delete[] image;
+	}
+
 	Vector2D getPixelCoord(unsigned int imageWidth, unsigned int imageHeight, unsigned index)
 	{
 		unsigned int rowsDown = index / imageWidth;
@@ -332,7 +377,6 @@ namespace rendering
 	}
 
 	
-
 	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
 	{
 		// quick and dirty
@@ -434,6 +478,112 @@ namespace rendering
 		ofs.close();
 		delete[] image;
 	}
+
+	void renderToFolderMultiThreadProfileable(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, std::chrono::steady_clock::time_point * startTimePoint, std::chrono::steady_clock::time_point * endTimePoint)
+	{
+		*startTimePoint = std::chrono::steady_clock::now();
+		// quick and dirty
+		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
+		// Recommended Testing Resolution
+		//unsigned width = 640, height = 480;
+
+		// Recommended Production Resolution
+		//unsigned width = 1920, height = 1080;
+		Vec3f *image = new Vec3f[width * height], *pixel = image;
+		float invWidth = 1 / float(width), invHeight = 1 / float(height);
+		float fov = 30, aspectratio = width / float(height);
+		float angle = tan(M_PI * 0.5 * fov / 180.);
+
+		unsigned int nAvailableThreads = std::thread::hardware_concurrency();
+
+		unsigned int nRaysToTrace = width * height;
+
+		unsigned int nRaysPerThread = nRaysToTrace / nAvailableThreads;
+
+
+		// test run the traceRaysInRange approach
+		// traceRaysInRange(image, width, height, spheres, 0, width * height); // would do things this way if only wanted single thread. IT WORKED!!!
+
+
+		std::vector<std::thread *> traceThreads;
+
+		unsigned int toRaysToAllocate = nRaysToTrace;
+		unsigned int allocatedRays = 0;
+
+		// just devide into multiple render area rects
+		for (int i = 0; i < nAvailableThreads; i++)
+		{
+			// deal with this first
+
+
+			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+
+
+			std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+
+			allocatedRays += nRaysPerThread;
+
+			traceThreads.push_back(tPtr);
+		}
+
+		// have the main thread deal with any left overs, if any
+		if (allocatedRays < nRaysToTrace)
+		{
+			traceRaysInRange(image, width, height, spheres, allocatedRays, nRaysToTrace);
+		}
+
+		// rejoin & clean up the threads
+		for (int i = 0; i < traceThreads.size(); i++)
+		{
+			if (traceThreads[i]->joinable())
+			{
+				traceThreads[i]->join();
+				delete traceThreads[i];
+			}
+			else
+			{
+				// the thread is still working
+				i--;
+			}
+		}
+
+		traceThreads.clear();
+
+		*endTimePoint = std::chrono::steady_clock::now();
+
+		// Trace rays
+		/* (Old Single Threaded code)
+		for (unsigned y = 0; y < height; ++y)
+		{
+		for (unsigned x = 0; x < width; ++x, ++pixel)
+		{
+		float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
+		float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
+		Vec3f raydir(xx, yy, -1);
+		raydir.normalize();
+		*pixel = trace(Vec3f(0), raydir, spheres, 0);
+		}
+		}
+		*/
+
+		// Save result to a PPM image (keep these flags if you compile under Windows)
+		std::stringstream ss;
+		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
+		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		std::string tempString = ss.str();
+		char* filename = (char*)tempString.c_str();
+
+		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
+		ofs << "P6\n" << width << " " << height << "\n255\n";
+		for (unsigned i = 0; i < width * height; ++i) {
+			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].y) * 255) <<
+				(unsigned char)(std::min(float(1), image[i].z) * 255);
+		}
+		ofs.close();
+		delete[] image;
+	}
+
 
 
 	void finshRenderToFolderAndFileName(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30)
