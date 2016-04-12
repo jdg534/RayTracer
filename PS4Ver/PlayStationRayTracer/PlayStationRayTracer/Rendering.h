@@ -4,9 +4,26 @@
 
 #include "Sphere.h"
 
-#include <string> // might not be available on PS4
+#include <string> // might not be available on PS4, is there :)
 
-#include <thread> // might not be available on PS4
+#include <thread> // might not be available on PS4, is there :)
+
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include "allocator.h"
+
+// now for some of the PS4 specific sce headers
+#include <stdio.h> 
+#include <stdlib.h>
+#include <scebase.h>
+#include <kernel.h>
+#include <gnmx.h> // this is the PS4 higher level 
+#include <video_out.h>
+
+
+
+#endif
 
 #include "MathTypes.h" // my library :)
 
@@ -21,17 +38,21 @@
 #define FRAME_WIDTH 640
 #define FRAME_HEIGHT 480
 #else
-/*
+///*
 #define FRAME_WIDTH 1920
 #define FRAME_HEIGHT 1080
-*/
+//*/
+/*
 #define FRAME_WIDTH 640 // for profileing
 #define FRAME_HEIGHT 480
-
+*/
 // 1920 x 1080 = "Full HD"
 #endif
 
 #define OS_FOLDER_SEPERATOR "/" // may need to have different def based on the platform
+
+
+static const size_t onionMemSz = 64 * 1024 * 1024; // 64 MB, chunks
 
 namespace rendering
 {
@@ -170,7 +191,33 @@ namespace rendering
 
 		// Recommended Production Resolution
 		//unsigned width = 1920, height = 1080;
-		Vec3f *image = new Vec3f[width * height], *pixel = image;
+
+		unsigned int memNeededForImage =  width * height * sizeof(Vec3f);
+
+		LinearAllocator onionAllocator;
+		
+		int onionAllocatorInitVal =	onionAllocator.initialize(
+			onionMemSz, 
+			SCE_KERNEL_WB_ONION, 
+			SCE_KERNEL_PROT_CPU_RW | SCE_KERNEL_PROT_GPU_ALL);
+
+		if (onionAllocatorInitVal != SCE_OK)
+		{
+			// something went wrong,
+			// the initial example didn't do anything as a responce
+		}
+
+		// init it first
+
+		void * buffer = onionAllocator.allocate(
+			memNeededForImage, sce::Gnm::kAlignmentOfBufferInBytes);
+
+		// Vec3f *image = new Vec3f[width * height], *pixel = image; // the windows def
+
+		Vec3f *image = reinterpret_cast<Vec3f *>(buffer);
+
+		Vec3f * pixel = image;
+
 		float invWidth = 1 / float(width), invHeight = 1 / float(height);
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);
@@ -199,7 +246,10 @@ namespace rendering
 				(unsigned char)(std::min(float(1), image[i].z) * 255);
 		}
 		ofs.close();
-		delete[] image;
+
+		onionAllocator.terminate(); // frees the memory allocated to the image
+
+		//delete[] image;
 	}
 
 
@@ -212,7 +262,8 @@ namespace rendering
 
 		std::string ffmpegCmd = ss.str();
 
-		system(ffmpegCmd.c_str());
+		// system(ffmpegCmd.c_str());
+		// throw "NOT IMPLERMENTED";
 	}
 
 	void renderToFolder(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
@@ -253,6 +304,7 @@ namespace rendering
 				(unsigned char)(std::min(float(1), image[i].z) * 255);
 		}
 		ofs.close();
+		
 		delete[] image;
 	}
 
@@ -386,7 +438,11 @@ namespace rendering
 
 		// Recommended Production Resolution
 		//unsigned width = 1920, height = 1080;
-		Vec3f *image = new Vec3f[width * height], *pixel = image;
+		// Vec3f *image = new Vec3f[width * height], *pixel = image;
+
+		
+
+		Vec3f *image;
 		float invWidth = 1 / float(width), invHeight = 1 / float(height);
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);
@@ -416,11 +472,11 @@ namespace rendering
 			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
 			
 			
-			std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+			// std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
 
 			allocatedRays += nRaysPerThread;
 
-			traceThreads.push_back(tPtr);
+			// traceThreads.push_back(tPtr);
 		}
 
 		// have the main thread deal with any left overs, if any
@@ -519,11 +575,11 @@ namespace rendering
 			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
 
 
-			std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+			// std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
 
 			allocatedRays += nRaysPerThread;
 
-			traceThreads.push_back(tPtr);
+			// traceThreads.push_back(tPtr);
 		}
 
 		// have the main thread deal with any left overs, if any
@@ -598,7 +654,8 @@ namespace rendering
 
 		std::cout << "FFMPEG command:\n" << ffmpegCmd << std::endl;
 
-		system(ffmpegCmd.c_str());
+		// system(ffmpegCmd.c_str());
+		// throw "NOT IMPLERMENTED";
 
 	}
 
@@ -614,18 +671,26 @@ namespace rendering
 
 		std::cout << "FFMPEG command:\n" << ffmpegCmd << std::endl;
 
-		system(ffmpegCmd.c_str());
+		// system(ffmpegCmd.c_str());
+
+		// throw "NOT IMPLERMENTED";
 
 		if (deletePPMFiles)
 		{
 			// will delete the ppm files
 			std::string deleteCmdStr = ""; // del <folder path here>\*.ppm
 			std::stringstream delSS;
+#ifdef _WIN322
 			delSS << "del " << folderStr << "\\" << "*.ppm";
 			deleteCmdStr = delSS.str();
 
 			std::cout << "Delete command exercuted: " << deleteCmdStr;
 			system(deleteCmdStr.c_str());
+#else
+			// PS4 file delete code here
+
+#endif
+
 		}
 
 	}

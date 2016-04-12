@@ -73,6 +73,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
     <ClInclude Include="MathTypes.h" />
+    <ClInclude Include="PS4FolderPath.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Sphere.h" />

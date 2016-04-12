@@ -19,7 +19,10 @@
 
 #ifdef _WIN32
 #include <Windows.h>
+#else
+#include "PS4FolderPath.h"
 #endif
+
 
 namespace TestScenes
 {
@@ -91,6 +94,7 @@ namespace TestScenes
 		assert(folderCreated);
 #else
 		// PS4 stuff here
+		// ORBIS folder creation code here!!!
 #endif
 	}
 
@@ -1629,7 +1633,9 @@ namespace TestScenes
 
 	void renderKeyFrameScene(std::string sceneFile)
 	{
-		std::ifstream inFile(sceneFile);
+		std::string actualFilePath = PS4_VISUAL_STUDIO_DIR;
+		actualFilePath += sceneFile;
+		std::ifstream inFile(actualFilePath);
 		if (!inFile.good())
 		{
 			std::cout << "Error " << sceneFile << " not found" << std::endl;

@@ -45,7 +45,9 @@
 #include "ExampleScenes.h"
 #include "TestScenes.h"
 
+#include <fios2.h>
 
+#include "PS4FolderPath.h"
 
 //[comment]
 // In the main function, we will create the scene which is composed of 5 spheres
@@ -55,7 +57,9 @@
 
 std::vector<std::string> parseIndexFile(std::string indexFile)
 {
-	std::ifstream in(indexFile);
+	std::string actualFilePath = PS4_VISUAL_STUDIO_DIR;
+	actualFilePath += indexFile;
+	std::ifstream in(actualFilePath);
 	std::vector<std::string> files;
 	if (in.good())
 	{
@@ -68,6 +72,20 @@ std::vector<std::string> parseIndexFile(std::string indexFile)
 	}
 	in.close();
 	return files;
+}
+
+void writeTestOutputFile()
+{
+	std::string filePath = PS4_VISUAL_STUDIO_DIR;
+	filePath += "outTest.txt";
+	std::ofstream out(filePath);
+	out.clear();
+	out << "this is a test to see the output folder for the PS4 Dev kit.";
+	out.close();
+
+
+	// try FIOS2
+	
 }
 
 int main(int argc, char **argv)
@@ -91,10 +109,11 @@ int main(int argc, char **argv)
 	
 	// TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
 
+	ExampleScenes::BasicRender();
 	
 	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
 	// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
-
+	writeTestOutputFile();
 	std::vector<std::string> scenes = parseIndexFile("index.txt");
 
 	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");

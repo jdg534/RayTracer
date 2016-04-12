@@ -110,9 +110,9 @@ public:
 
 			// std::thread * t = new std::thread(&RenderManager::renderFrameRange, startFrameIndex, endFrameIndex);
 
-			std::thread * t = new std::thread(renderFramesStatic, m_toRender, startFrameIndex, endFrameIndex);//, g_FRDs);
+			// std::thread * t = new std::thread(renderFramesStatic, m_toRender, startFrameIndex, endFrameIndex);//, g_FRDs);
 
-			renderingThreads.push_back(t);
+			// renderingThreads.push_back(t);
 		}
 
 		renderFrameRange(frameIndexForMainThread, nFramesToRender);
