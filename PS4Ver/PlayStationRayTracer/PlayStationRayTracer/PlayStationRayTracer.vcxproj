@@ -63,9 +63,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h" />
+    <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="KeyFrame.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="MathDefines.h" />
+    <ClInclude Include="MathTypes.h" />
+    <ClInclude Include="Rendering.h" />
+    <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="TestScenes.h" />
+    <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
