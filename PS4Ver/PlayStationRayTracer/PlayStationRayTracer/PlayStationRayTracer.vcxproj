@@ -68,6 +68,7 @@
   <ItemGroup>
     <ClInclude Include="allocator.h" />
     <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="Fios2Wrapper.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="Math.h" />

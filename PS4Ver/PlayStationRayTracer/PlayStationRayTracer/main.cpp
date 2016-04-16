@@ -35,6 +35,14 @@
 #include <sstream>
 #include <string.h>
 
+// PS4 only
+#include <fios2.h>
+#include <fios2\fios2_types.h>
+#include <fios2\fios2_api.h>
+
+#include "PS4FolderPath.h"
+#include "Fios2Wrapper.h"
+
 
 // Josh files
 #include "Vec3.h"
@@ -45,15 +53,7 @@
 #include "ExampleScenes.h"
 #include "TestScenes.h"
 
-#include <fios2.h>
 
-#include "PS4FolderPath.h"
-
-//[comment]
-// In the main function, we will create the scene which is composed of 5 spheres
-// and 1 light (which is also a sphere). Then, once the scene description is complete
-// we render that scene, by calling the render() function.
-//[/comment]
 
 std::vector<std::string> parseIndexFile(std::string indexFile)
 {
@@ -74,6 +74,14 @@ std::vector<std::string> parseIndexFile(std::string indexFile)
 	return files;
 }
 
+/*
+bool initFIOS2()
+{
+	SceFiosParams fiosInitParameters;
+	fiosInitParameters.
+}
+*/
+
 void writeTestOutputFile()
 {
 	std::string filePath = PS4_VISUAL_STUDIO_DIR;
@@ -83,38 +91,27 @@ void writeTestOutputFile()
 	out << "this is a test to see the output folder for the PS4 Dev kit.";
 	out.close();
 
-
-	// try FIOS2
-	
 }
 
 int main(int argc, char **argv)
 {
-	// This sample only allows one choice per program execution. Feel free to improve upon this
+	
 	srand(13);
 
-	// system("del \"*.ppm\""); // clear out any old images, bad idea will want to keep the files 
+	// system("del \"*.ppm\""); // is the windows way, need to figure out the ORBIS way
 
-	//BasicRender();
-	//SimpleShrinking();
-	// ExampleScenes::SmoothScaling();
-
-	// TestScenes::renderSceneForTime(10.0f, 24);
 	
-	// duration in seconds, frames per second, folder string, output video file string, start of frame file name
-	
-	// TestScenes::renderSceneForTimeSpecificOutput(120.0f, 30, "TestFrame", "TestVid.avi", "TestRenderFolder"); 
-
-	// TestScenes::renderSceneForTimeSpecificOutput(5.0f, 24, "TestFrame", "TestVid.avi", "TestRenderFolder");
-	
-	// TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
-
-	ExampleScenes::BasicRender();
-	
-	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
-	// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
 	writeTestOutputFile();
 	std::vector<std::string> scenes = parseIndexFile("index.txt");
+
+	// init fios2, via the wrapper class
+	fios2Wrapper wrapper;
+
+	if (!wrapper.isFios2Initialised())
+	{
+		wrapper.initFios2();
+	}
+
 
 	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");
 	for (auto i = 0; i < scenes.size(); i++)

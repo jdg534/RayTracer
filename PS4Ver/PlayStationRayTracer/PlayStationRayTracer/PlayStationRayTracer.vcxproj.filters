@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;cc;s;asm</Extensions>
     </Filter>
-    <Filter Include="Source Files\PrividedAllocator">
-      <UniqueIdentifier>{8e8a5f04-7aed-4f6c-8996-2246fb8fe8b9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{6be82ee4-cd77-410f-84da-4f378a041460}</UniqueIdentifier>
     </Filter>
@@ -16,6 +13,9 @@
     </Filter>
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{3cc88682-9248-4677-b793-abbef2c2313d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ProvidedAllocator">
+      <UniqueIdentifier>{8e8a5f04-7aed-4f6c-8996-2246fb8fe8b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h">
-      <Filter>Source Files\PrividedAllocator</Filter>
+      <Filter>Source Files\ProvidedAllocator</Filter>
     </ClInclude>
     <ClInclude Include="MathTypes.h">
       <Filter>Source Files\Math</Filter>
@@ -64,6 +64,9 @@
       <Filter>Source Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="PS4FolderPath.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fios2Wrapper.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

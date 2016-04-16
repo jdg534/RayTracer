@@ -1,0 +1,7 @@
+Note the visual studio file already defines the SDK directory as:
+$(SCE_ORBIS_SDK_DIR) = C:\Program Files (x86)\SCE\ORBIS SDKs\3.000
+
+the .lib files are in:
+C:\Program Files (x86)\SCE\ORBIS SDKs\3.000\host_tools\lib
+
+

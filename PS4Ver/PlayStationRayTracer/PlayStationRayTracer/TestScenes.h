@@ -21,6 +21,7 @@
 #include <Windows.h>
 #else
 #include "PS4FolderPath.h"
+#include "Fios2Wrapper.h" // for simplerfied usage
 #endif
 
 
@@ -82,6 +83,15 @@ namespace TestScenes
 		return (attrib & FILE_ATTRIBUTE_DIRECTORY);
 #else 
 		// PS4 stuff here
+		fios2Wrapper wrapper;
+		if (!wrapper.isFios2Initialised())
+		{
+			wrapper.initFios2();
+		}
+		
+		bool folderExists = wrapper.folderExists(folderStr);
+
+
 #endif
 
 		return false;
@@ -95,6 +105,13 @@ namespace TestScenes
 #else
 		// PS4 stuff here
 		// ORBIS folder creation code here!!!
+		// use FIOS2
+		fios2Wrapper wrapper;
+		if (!wrapper.isFios2Initialised())
+		{
+			wrapper.initFios2();
+		}
+		bool createResults = wrapper.createFolder(folderName);
 #endif
 	}
 
