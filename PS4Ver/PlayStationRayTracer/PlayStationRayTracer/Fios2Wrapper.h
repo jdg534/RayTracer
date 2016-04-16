@@ -17,7 +17,8 @@ public:
 	bool isFios2Initialised()
 	{
 		bool results;
-		SceFiosParams params = SCE_FIOS_PARAMS_INITIALIZER;
+		SceFiosParams params;
+		
 		results = sceFiosIsInitialized(&params);
 		return results;
 	}
@@ -27,8 +28,8 @@ public:
 		// see <PS4 dev docs/Reserence/System/Fios2 Library Reference/Functions/(function name here)>
 
 		int initResults;
-		SceFiosParams initParams = SCE_FIOS_PARAMS_INITIALIZER;
-		
+		SceFiosParams * initParams = new SceFiosParams;// SCE_FIOS_PARAMS_INITIALIZER;
+		*initParams = SCE_FIOS_PARAMS_INITIALIZER;
 		/*
 		initParams.reserved1 = 0;
 		// there is no reserved2 parameters
@@ -39,15 +40,42 @@ public:
 		initParams.reserved7 = 0;
 		*/
 
+		initParams->initialized = 1;
+		initParams->paramsSize = sizeof(SceFiosParams);
+		initParams->pathMax = 0;
+		initParams->reserved1 = 0;
+		initParams->ioThreadCount = SCE_FIOS_IO_THREAD_COUNT_MIN;
+		initParams->threadsPerScheduler = SCE_FIOS_SCHEDULER_THREAD_COUNT_DEFAULT;
+		initParams->extraFlags = initParams->extraFlag1 = 0;
+		initParams->maxChunk = SCE_FIOS_CHUNK_DEFAULT;
+		initParams->maxDecompressorThreadCount = SCE_FIOS_DECOMPRESSOR_THREAD_COUNT_DEFAULT;
+		initParams->schedulerAlgorithm = SCE_FIOS_IO_SCHED_DEADLINE;
+		initParams->reserved3 = 0;
+		initParams->reserved4 = 0;
+		initParams->reserved5 = 0;
+		initParams->reserved6 = 0;
 
 		
+		initParams->opStorage;
+		initParams->fhStorage;
+		initParams->dhStorage;
+		initParams->chunkStorage;
+		initParams->pVprintf = NULL;
+		initParams->pMemcpy = NULL;
+		initParams->reserved7 = 0;
+		initParams->threadPriority; // array of three ints
+		initParams->threadAffinity; // three ints array
+		initParams->threadStackSize; // three int array
 
-		initResults = sceFiosInitialize(&initParams);
+		initResults = sceFiosInitialize(initParams);
+		// initResults = sceFiosInitialize(SCE_FIOS_PARAMS_INITIALIZER);
 
-		assert(initResults == SCE_FIOS_OK);
-
+		// assert(initResults == SCE_FIOS_OK);
 		
-		/*
+		
+		delete initParams; // stored by fios2?, (not needed?)
+		
+		
 		if (initResults == SCE_FIOS_OK)
 		{
 			return true;
@@ -69,7 +97,7 @@ public:
 			// the error code doesn't match the the posible return codes in the PS4 dev docs
 			return false;
 		}
-		*/
+		
 		if (initResults == SCE_FIOS_OK)
 		{
 			return true;
