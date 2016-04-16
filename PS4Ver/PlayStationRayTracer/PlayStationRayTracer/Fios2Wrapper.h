@@ -43,6 +43,11 @@ public:
 		
 
 		initResults = sceFiosInitialize(&initParams);
+
+		assert(initResults == SCE_FIOS_OK);
+
+		
+		/*
 		if (initResults == SCE_FIOS_OK)
 		{
 			return true;
@@ -62,6 +67,16 @@ public:
 		else
 		{
 			// the error code doesn't match the the posible return codes in the PS4 dev docs
+			return false;
+		}
+		*/
+		if (initResults == SCE_FIOS_OK)
+		{
+			return true;
+		}
+		else
+		{
+			// the assert should prevent this code being reached
 			return false;
 		}
 	}

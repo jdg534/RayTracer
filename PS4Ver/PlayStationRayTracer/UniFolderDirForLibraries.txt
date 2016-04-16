@@ -1,7 +1,26 @@
 Note the visual studio file already defines the SDK directory as:
 $(SCE_ORBIS_SDK_DIR) = C:\Program Files (x86)\SCE\ORBIS SDKs\3.000
 
+multiple folder in $(SCE_ORBIS_SDK_DIR) covering:
+windows
+PS4 
+IOS
+Android
+
+
+
 the .lib files are in:
 C:\Program Files (x86)\SCE\ORBIS SDKs\3.000\host_tools\lib
 
 
+// update: fixed the library file usage
+
+-l<library name here> results in "lib<library name here>.a"
+
+on PS4 .a equivelent of .lib on windows
+
+
+added the following dependencies:
+
+-lSceFios2_stub_weak
+-lSceFiber_stub_weak
