@@ -15,4 +15,11 @@ struct KeyFrame
 	}
 };
 
+struct LerpedFrame
+{
+	KeyFrame * a, *b;
+	float lerpWeight;
+	unsigned int frameNumber;
+};
+
 #endif

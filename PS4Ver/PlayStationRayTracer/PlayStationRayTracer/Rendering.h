@@ -222,8 +222,10 @@ namespace rendering
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);
 		// Trace rays
-		for (unsigned y = 0; y < height; ++y) {
-			for (unsigned x = 0; x < width; ++x, ++pixel) {
+		for (unsigned y = 0; y < height; ++y)
+		{
+			for (unsigned x = 0; x < width; ++x, ++pixel)
+			{
 				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
 				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
 				Vec3f raydir(xx, yy, -1);
@@ -318,7 +320,36 @@ namespace rendering
 
 		// Recommended Production Resolution
 		//unsigned width = 1920, height = 1080;
-		Vec3f *image = new Vec3f[width * height], *pixel = image;
+
+		unsigned int memNeededForImage = width * height * sizeof(Vec3f);
+
+		LinearAllocator onionAllocator;
+
+		int onionAllocatorInitVal = onionAllocator.initialize(
+			onionMemSz,
+			SCE_KERNEL_WB_ONION,
+			SCE_KERNEL_PROT_CPU_RW | SCE_KERNEL_PROT_GPU_ALL);
+
+		if (onionAllocatorInitVal != SCE_OK)
+		{
+			// something went wrong,
+			// the initial example didn't do anything as a responce
+		}
+
+		// init it first
+
+		void * buffer = onionAllocator.allocate(
+			memNeededForImage, sce::Gnm::kAlignmentOfBufferInBytes);
+
+		// Vec3f *image = new Vec3f[width * height], *pixel = image; // the windows def
+
+		Vec3f *image = reinterpret_cast<Vec3f *>(buffer);
+
+		// Vec3f *image = new Vec3f[width * height];
+			
+		Vec3f *pixel = image;
+
+
 		float invWidth = 1 / float(width), invHeight = 1 / float(height);
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);
@@ -338,11 +369,15 @@ namespace rendering
 		// Save result to a PPM image (keep these flags if you compile under Windows)
 		std::stringstream ss;
 		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
-		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		
+		// ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm"; // had to be changed for ORBIS
+
+		ss << PS4_VISUAL_STUDIO_DIR << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm"; // had to be changed for ORBIS
+		
 		std::string tempString = ss.str();
 		char* filename = (char*)tempString.c_str();
 
-		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
+		std::ofstream ofs(filename, std::ios::out | std::ios::binary); // not using FIOS2 for this, need to save time
 		ofs << "P6\n" << width << " " << height << "\n255\n";
 		for (unsigned i = 0; i < width * height; ++i) {
 			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
@@ -350,7 +385,9 @@ namespace rendering
 				(unsigned char)(std::min(float(1), image[i].z) * 255);
 		}
 		ofs.close();
-		delete[] image;
+		// delete[] image;
+
+		onionAllocator.terminate();
 	}
 
 	Vector2D getPixelCoord(unsigned int imageWidth, unsigned int imageHeight, unsigned index)
@@ -440,9 +477,29 @@ namespace rendering
 		//unsigned width = 1920, height = 1080;
 		// Vec3f *image = new Vec3f[width * height], *pixel = image;
 
+
+		unsigned int memNeededForImage = width * height * sizeof(Vec3f);
+
+		LinearAllocator onionAllocator;
+
+		int onionAllocatorInitVal = onionAllocator.initialize(
+			onionMemSz,
+			SCE_KERNEL_WB_ONION,
+			SCE_KERNEL_PROT_CPU_RW | SCE_KERNEL_PROT_GPU_ALL);
+
+		if (onionAllocatorInitVal != SCE_OK)
+		{
+			// something went wrong,
+			// the initial example didn't do anything as a responce
+		}
+
+		// init it first
+
+		void * buffer = onionAllocator.allocate(
+			memNeededForImage, sce::Gnm::kAlignmentOfBufferInBytes);
 		
 
-		Vec3f *image;
+		Vec3f *image = reinterpret_cast <Vec3f *>(buffer);
 		float invWidth = 1 / float(width), invHeight = 1 / float(height);
 		float fov = 30, aspectratio = width / float(height);
 		float angle = tan(M_PI * 0.5 * fov / 180.);

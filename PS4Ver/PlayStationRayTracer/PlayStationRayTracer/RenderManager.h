@@ -3,6 +3,7 @@
 
 #include "Rendering.h"
 #include "Frame.h"
+#include "KeyFrame.h"
 
 #include <thread>
 #include <queue>
@@ -12,6 +13,8 @@
 #include <ostream> // for the output
 
 #include <iostream> // for cout
+
+#include "Math.h" // my math's library, for lerp
 
 struct RenderDuration
 {
@@ -28,7 +31,7 @@ struct FrameRenderDuration : public RenderDuration
 	}
 };
 
-std::vector<FrameRenderDuration> g_FRDs;
+std::vector<FrameRenderDuration> g_FRDs; // just resize and override
 
 class RenderManager
 {
@@ -50,28 +53,41 @@ public:
 
 	void makeRoomForFrames(unsigned int nFrames)
 	{
-		m_toRender.resize(nFrames);
+		// m_toRender.resize(nFrames);
+		m_numFramesToRender = nFrames;
+		m_framesToRender = new LerpedFrame[nFrames];
+		// m_frameRenderDurations = new FrameRenderDuration[nFrames];
+		g_FRDs.resize(nFrames);
 	}
 
 	void addFrame(Frame frameToRender)
 	{
-		m_toRender[frameToRender.frameNumber] = frameToRender;
+		// m_framesToRender[frameToRender.frameNumber] = frameToRender;
+		assert(false);
 	}
 
-	void renderFramesSingleThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
+	void addLerpFrame(LerpedFrame lf)
 	{
-		std::sort(m_toRender.begin(), m_toRender.end());
-		unsigned int nFramesToRender = m_toRender.size();
+		m_framesToRender[lf.frameNumber] = lf;
+	}
+
+	void renderFramesSingleThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd, std::string outputFolder, std::string frameFileName)
+	{
+		// std::sort(m_toRender.begin(), m_toRender.end());
+		// made changes & would be presented in order anway
+
+		// unsigned int nFramesToRender = m_toRender.size();
+		unsigned int nFramesToRender = m_numFramesToRender;
 		m_statsOutput << "\n___START_RENDERING_INFORMATION___\n";
 		RenderDuration timeToRenderEntireScene;
 		timeToRenderEntireScene.start = std::chrono::steady_clock::now();
-		renderFrameRange(0, nFramesToRender);
+		renderFrameRange(0, nFramesToRender, frameFileName, outputFolder);
 
 
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, deleteFramesAtEnd);
+		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outputVideoFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -79,14 +95,14 @@ public:
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
 	}
 
-	void renderFramesMultiThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
+	void renderFramesMultiThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd, std::string outputFolder, std::string frameFileName)
 	{
-		std::sort(m_toRender.begin(), m_toRender.end());
+		//std::sort(m_toRender.begin(), m_toRender.end());
 
 		RenderDuration timeToRenderEntireScene;
 		timeToRenderEntireScene.start = std::chrono::steady_clock::now();
 
-		unsigned int nFramesToRender = m_toRender.size();
+		unsigned int nFramesToRender = m_numFramesToRender;
 		m_statsOutput << "\n___START_RENDERING_INFORMATION___\n";
 		m_statsOutput << "Num threads used: " << m_nThreadsSupportedByPlatform << std::endl;
 		
@@ -120,7 +136,7 @@ public:
 			// renderingThreads.push_back(t);
 		}
 
-		renderFrameRange(frameIndexForMainThread, nFramesToRender);
+		renderFrameRange(frameIndexForMainThread, nFramesToRender,frameFileName, outputFolder);
 		
 		// re join the child threads
 		for (short i = 0; i < renderingThreads.size(); i++)
@@ -137,14 +153,15 @@ public:
 		}
 
 		renderingThreads.clear();
-
+		/*
 		for (int i = 0; i < g_FRDs.size(); i++)
 		{
 			m_frameRenderStats.push(g_FRDs[i]);
 		}
 		g_FRDs.clear();
-
-		std::string outputFolder = m_toRender[0].outPutFolder;
+		*/
+		
+		
 		std::string outVidFile = outputVideoFile;
 
 
@@ -152,7 +169,7 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outVidFile, fps, deleteFramesAtEnd);
+		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outVidFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -161,10 +178,10 @@ public:
 		writeRenderStats(timeToRenderEntireScene, timeToConvertToVideo);
 	}
 
-	void renderFramesMultiThreadPerFrame(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)
+	void renderFramesMultiThreadPerFrame(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd, std::string outputFolder, std::string frameFileName)
 	{
-		std::sort(m_toRender.begin(), m_toRender.end());
-		unsigned int nFramesToRender = m_toRender.size();
+		// std::sort(m_toRender.begin(), m_toRender.end());
+		unsigned int nFramesToRender = m_numFramesToRender;
 		m_statsOutput << "\n___START_RENDERING_INFORMATION___\n";
 		RenderDuration timeToRenderEntireScene;
 		timeToRenderEntireScene.start = std::chrono::steady_clock::now();
@@ -175,14 +192,18 @@ public:
 
 		for (int i = 0; i < nFramesToRender; i++)
 		{
+			// calculate the spheres
+			std::vector<Sphere> toDraw;
+
+
 			FrameRenderDuration frd;
 			// frd.start = std::chrono::steady_clock::now();
-			rendering::renderToFolderMultiThreadProfileable(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber, &frd.start, &frd.end);
+			rendering::renderToFolderMultiThreadProfileable(frameFileName, outputFolder, toDraw, m_framesToRender[i].frameNumber, &frd.start, &frd.end);
 			
 			// frd.end = std::chrono::steady_clock::now();
 			frd.frameNumber = i;
-			m_frameRenderStats.push(frd);
-			std::cout << "Rendered frame: " << m_toRender[i].frameNumber << std::endl;
+			//m_frameRenderStats.push(frd);
+			std::cout << "Rendered frame: " << m_framesToRender[i].frameNumber << std::endl;
 		}
 
 
@@ -192,7 +213,7 @@ public:
 
 
 
-		rendering::finshRenderToFolderWithCleanUp(m_toRender[0].outPutFolder, m_toRender[0].startOfFrameFileNameString, outputVideoFile, fps, deleteFramesAtEnd);
+		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outputVideoFile, fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -202,20 +223,27 @@ public:
 
 	void clearForNextScene()
 	{
-		m_toRender.clear();
-		while (!m_frameRenderStats.empty())
+		//m_toRender.clear();
+		/*while (!m_frameRenderStats.empty())
 		{
 			m_frameRenderStats.pop();
-		}
+		}*/
 		g_FRDs.clear();
+		delete[] m_framesToRender;
+		// delete[] m_frameRenderDurations;
 	}
 
 private:
-	std::vector<Frame> m_toRender;
+	// std::vector<Frame> m_toRender;
+	// FrameRenderDuration * m_frameRenderDurations;
+	LerpedFrame * m_framesToRender;
+	unsigned int m_numFramesToRender;
+
+
 	unsigned int m_nThreadsSupportedByPlatform;
 	std::ostream & m_statsOutput;
 
-	std::priority_queue<FrameRenderDuration> m_frameRenderStats;
+	// std::priority_queue<FrameRenderDuration> m_frameRenderStats;
 
 	
 
@@ -226,12 +254,13 @@ private:
 		m_statsOutput << "_______________________________" << std::endl;
 		std::vector<FrameRenderDuration> toOut;
 
+		/*
 		while (!m_frameRenderStats.empty())
 		{
 			toOut.push_back(m_frameRenderStats.top());
 			m_frameRenderStats.pop();
 		}
-		
+		*/
 		
 		std::sort(toOut.begin(), toOut.end());
 		
@@ -264,7 +293,7 @@ private:
 		m_statsOutput << "Rendering the entire scene took " << s.count() << " seconds" << std::endl;
 	}
 	
-	void renderFrameRange(unsigned int start, unsigned int end)
+	void renderFrameRange(unsigned int start, unsigned int end, std::string frameFileName, std::string outputFolder)
 	{
 		for (unsigned int i = start; i < end; i++)
 		{
@@ -273,11 +302,53 @@ private:
 			// rendering::renderToFolder(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber);
 			// frd.end = std::chrono::steady_clock::now();
 
-			rendering::renderToFolderProfileable(m_toRender[i].startOfFrameFileNameString, m_toRender[i].outPutFolder, m_toRender[i].frameData, m_toRender[i].frameNumber, &frd.start, &frd.end);
+			std::vector<Sphere> s;
+
+			LerpedFrame lf = m_framesToRender[i];
+			for (auto j = 0; j < lf.a->spheres.size(); j++)
+			{
+				// the sphere needs:
+				/*"POSITION" v3
+				"RADIUS" f
+				"SURFACE_COLOUR" v3
+				"REFLECTION_VALUE" f
+				"TRANSPARENCY_VALUE" f
+				"EMISSIVE_COLOUR" v3*/
+				Vec3f pos;
+				float rad;
+				Vec3f surfaceColour;
+				float reflection;
+				float transparency;
+				Vec3f emmisive;
+				pos.x = Math::interpolation::lerp(lf.a->spheres[j].center.x, lf.b->spheres[j].center.x, lf.lerpWeight);
+				pos.y = Math::interpolation::lerp(lf.a->spheres[j].center.y, lf.b->spheres[j].center.y, lf.lerpWeight);
+				pos.z = Math::interpolation::lerp(lf.a->spheres[j].center.z, lf.b->spheres[j].center.z, lf.lerpWeight);
+
+				rad = Math::interpolation::lerp(lf.a->spheres[j].radius, lf.b->spheres[j].radius, lf.lerpWeight);
+
+				surfaceColour.x = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.x, lf.b->spheres[j].surfaceColor.x, lf.lerpWeight);
+				surfaceColour.y = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.y, lf.b->spheres[j].surfaceColor.y, lf.lerpWeight);
+				surfaceColour.z = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.z, lf.b->spheres[j].surfaceColor.z, lf.lerpWeight);
+
+				reflection = Math::interpolation::lerp(lf.a->spheres[j].reflection, lf.b->spheres[j].reflection, lf.lerpWeight);
+				transparency = Math::interpolation::lerp(lf.a->spheres[j].transparency, lf.b->spheres[j].transparency, lf.lerpWeight);
+
+				emmisive.x = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.x, lf.b->spheres[j].emissionColor.x, lf.lerpWeight);
+				emmisive.y = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.y, lf.b->spheres[j].emissionColor.y, lf.lerpWeight);
+				emmisive.z = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.z, lf.b->spheres[j].emissionColor.z, lf.lerpWeight);
+
+				Sphere tempS(pos, rad, surfaceColour, reflection, transparency, emmisive);
+				s.push_back(tempS);
+			}
+
+			assert(s.size() > 0); // pick up here, calculate the lerped spheres
+
+			rendering::renderToFolderProfileable(frameFileName, outputFolder, s, m_framesToRender[i].frameNumber, &frd.start, &frd.end);
 
 			frd.frameNumber = i;
-			m_frameRenderStats.push(frd);
-			std::cout << "Rendered frame: " << m_toRender[i].frameNumber << std::endl;
+			g_FRDs[i] = frd;
+			// m_frameRenderStats.push(frd);
+			std::cout << "Rendered frame: " << m_framesToRender[i].frameNumber << std::endl;
 		}
 	}
 
@@ -292,7 +363,11 @@ private:
 			// frd.end = std::chrono::steady_clock::now();
 			// m_frameRenderStats.push(frd);
 			frd.frameNumber = i;
-			g_FRDs.push_back(frd); // this could be an issue
+			
+			// g_FRDs.push_back(frd); // this could be an issue
+			g_FRDs[i] = frd; // this could be an issue
+
+			// m_frameRenderDurations[i] = frd;
 
 			std::cout << "Rendered frame: " << frames[i].frameNumber << std::endl;
 		}
