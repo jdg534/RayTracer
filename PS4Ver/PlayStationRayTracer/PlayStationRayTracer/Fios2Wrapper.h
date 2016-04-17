@@ -6,7 +6,7 @@
 
 #include "PS4FolderPath.h"
 #include <string>
-
+#include <sstream>
 
 
 // define a few global values (based off the PS4 sdk sample code)
@@ -155,7 +155,27 @@ public:
 		{
 			return false;
 		}
+	}
 
+	void deleteFrameFileInFolder(unsigned int nFramesToDelete, std::string folderString, std::string startOfFileString)
+	{
+		// std::stringstream ss;
+		std::string fileStrStart = PS4_VISUAL_STUDIO_DIR;
+		fileStrStart += folderString + "/" + startOfFileString;
+
+		std::string endOfFileString = ".ppm";
+
+		for (int i = 0; i < nFramesToDelete; i++)
+		{
+			std::stringstream ss;
+			ss << fileStrStart << i << endOfFileString;
+			std::string fileStr = ss.str();
+			int deleteResults = sceFiosDeleteSync(NULL, fileStr.c_str());
+			if (deleteResults != SCE_FIOS_OK)
+			{
+				// can ignor file not found, figure the rest out
+			}
+		}
 	}
 
 	void shutdown()

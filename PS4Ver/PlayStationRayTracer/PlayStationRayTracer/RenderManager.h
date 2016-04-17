@@ -352,14 +352,52 @@ private:
 		}
 	}
 
-	static void renderFramesStatic(std::vector<Frame> & frames, unsigned int start, unsigned int end)
+	static void renderFramesStatic(LerpedFrame * lerpedFramesArray, unsigned int start, unsigned int end, std::string ouputFolder, std::string frameFileStart)
 	{
 		for (unsigned int i = start; i < end; i++)
 		{
 			FrameRenderDuration frd;
 			// frd.start = std::chrono::steady_clock::now();
 			// rendering::renderToFolder(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber);
-			rendering::renderToFolderProfileable(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber, &frd.start, &frd.end);
+
+			std::vector<Sphere> spheres;
+
+			LerpedFrame lf = lerpedFramesArray[i];
+
+			
+			for (int j = 0; j < lf.a->spheres.size(); j++)
+			{
+				Vec3f pos;
+				float rad;
+				Vec3f surfaceColour;
+				float reflection;
+				float transparency;
+				Vec3f emmisive;
+				pos.x = Math::interpolation::lerp(lf.a->spheres[j].center.x, lf.b->spheres[j].center.x, lf.lerpWeight);
+				pos.y = Math::interpolation::lerp(lf.a->spheres[j].center.y, lf.b->spheres[j].center.y, lf.lerpWeight);
+				pos.z = Math::interpolation::lerp(lf.a->spheres[j].center.z, lf.b->spheres[j].center.z, lf.lerpWeight);
+
+				rad = Math::interpolation::lerp(lf.a->spheres[j].radius, lf.b->spheres[j].radius, lf.lerpWeight);
+
+				surfaceColour.x = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.x, lf.b->spheres[j].surfaceColor.x, lf.lerpWeight);
+				surfaceColour.y = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.y, lf.b->spheres[j].surfaceColor.y, lf.lerpWeight);
+				surfaceColour.z = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.z, lf.b->spheres[j].surfaceColor.z, lf.lerpWeight);
+
+				reflection = Math::interpolation::lerp(lf.a->spheres[j].reflection, lf.b->spheres[j].reflection, lf.lerpWeight);
+				transparency = Math::interpolation::lerp(lf.a->spheres[j].transparency, lf.b->spheres[j].transparency, lf.lerpWeight);
+
+				emmisive.x = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.x, lf.b->spheres[j].emissionColor.x, lf.lerpWeight);
+				emmisive.y = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.y, lf.b->spheres[j].emissionColor.y, lf.lerpWeight);
+				emmisive.z = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.z, lf.b->spheres[j].emissionColor.z, lf.lerpWeight);
+
+				Sphere tempS(pos, rad, surfaceColour, reflection, transparency, emmisive);
+				spheres.push_back(tempS);
+			}
+
+			assert(spheres.size() > 0);
+			
+			// rendering::renderToFolderProfileable(frames[i].startOfFrameFileNameString, frames[i].outPutFolder, frames[i].frameData, frames[i].frameNumber, &frd.start, &frd.end);
+			rendering::renderToFolderProfileable(frameFileStart, ouputFolder, spheres, lf.frameNumber, &frd.start, &frd.end);
 			// frd.end = std::chrono::steady_clock::now();
 			// m_frameRenderStats.push(frd);
 			frd.frameNumber = i;
@@ -369,7 +407,7 @@ private:
 
 			// m_frameRenderDurations[i] = frd;
 
-			std::cout << "Rendered frame: " << frames[i].frameNumber << std::endl;
+			std::cout << "Rendered frame: " << lf.frameNumber << std::endl;
 		}
 	}
 };

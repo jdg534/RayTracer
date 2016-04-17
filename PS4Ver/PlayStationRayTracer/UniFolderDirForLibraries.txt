@@ -17,7 +17,7 @@ C:\Program Files (x86)\SCE\ORBIS SDKs\3.000\host_tools\lib
 
 -l<library name here> results in "lib<library name here>.a"
 
-on PS4 .a equivelent of .lib on windows
+on PS4 .a is equivelent of .lib on windows
 
 
 added the following dependencies:

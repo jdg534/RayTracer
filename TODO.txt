@@ -5,6 +5,12 @@
 
 port to PS4
 
+implerment the delete ppm files in folder function via FIOS
+
+next see what can be done using lib fiber for rendering a frame with multiple fibers
+
+optionally with multiple fibers for multerple frames
+
 
 
 PS4 free BSD based
