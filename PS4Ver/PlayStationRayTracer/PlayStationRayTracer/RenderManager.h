@@ -48,9 +48,14 @@ public:
 		m_nThreadsSupportedByPlatform = std::thread::hardware_concurrency();
 	}
 
+	void makeRoomForFrames(unsigned int nFrames)
+	{
+		m_toRender.resize(nFrames);
+	}
+
 	void addFrame(Frame frameToRender)
 	{
-		m_toRender.push_back(frameToRender);
+		m_toRender[frameToRender.frameNumber] = frameToRender;
 	}
 
 	void renderFramesSingleThread(std::string outputVideoFile, unsigned int fps, bool deleteFramesAtEnd)

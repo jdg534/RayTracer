@@ -9,6 +9,16 @@
 
 
 
+// define a few global values (based off the PS4 sdk sample code)
+#define MAX_PATH_LENGTH 256 // max, of 256 characters for a file path
+
+#define MAX_DIRECTORY_HANDLES 1
+#define MAX_FILE_HANDLES 16
+
+int64_t g_operationStorage[SCE_FIOS_DIVIDE_ROUNDING_UP(SCE_FIOS_OP_STORAGE_SIZE(64, MAX_PATH_LENGTH), sizeof(int64_t))];
+int64_t g_ChunkStorage[SCE_FIOS_DIVIDE_ROUNDING_UP(SCE_FIOS_CHUNK_STORAGE_SIZE(1024), sizeof(int64_t))]; // 1024 chunks
+int64_t g_FileHandleStorage[SCE_FIOS_DIVIDE_ROUNDING_UP(SCE_FIOS_FH_STORAGE_SIZE(MAX_FILE_HANDLES, MAX_PATH_LENGTH), sizeof(int64_t))]; // max of 16 file handles
+int64_t g_DirectoryHandleStorage[SCE_FIOS_DIVIDE_ROUNDING_UP(SCE_FIOS_DH_STORAGE_SIZE(MAX_DIRECTORY_HANDLES, MAX_PATH_LENGTH), sizeof(int64_t))]; // 1 directory handle
 
 class fios2Wrapper
 {
@@ -27,84 +37,54 @@ public:
 	{
 		// see <PS4 dev docs/Reserence/System/Fios2 Library Reference/Functions/(function name here)>
 
+		// the init code is based off the FIOS2 sample code!
+
 		int initResults;
-		SceFiosParams * initParams = new SceFiosParams;// SCE_FIOS_PARAMS_INITIALIZER;
-		*initParams = SCE_FIOS_PARAMS_INITIALIZER;
-		/*
-		initParams.reserved1 = 0;
-		// there is no reserved2 parameters
-		initParams.reserved3 = 0;
-		initParams.reserved4 = 0;
-		initParams.reserved5 = 0;
-		initParams.reserved6 = 0;
-		initParams.reserved7 = 0;
-		*/
-
-		initParams->initialized = 1;
-		initParams->paramsSize = sizeof(SceFiosParams);
-		initParams->pathMax = 0;
-		initParams->reserved1 = 0;
-		initParams->ioThreadCount = SCE_FIOS_IO_THREAD_COUNT_MIN;
-		initParams->threadsPerScheduler = SCE_FIOS_SCHEDULER_THREAD_COUNT_DEFAULT;
-		initParams->extraFlags = initParams->extraFlag1 = 0;
-		initParams->maxChunk = SCE_FIOS_CHUNK_DEFAULT;
-		initParams->maxDecompressorThreadCount = SCE_FIOS_DECOMPRESSOR_THREAD_COUNT_DEFAULT;
-		initParams->schedulerAlgorithm = SCE_FIOS_IO_SCHED_DEADLINE;
-		initParams->reserved3 = 0;
-		initParams->reserved4 = 0;
-		initParams->reserved5 = 0;
-		initParams->reserved6 = 0;
-
+		SceFiosParams initParameters = SCE_FIOS_PARAMS_INITIALIZER; // following code based off the SDK simples
+		initParameters.opStorage.pPtr = g_operationStorage;
+		initParameters.opStorage.length = sizeof(g_operationStorage);
+		initParameters.chunkStorage.pPtr = g_ChunkStorage;
+		initParameters.chunkStorage.length = sizeof(g_ChunkStorage);
+		initParameters.fhStorage.pPtr = g_FileHandleStorage;
+		initParameters.fhStorage.length = sizeof(g_FileHandleStorage);
+		initParameters.dhStorage.pPtr = g_DirectoryHandleStorage;
+		initParameters.dhStorage.length = sizeof(g_DirectoryHandleStorage);
 		
-		initParams->opStorage;
-		initParams->fhStorage;
-		initParams->dhStorage;
-		initParams->chunkStorage;
-		initParams->pVprintf = NULL;
-		initParams->pMemcpy = NULL;
-		initParams->reserved7 = 0;
-		initParams->threadPriority; // array of three ints
-		initParams->threadAffinity; // three ints array
-		initParams->threadStackSize; // three int array
+		initParameters.pathMax = MAX_PATH_LENGTH;
+		
+		initParameters.pVprintf = vprintf; // vprintf is in stdio.h
+		initParameters.pMemcpy = memcpy; // memcpy is in string.h
 
-		initResults = sceFiosInitialize(initParams);
+		initResults = sceFiosInitialize(&initParameters);
 		// initResults = sceFiosInitialize(SCE_FIOS_PARAMS_INITIALIZER);
 
-		// assert(initResults == SCE_FIOS_OK);
 		
-		
-		delete initParams; // stored by fios2?, (not needed?)
-		
+		assert(initResults == SCE_OK);
 		
 		if (initResults == SCE_FIOS_OK)
 		{
+			printf("FIOS2 initialised successfully");
 			return true;
 		}
 		else if (initResults == SCE_FIOS_ERROR_BAD_PTR)
 		{
+			printf("FIOS2 error, bad pointer");
 			return false;
 		}
 		else if (initResults == SCE_FIOS_ERROR_BAD_ALIGNMENT)
 		{
+			printf("FIOS2 error, bad alignment");
 			return false;
 		}
 		else if (initResults == SCE_FIOS_ERROR_BAD_SIZE)
 		{
+			printf("FIOS2 error, bad size");
 			return false;
 		}
 		else
 		{
 			// the error code doesn't match the the posible return codes in the PS4 dev docs
-			return false;
-		}
-		
-		if (initResults == SCE_FIOS_OK)
-		{
-			return true;
-		}
-		else
-		{
-			// the assert should prevent this code being reached
+			printf("FIOS2 error, unrecognised error code");
 			return false;
 		}
 	}
@@ -117,6 +97,8 @@ public:
 
 		std::string actualPath = PS4_VISUAL_STUDIO_DIR;
 		actualPath += folderPath;
+		actualPath += "/";
+		
 		SceFiosOpAttr operationAttribs;
 		operationAttribs.deadline = SCE_FIOS_TIME_EARLIEST;
 		operationAttribs.pCallback = NULL;
@@ -129,8 +111,14 @@ public:
 
 		SceFiosOp operationResults;
 
-		bool exists; 
-		operationResults = sceFiosDirectoryExists(&operationAttribs, actualPath.c_str(), &exists);
+		bool exists = false; 
+		// can just pass NULL for operationAttribs if needed
+		// operationResults = sceFiosDirectoryExists(&operationAttribs, actualPath.c_str(), &exists);
+		// operationResults = sceFiosDirectoryExistsSync(NULL, actualPath.c_str(), &exists);
+
+		exists = sceFiosDirectoryExistsSync(NULL, actualPath.c_str());
+
+		// assert(operationResults >= 0);
 
 		return exists;
 	}
@@ -143,6 +131,8 @@ public:
 		std::string actualPath = PS4_VISUAL_STUDIO_DIR;
 		actualPath += folderPath;
 
+		actualPath += "/";
+
 		SceFiosOpAttr operationAttribs;
 		operationAttribs.deadline = SCE_FIOS_TIME_EARLIEST;
 		operationAttribs.pCallback = NULL;
@@ -153,7 +143,24 @@ public:
 		operationAttribs.userTag = 0;
 		operationAttribs.pReserved = 0;
 		SceFiosOp operationResults;
-		operationResults = sceFiosDirectoryCreate(&operationAttribs, actualPath.c_str());
+		// operationResults = sceFiosDirectoryCreate(&operationAttribs, actualPath.c_str());
+		// operationResults = sceFiosDirectoryCreate(NULL, actualPath.c_str());
+		operationResults = sceFiosDirectoryCreateSync(NULL, actualPath.c_str());
+		// assert(operationResults >= 0);
+		if (operationResults >= 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	void shutdown()
+	{
+		sceFiosTerminate();
 	}
 private:
 

@@ -20,6 +20,16 @@ struct Frame
 	{
 		return frameNumber < other.frameNumber;
 	}
+
+	/*
+	void operator = (Frame & f)
+	{
+		frameNumber = f.frameNumber;
+		outPutFolder = f.outPutFolder;
+		startOfFrameFileNameString = f.startOfFrameFileNameString;
+		frameData = f.frameData;
+	}
+	*/
 };
 
 #endif

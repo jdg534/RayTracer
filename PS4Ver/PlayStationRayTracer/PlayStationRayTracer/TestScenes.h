@@ -90,7 +90,7 @@ namespace TestScenes
 		}
 		
 		bool folderExists = wrapper.folderExists(folderStr);
-
+		return folderExists;
 
 #endif
 
@@ -1675,6 +1675,7 @@ namespace TestScenes
 		std::string outputVideoFile = "DEFAUL_OUT.avi";
 
 		std::string threadUsage = "SINGLE"; // could also be MULTI_PER_FRAME or MULTI_PER_VIDEO
+		// on PS4 / ORBIS will be using fibers NOT threads, will try to match the locic applyed using thread (keeping it as simple as posable)
 		bool deletePPMs = true;
 
 
@@ -1899,7 +1900,13 @@ namespace TestScenes
 		}
 
 
-		std::ofstream statsFile(outputFolder + "/" + statsOutputFileName);
+
+		// std::ofstream statsFile(outputFolder + "/" + statsOutputFileName);
+
+		// need to alter the string for folder creation, rember to add /app0/ to the start
+		std::string statsFileString = PS4_VISUAL_STUDIO_DIR;
+		statsFileString += outputFolder + "/" + statsOutputFileName;
+		std::ofstream statsFile(statsFileString);
 
 		statsFile.clear();
 
@@ -1955,6 +1962,7 @@ namespace TestScenes
 
 		RenderManager rm(statsFile);
 		rm.init();
+		rm.makeRoomForFrames(nFramesToRender);
 
 		for (int frameNumber = 0; frameNumber < nFramesToRender; frameNumber++)
 		{
