@@ -794,15 +794,15 @@ namespace TestScenes
 		// rm.renderFramesMultiThreadPerFrame(outputVideoFile, fps);
 		if (threadUsage == "SINGLE")
 		{
-			rm.renderFramesSingleThread(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart);
+			rm.renderFramesSingleThread(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart); // works on PS4
 		}
 		else if (threadUsage == "MULTI_PER_FRAME")
 		{
-			rm.renderFramesMultiThreadPerFrame(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart);
+			rm.renderFramesMultiThreadPerFrame(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart); // works on PS4
 		}
 		else if (threadUsage == "MULTI_PER_VIDEO")
 		{
-			rm.renderFramesMultiThread(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart);
+			rm.renderFramesMultiThread(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart); // do this next, just fibers for multiple frames
 		}
 
 		rm.clearForNextScene();

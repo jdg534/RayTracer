@@ -22,7 +22,10 @@
 #include <video_out.h>
 
 #include <libsysmodule.h>
+#include <sce_fiber.h>
+#include "FibersAssist.h"
 
+#include <sce_fiber.h>
 
 #endif
 
@@ -53,8 +56,6 @@
 #define OS_FOLDER_SEPERATOR "/" // may need to have different def based on the platform
 
 
-#define FIBER_CONTEXT_BUFFER_SIZE 
-
 
 static const size_t onionMemSz = 64 * 1024 * 1024; // 64 MB, chunks
 
@@ -66,11 +67,7 @@ namespace rendering
 		unsigned int top, bottom, left, Right;
 	};
 
-	struct FiberRayRange
-	{
-		Vec3f * imagePtr;
-		int start, End;
-	};
+	
 
 	float mix(const float &a, const float &b, const float &mix)
 	{
@@ -476,13 +473,7 @@ namespace rendering
 		output.bottom = bottomRight.y;
 	}
 
-	
-	void fiberDrawRays(uint64_t argsOnInit, uint64_t argsOnRun)
-	{
-
-	}
-
-	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
+	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber) // this isn't called delete it on clean up
 	{
 		// quick and dirty
 		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
@@ -608,6 +599,15 @@ namespace rendering
 		delete[] image;
 	}
 
+	__attribute__((noreturn))
+	void fiberTraceRaysEntryPoint(uint64_t initArgs, uint64_t runArgs)
+	{
+		FiberRayTraceRange * traceArea = (FiberRayTraceRange *)initArgs;
+		// call traceRaysInRange(image, width, height, spheres, allocatedRays, nRaysToTrace);
+		traceRaysInRange(traceArea->imagePtr, traceArea->imageWidth, traceArea->imageHeight, traceArea->spheres, traceArea->rangeStart, traceArea->rangeEnd);
+		sceFiberReturnToThread(0, &runArgs);
+	}
+
 	void renderToFolderMultiThreadProfileable(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, std::chrono::steady_clock::time_point * startTimePoint, std::chrono::steady_clock::time_point * endTimePoint)
 	{
 		*startTimePoint = std::chrono::steady_clock::now();
@@ -660,33 +660,48 @@ namespace rendering
 
 		unsigned int nRaysPerThread = nRaysToTrace / nAvailableThreads;
 
+		unsigned int nRaysPerFiber = nRaysToTrace / MAX_FIBERS;
+
+
+		
+
 
 		// test run the traceRaysInRange approach
 		// traceRaysInRange(image, width, height, spheres, 0, width * height); // would do things this way if only wanted single thread. IT WORKED!!!
 
 		assert(sceSysmoduleIsLoaded(SCE_SYSMODULE_FIBER) == SCE_OK); // pick up here!!!, use fibers
 
-		assert(false); // figure out how to use fibers, then get this code to work with fibers rather than threads
-		std::vector<std::thread *> traceThreads;
-		std::vector<SceFiber *> fibers;
+
+
+		FiberRayTraceRange raysToAssignToFibers[MAX_FIBERS];
+		SceFiber fibers[MAX_FIBERS];
+		char fiberContextBuffers[MAX_FIBERS][FIBER_CONTEXT_BUFFER_SIZE];
+		// create the fibers then get them to run exercute the functions written for multithreaded functions
 
 		unsigned int toRaysToAllocate = nRaysToTrace;
 		unsigned int allocatedRays = 0;
 
-		// just devide into multiple render area rects
-		for (int i = 0; i < nAvailableThreads; i++)
+		for (unsigned int i = 0; i < MAX_FIBERS; i++)
 		{
-			// deal with this first
+			raysToAssignToFibers[i].imageWidth = width;
+			raysToAssignToFibers[i].imageHeight = height;
+			raysToAssignToFibers[i].rangeStart = allocatedRays;
+			raysToAssignToFibers[i].rangeEnd = allocatedRays + nRaysPerFiber;
+			raysToAssignToFibers[i].imagePtr = image;
+			raysToAssignToFibers[i].spheres = spheres;
+			
+			allocatedRays += nRaysPerFiber; // some overlap of 1 pixel on each side of the range that each fiber will work on, (small issue)
 
+			
 
-			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
+			// now create & run the fiber
+			int fiberCreateResults = sceFiberInitialize(&fibers[i], "RAY_FIBER", fiberTraceRaysEntryPoint, (uint64_t)&raysToAssignToFibers[i], (void *)fiberContextBuffers[i], FIBER_CONTEXT_BUFFER_SIZE, NULL);
+			assert(fiberCreateResults == SCE_OK);
+			// run it!!!
+			uint64_t fiberReturnArgs = 0;
+			fiberCreateResults = sceFiberRun(&fibers[i], 0, &fiberReturnArgs);
+			assert(fiberCreateResults == SCE_OK);
 
-
-			// std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
-
-			allocatedRays += nRaysPerThread;
-
-			// traceThreads.push_back(tPtr);
 		}
 
 		// have the main thread deal with any left overs, if any
@@ -695,22 +710,39 @@ namespace rendering
 			traceRaysInRange(image, width, height, spheres, allocatedRays, nRaysToTrace);
 		}
 
-		// rejoin & clean up the threads
-		for (int i = 0; i < traceThreads.size(); i++)
+
+		// rejoin & clean up the fibers
+		for (int i = 0; i < MAX_FIBERS; i++)
 		{
-			if (traceThreads[i]->joinable())
+			bool fiberFinshed = false;
+
+			int fiberFinshRes = sceFiberFinalize(&fibers[i]);
+			if (fiberFinshRes == SCE_OK)
 			{
-				traceThreads[i]->join();
-				delete traceThreads[i];
+				fiberFinshed = true;
+			}
+			else if (fiberFinshRes == SCE_FIBER_ERROR_STATE)
+			{
+				fiberFinshed = false; // it's still going
 			}
 			else
 			{
-				// the thread is still working
-				i--;
+				assert(false); // something is wrong!
+			}
+
+			if (fiberFinshed)
+			{
+				// do nothing, (everything is in the stack)
+
+			}
+			else
+			{
+				// the fiber is still working
+				i--; // back to check the fiber again
 			}
 		}
 
-		traceThreads.clear();
+		// traceThreads.clear();
 
 		*endTimePoint = std::chrono::steady_clock::now();
 
@@ -745,7 +777,9 @@ namespace rendering
 				(unsigned char)(std::min(float(1), image[i].z) * 255);
 		}
 		ofs.close();
-		delete[] image;
+		onionAllocator.terminate(); // frees the memory allocated to the image
+
+		//delete[] image;
 	}
 
 

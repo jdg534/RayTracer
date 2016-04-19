@@ -125,7 +125,10 @@ void initFibers()
 	assert(fiberInitResults == SCE_OK);
 
 
-	// return; // not yet, need to test passing parameters to a fiber
+	return; // rest of this function works as intended
+	
+	
+	// not yet, need to test passing parameters to a fiber
 
 	// run a test fiber count 0 to 99
 	// SceFiber testFiber;
