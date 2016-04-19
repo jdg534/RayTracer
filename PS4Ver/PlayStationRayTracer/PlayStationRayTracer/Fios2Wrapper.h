@@ -174,6 +174,18 @@ public:
 			if (deleteResults != SCE_FIOS_OK)
 			{
 				// can ignor file not found, figure the rest out
+				if (deleteResults == SCE_FIOS_ERROR_BAD_PATH)
+				{
+					// couldn't find the file to delete (ignor it!!!)
+				}
+				else if (deleteResults == SCE_FIOS_ERROR_ACCESS)
+				{
+					
+				}
+				else
+				{
+					char breakPoint = '?';
+				}
 			}
 		}
 	}

@@ -721,7 +721,7 @@ namespace rendering
 
 	}
 
-	void finshRenderToFolderWithCleanUp(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30, bool deletePPMFiles = true)
+	void finshRenderToFolderWithCleanUp(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, int nFrames, unsigned int outputFps = 30, bool deletePPMFiles = true)
 	{
 		// code this!!!
 		std::stringstream ss;
@@ -750,7 +750,9 @@ namespace rendering
 			system(deleteCmdStr.c_str());
 #else
 			// PS4 file delete code here
-
+			
+			fios2Wrapper wrapper;
+			wrapper.deleteFrameFileInFolder(nFrames, folderStr, framefileNameStartStr);
 #endif
 
 		}

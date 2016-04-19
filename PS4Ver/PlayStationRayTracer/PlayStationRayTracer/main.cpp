@@ -100,6 +100,10 @@ int main(int argc, char **argv)
 
 	// system("del \"*.ppm\""); // is the windows way, need to figure out the ORBIS way
 
+
+	
+
+
 	
 	writeTestOutputFile();
 	std::vector<std::string> scenes = parseIndexFile("index.txt");
@@ -111,6 +115,9 @@ int main(int argc, char **argv)
 	{
 		wrapper.initFios2();
 	}
+
+	// test test deleteing with FIOS2
+	wrapper.deleteFrameFileInFolder(288,"1_SINGLE_THREAD", "KFO_FRAME_");
 
 
 	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");
