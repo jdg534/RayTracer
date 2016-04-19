@@ -66,6 +66,10 @@
 
 char testFiberContextBuffer[FIBER_CONTEXT_BUFFER_SIZE] __attribute__((aligned(SCE_FIBER_CONTEXT_ALIGNMENT)));
 
+struct TestConuntRange
+{
+	int start, end;
+};
 
 
 __attribute__((noreturn))
@@ -83,8 +87,26 @@ void fiberCount(uint64_t startArg, uint64_t endArg)
 __attribute__((noreturn))
 void fiberCountStart(uint64_t startArg, uint64_t endArg)
 {
+	int * start = (int *)startArg;
+
+	for (int i = *start; i < 100; i++)
+	{
+		std::cout << i << std::endl;
+	}
 
 	sceFiberReturnToThread(0, &endArg);
+}
+
+__attribute__((noreturn))
+void fiberCountRange(uint64_t initArgs, uint64_t onRunArgs)
+{
+	TestConuntRange * range = (TestConuntRange *)initArgs;
+	for (int i = range->start; i < range->end; i++)
+	{
+		std::cout << i << std::endl;
+	}
+
+	sceFiberReturnToThread(0, &onRunArgs);
 }
 
 void initFibers()
@@ -102,16 +124,28 @@ void initFibers()
 
 	assert(fiberInitResults == SCE_OK);
 
+
+	// return; // not yet, need to test passing parameters to a fiber
+
 	// run a test fiber count 0 to 99
 	// SceFiber testFiber;
 
-	int startingIndex = 0;
+	int startingIndex = 27;
 
 	int cbsz = FIBER_CONTEXT_BUFFER_SIZE;
 
 	int cbSizeMod16 = FIBER_CONTEXT_BUFFER_SIZE % 16;
 
-	fiberInitResults = sceFiberInitialize(&testFiber, "testFiber", fiberCount, (uint64_t)&startingIndex, (void *)testFiberContextBuffer, FIBER_CONTEXT_BUFFER_SIZE, NULL);
+	assert(cbSizeMod16 == 0);
+
+	// fiberInitResults = sceFiberInitialize(&testFiber, "testFiber", fiberCount, (uint64_t)&startingIndex, (void *)testFiberContextBuffer, FIBER_CONTEXT_BUFFER_SIZE, NULL);
+	// fiberInitResults = sceFiberInitialize(&testFiber, "testFiber", fiberCountStart, (uint64_t)&startingIndex, (void *)testFiberContextBuffer, FIBER_CONTEXT_BUFFER_SIZE, NULL);
+
+	TestConuntRange tcr;
+	tcr.start = -6254;
+	tcr.end = 9001;
+
+	fiberInitResults = sceFiberInitialize(&testFiber, "testFiber", fiberCountRange, (uint64_t)&tcr, (void *)testFiberContextBuffer, FIBER_CONTEXT_BUFFER_SIZE, NULL);
 
 	char e;
 
@@ -140,6 +174,23 @@ void initFibers()
 	fiberInitResults = sceFiberRun(&testFiber, 0, &fiberReturnArgs);
 	assert(fiberInitResults == SCE_OK);
 
+	bool fiberCleanedUp = false;
+	while (!fiberCleanedUp)
+	{
+		fiberInitResults = sceFiberFinalize(&testFiber);
+		if (fiberInitResults == SCE_OK)
+		{
+			fiberCleanedUp = true;
+		}
+		else if (fiberInitResults == SCE_FIBER_ERROR_STATE)
+		{
+			// it's still running
+		}
+		else
+		{
+			// something went wrong
+		}
+	}
 	// fiberInitResults = sceFiberInitialize(&testFiber, "TEST_FIBER", fiberCount, 0,  )
 }
 
@@ -161,14 +212,6 @@ std::vector<std::string> parseIndexFile(std::string indexFile)
 	in.close();
 	return files;
 }
-
-/*
-bool initFIOS2()
-{
-	SceFiosParams fiosInitParameters;
-	fiosInitParameters.
-}
-*/
 
 void writeTestOutputFile()
 {
