@@ -176,11 +176,12 @@ public:
 				// can ignor file not found, figure the rest out
 				if (deleteResults == SCE_FIOS_ERROR_BAD_PATH)
 				{
-					// couldn't find the file to delete (ignor it!!!)
+					// couldn't find the file to delete (ignor it!!!), could be already deleted...
 				}
 				else if (deleteResults == SCE_FIOS_ERROR_ACCESS)
 				{
-					
+					// OS blocked access, try again
+					i--;
 				}
 				else
 				{

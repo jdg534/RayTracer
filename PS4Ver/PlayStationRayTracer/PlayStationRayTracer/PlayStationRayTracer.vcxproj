@@ -54,7 +54,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>-lSceFios2_stub_weak;-lSceFiber_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>-lSceFios2_stub_weak;-lSceFiber_stub_weak;-lSceSysmodule_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
@@ -74,6 +74,7 @@
   <ItemGroup>
     <ClInclude Include="allocator.h" />
     <ClInclude Include="ExampleScenes.h" />
+    <ClInclude Include="FibersAssist.h" />
     <ClInclude Include="Fios2Wrapper.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="KeyFrame.h" />

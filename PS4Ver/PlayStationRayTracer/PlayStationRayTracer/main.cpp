@@ -43,6 +43,9 @@
 #include "PS4FolderPath.h"
 #include "Fios2Wrapper.h"
 
+#include <sce_fiber.h>
+
+#include <libsysmodule.h>
 
 // Josh files
 #include "Vec3.h"
@@ -54,6 +57,91 @@
 #include "TestScenes.h"
 
 
+// simplerfied fiber usage
+#include "FibersAssist.h"
+
+
+
+#define TEST_FIBER_CONTEXT_SIZE 2 * 1024
+
+char testFiberContextBuffer[FIBER_CONTEXT_BUFFER_SIZE] __attribute__((aligned(SCE_FIBER_CONTEXT_ALIGNMENT)));
+
+
+
+__attribute__((noreturn))
+void fiberCount(uint64_t startArg, uint64_t endArg)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << i << std::endl;
+	}
+
+	sceFiberReturnToThread(0, &endArg);
+}
+
+
+__attribute__((noreturn))
+void fiberCountStart(uint64_t startArg, uint64_t endArg)
+{
+
+	sceFiberReturnToThread(0, &endArg);
+}
+
+void initFibers()
+{
+	// this function is for playing around with fibers
+	SceFiber testFiber;
+
+
+	int fiberInitResults = SCE_OK;
+	
+	fiberInitResults = sceSysmoduleLoadModule(SCE_SYSMODULE_FIBER);
+
+
+	// = sceFiberStartContextSizeCheck(0);
+
+	assert(fiberInitResults == SCE_OK);
+
+	// run a test fiber count 0 to 99
+	// SceFiber testFiber;
+
+	int startingIndex = 0;
+
+	int cbsz = FIBER_CONTEXT_BUFFER_SIZE;
+
+	int cbSizeMod16 = FIBER_CONTEXT_BUFFER_SIZE % 16;
+
+	fiberInitResults = sceFiberInitialize(&testFiber, "testFiber", fiberCount, (uint64_t)&startingIndex, (void *)testFiberContextBuffer, FIBER_CONTEXT_BUFFER_SIZE, NULL);
+
+	char e;
+
+	if (fiberInitResults == SCE_FIBER_ERROR_NULL)
+	{
+		e = '1';
+	}
+	else if (fiberInitResults == SCE_FIBER_ERROR_ALIGNMENT)
+	{
+		e = '2';
+	}
+	else if (fiberInitResults == SCE_FIBER_ERROR_RANGE)
+	{
+		e = '3';
+	}
+	else if (fiberInitResults == SCE_FIBER_ERROR_INVALID)
+	{
+		e = '4';
+	}
+
+	assert(fiberInitResults == SCE_OK);
+
+	uint64_t fiberReturnArgs = 0;
+
+	// now run the fiber
+	fiberInitResults = sceFiberRun(&testFiber, 0, &fiberReturnArgs);
+	assert(fiberInitResults == SCE_OK);
+
+	// fiberInitResults = sceFiberInitialize(&testFiber, "TEST_FIBER", fiberCount, 0,  )
+}
 
 std::vector<std::string> parseIndexFile(std::string indexFile)
 {
@@ -100,7 +188,7 @@ int main(int argc, char **argv)
 
 	// system("del \"*.ppm\""); // is the windows way, need to figure out the ORBIS way
 
-
+	initFibers();
 	
 
 
@@ -117,7 +205,7 @@ int main(int argc, char **argv)
 	}
 
 	// test test deleteing with FIOS2
-	wrapper.deleteFrameFileInFolder(288,"1_SINGLE_THREAD", "KFO_FRAME_");
+	// wrapper.deleteFrameFileInFolder(288,"1_SINGLE_THREAD", "KFO_FRAME_");
 
 
 	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");
@@ -130,6 +218,10 @@ int main(int argc, char **argv)
 	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded
 	// system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
 	// system("outVideo.avi"); // plays the video using the default player
+
+	// unload the fibers
+
+	sceSysmoduleUnloadModule(SCE_SYSMODULE_FIBER);
 
 
 	return 0;

@@ -2455,3 +2455,5 @@ Time point: 14.9667
 First Key frame starting point: 9
 Second Key frame starting point: 9
 Lerp Value: 1
+
+___START_RENDERING_INFORMATION___

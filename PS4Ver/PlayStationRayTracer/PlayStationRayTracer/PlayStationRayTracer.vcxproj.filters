@@ -69,5 +69,6 @@
     <ClInclude Include="Fios2Wrapper.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="FibersAssist.h" />
   </ItemGroup>
 </Project>

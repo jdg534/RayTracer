@@ -192,13 +192,46 @@ public:
 
 		for (int i = 0; i < nFramesToRender; i++)
 		{
-			// calculate the spheres
-			std::vector<Sphere> toDraw;
+			std::vector<Sphere> spheres;
+
+			LerpedFrame lf = m_framesToRender[i];
+
+
+			for (int j = 0; j < lf.a->spheres.size(); j++)
+			{
+				Vec3f pos;
+				float rad;
+				Vec3f surfaceColour;
+				float reflection;
+				float transparency;
+				Vec3f emmisive;
+				pos.x = Math::interpolation::lerp(lf.a->spheres[j].center.x, lf.b->spheres[j].center.x, lf.lerpWeight);
+				pos.y = Math::interpolation::lerp(lf.a->spheres[j].center.y, lf.b->spheres[j].center.y, lf.lerpWeight);
+				pos.z = Math::interpolation::lerp(lf.a->spheres[j].center.z, lf.b->spheres[j].center.z, lf.lerpWeight);
+
+				rad = Math::interpolation::lerp(lf.a->spheres[j].radius, lf.b->spheres[j].radius, lf.lerpWeight);
+
+				surfaceColour.x = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.x, lf.b->spheres[j].surfaceColor.x, lf.lerpWeight);
+				surfaceColour.y = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.y, lf.b->spheres[j].surfaceColor.y, lf.lerpWeight);
+				surfaceColour.z = Math::interpolation::lerp(lf.a->spheres[j].surfaceColor.z, lf.b->spheres[j].surfaceColor.z, lf.lerpWeight);
+
+				reflection = Math::interpolation::lerp(lf.a->spheres[j].reflection, lf.b->spheres[j].reflection, lf.lerpWeight);
+				transparency = Math::interpolation::lerp(lf.a->spheres[j].transparency, lf.b->spheres[j].transparency, lf.lerpWeight);
+
+				emmisive.x = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.x, lf.b->spheres[j].emissionColor.x, lf.lerpWeight);
+				emmisive.y = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.y, lf.b->spheres[j].emissionColor.y, lf.lerpWeight);
+				emmisive.z = Math::interpolation::lerp(lf.a->spheres[j].emissionColor.z, lf.b->spheres[j].emissionColor.z, lf.lerpWeight);
+
+				Sphere tempS(pos, rad, surfaceColour, reflection, transparency, emmisive);
+				spheres.push_back(tempS);
+			}
+
+			assert(spheres.size() > 0);
 
 
 			FrameRenderDuration frd;
 			// frd.start = std::chrono::steady_clock::now();
-			rendering::renderToFolderMultiThreadProfileable(frameFileName, outputFolder, toDraw, m_framesToRender[i].frameNumber, &frd.start, &frd.end);
+			rendering::renderToFolderMultiThreadProfileable(frameFileName, outputFolder, spheres, m_framesToRender[i].frameNumber, &frd.start, &frd.end);
 			
 			// frd.end = std::chrono::steady_clock::now();
 			frd.frameNumber = i;

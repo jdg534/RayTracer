@@ -21,6 +21,7 @@
 #include <gnmx.h> // this is the PS4 higher level 
 #include <video_out.h>
 
+#include <libsysmodule.h>
 
 
 #endif
@@ -52,6 +53,9 @@
 #define OS_FOLDER_SEPERATOR "/" // may need to have different def based on the platform
 
 
+#define FIBER_CONTEXT_BUFFER_SIZE 
+
+
 static const size_t onionMemSz = 64 * 1024 * 1024; // 64 MB, chunks
 
 namespace rendering
@@ -60,6 +64,12 @@ namespace rendering
 	struct RenderAreaRect
 	{
 		unsigned int top, bottom, left, Right;
+	};
+
+	struct FiberRayRange
+	{
+		Vec3f * imagePtr;
+		int start, End;
 	};
 
 	float mix(const float &a, const float &b, const float &mix)
@@ -160,7 +170,7 @@ namespace rendering
 		return surfaceColor + sphere->emissionColor;
 	}
 
-	
+	/*
 	std::string FrameIndexStr(int index)
 	{
 		// just dealing with three Decimal places, for now
@@ -176,6 +186,7 @@ namespace rendering
 		ss << index;
 		return ss.str();
 	}
+	*/
 
 	//[comment]
 	// Main rendering function. We compute a camera ray for each pixel of the image
@@ -466,6 +477,11 @@ namespace rendering
 	}
 
 	
+	void fiberDrawRays(uint64_t argsOnInit, uint64_t argsOnRun)
+	{
+
+	}
+
 	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
 	{
 		// quick and dirty
@@ -605,7 +621,33 @@ namespace rendering
 
 		// here!!! use libFiber for tracing the rays
 
-		Vec3f *image = new Vec3f[width * height], *pixel = image; // replance with the code from the single threaded version
+
+		// Vec3f *image = new Vec3f[width * height],
+
+		unsigned int memNeededForImage = width * height * sizeof(Vec3f);
+
+		LinearAllocator onionAllocator;
+
+		int onionAllocatorInitVal = onionAllocator.initialize(
+			onionMemSz,
+			SCE_KERNEL_WB_ONION,
+			SCE_KERNEL_PROT_CPU_RW | SCE_KERNEL_PROT_GPU_ALL);
+
+		if (onionAllocatorInitVal != SCE_OK)
+		{
+			// something went wrong,
+			// the initial example didn't do anything as a responce
+		}
+
+		// init it first
+
+		void * buffer = onionAllocator.allocate(
+			memNeededForImage, sce::Gnm::kAlignmentOfBufferInBytes);
+
+
+		Vec3f *image = reinterpret_cast <Vec3f *>(buffer);
+			
+		Vec3f *pixel = image; // replance with the code from the single threaded version
 
 
 		float invWidth = 1 / float(width), invHeight = 1 / float(height);
@@ -622,8 +664,11 @@ namespace rendering
 		// test run the traceRaysInRange approach
 		// traceRaysInRange(image, width, height, spheres, 0, width * height); // would do things this way if only wanted single thread. IT WORKED!!!
 
+		assert(sceSysmoduleIsLoaded(SCE_SYSMODULE_FIBER) == SCE_OK); // pick up here!!!, use fibers
 
+		assert(false); // figure out how to use fibers, then get this code to work with fibers rather than threads
 		std::vector<std::thread *> traceThreads;
+		std::vector<SceFiber *> fibers;
 
 		unsigned int toRaysToAllocate = nRaysToTrace;
 		unsigned int allocatedRays = 0;
@@ -687,7 +732,8 @@ namespace rendering
 		// Save result to a PPM image (keep these flags if you compile under Windows)
 		std::stringstream ss;
 		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
-		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		// ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
+		ss << PS4_VISUAL_STUDIO_DIR << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
 		std::string tempString = ss.str();
 		char* filename = (char*)tempString.c_str();
 
