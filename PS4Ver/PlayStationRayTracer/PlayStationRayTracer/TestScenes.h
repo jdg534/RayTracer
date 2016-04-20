@@ -804,6 +804,10 @@ namespace TestScenes
 		{
 			rm.renderFramesMultiThread(outputVideoFile, fps, deletePPMs, outputFolder, ppmFileNameStart); // do this next, just fibers for multiple frames
 		}
+		else
+		{
+			assert(false); // the methord needs to be defined
+		}
 
 		rm.clearForNextScene();
 	}

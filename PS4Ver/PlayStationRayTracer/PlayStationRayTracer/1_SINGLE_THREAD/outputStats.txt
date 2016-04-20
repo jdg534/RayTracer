@@ -1,5 +1,5 @@
-Loaded Scene from: multiThreadForVideo.txt
-Output folder: 3_MULTI_THREAD_FOR_VIDEO
+Loaded Scene from: singleThread.txt
+Output folder: 1_SINGLE_THREAD
 Frames Per Second to use on Video: 30
 Start of output file name: KFO_FRAME_
 video Duration: 15

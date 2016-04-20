@@ -6,8 +6,8 @@ sceneDuration: 15.0
 frameFileNameStart: KFO_FRAME_
 statsOutFile: outputStats.txt
 outputFile: KFO.avi
-threadUsage: MULTI_PER_VIDEO// can be: SINGLE or MULTI_PER_FRAME or MULTI_PER_VIDEO
-cleanUpFrameFiles: YES // values: YES or NO
+threadUsage: MULTI_PER_VIDEO // can be: SINGLE or MULTI_PER_FRAME or MULTI_PER_VIDEO, this is actually implermented as fibers on the PS4
+cleanUpFrameFiles: NO // values: YES or NO
 
 // note that "sceneDuration:" and all "TIME_POINT"(s) are in seconds
 

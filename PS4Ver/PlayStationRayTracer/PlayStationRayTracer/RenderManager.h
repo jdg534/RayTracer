@@ -16,6 +16,12 @@
 
 #include "Math.h" // my math's library, for lerp
 
+// now the fibers
+#include <sce_fiber.h>
+#include <libsysmodule.h>
+#include "FibersAssist.h"
+
+
 struct RenderDuration
 {
 	std::chrono::steady_clock::time_point start;
@@ -32,6 +38,9 @@ struct FrameRenderDuration : public RenderDuration
 };
 
 std::vector<FrameRenderDuration> g_FRDs; // just resize and override
+
+
+
 
 class RenderManager
 {
@@ -111,9 +120,45 @@ public:
 		unsigned int nFramesToRenderOnMainThread = 0;
 		unsigned int frameIndexForMainThread = 0;
 		
-		std::vector<std::thread *> renderingThreads;
 
 
+		// std::vector<std::thread *> renderingThreads;
+
+		unsigned int nFramesPerFiber = nFramesToRender / MAX_FIBERS;
+
+		FiberFrameRange frameInfoToPass[MAX_FIBERS];
+		SceFiber fibers[MAX_FIBERS];
+		char fiberContextBuffers[MAX_FIBERS][FIBER_CONTEXT_BUFFER_SIZE];
+
+		for (int i = 0; i < MAX_FIBERS; i++)
+		{
+			int startFrameIndex = i * nFramesPerFiber;
+			int endFrameIndex = startFrameIndex + nFramesPerFiber;
+			m_statsOutput << "Fiber " << i << " was responsable for frames " << startFrameIndex << " to " << endFrameIndex - 1 << std::endl;
+			if (i == MAX_FIBERS - 1)
+			{
+				nFramesToRenderOnMainThread = nFramesToRender - endFrameIndex;
+				frameIndexForMainThread = endFrameIndex + 1;
+			}
+
+			frameInfoToPass[i].lerpedFramesArray = m_framesToRender;
+			frameInfoToPass[i].outputFileStart = frameFileName;
+			frameInfoToPass[i].outputFolder = outputFolder;
+			frameInfoToPass[i].rangeStart = startFrameIndex;
+			frameInfoToPass[i].rangeEnd = endFrameIndex;
+			
+			// now create & run the fiber
+			int fiberCreateResults = sceFiberInitialize(&fibers[i], "FRAME_FIBER", fiberStartFuncForMultiFrames, (uint64_t)&frameInfoToPass[i], (void *)fiberContextBuffers[i], FIBER_CONTEXT_BUFFER_SIZE, NULL);
+			assert(fiberCreateResults == SCE_OK);
+			// run it!!!
+			uint64_t fiberReturnArgs = 0;
+			fiberCreateResults = sceFiberRun(&fibers[i], 0, &fiberReturnArgs);
+			assert(fiberCreateResults == SCE_OK);
+
+		}
+
+
+		/*
 		for (short i = 0; i < m_nThreadsSupportedByPlatform; i++) // unlikely to have more than 2 ^ 16 threads
 		{
 			unsigned int startFrameIndex = i * nFramesToRenderPerThread;
@@ -135,31 +180,35 @@ public:
 
 			// renderingThreads.push_back(t);
 		}
+		*/
 
-		renderFrameRange(frameIndexForMainThread, nFramesToRender,frameFileName, outputFolder);
-		
-		// re join the child threads
-		for (short i = 0; i < renderingThreads.size(); i++)
+		renderFrameRange(frameIndexForMainThread, nFramesToRender,frameFileName, outputFolder); // have the main thread deal with any left overs
+
+		// finsh off the fibers
+		for (int i = 0; i < MAX_FIBERS; i++)
 		{
-			if (renderingThreads[i]->joinable())
+			bool fiberDone = false;
+			int fiberFinshRes = sceFiberFinalize(&fibers[i]);
+			if (fiberFinshRes == SCE_OK)
 			{
-				renderingThreads[i]->join();
-				delete renderingThreads[i];
+				fiberDone = true;
+			}
+			else if (fiberFinshRes == SCE_FIBER_ERROR_STATE)
+			{
+				fiberDone = false; // it's still going
 			}
 			else
 			{
-				i--; // go back and check the same thread again
+				assert(false); // something is wrong!
+			}
+
+			if (!fiberDone)
+			{
+				i--; // go back and try again
 			}
 		}
+		
 
-		renderingThreads.clear();
-		/*
-		for (int i = 0; i < g_FRDs.size(); i++)
-		{
-			m_frameRenderStats.push(g_FRDs[i]);
-		}
-		g_FRDs.clear();
-		*/
 		
 		
 		std::string outVidFile = outputVideoFile;
@@ -169,7 +218,7 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
-		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outVidFile, fps, deleteFramesAtEnd);
+		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outVidFile, nFramesToRender,fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
 
@@ -237,6 +286,7 @@ public:
 			frd.frameNumber = i;
 			//m_frameRenderStats.push(frd);
 			std::cout << "Rendered frame: " << m_framesToRender[i].frameNumber << std::endl;
+			g_FRDs.push_back(frd);
 		}
 
 
@@ -285,7 +335,7 @@ private:
 		using namespace std::chrono;
 		// rember m_frameRenderStats is a priory que, (the contents will be in the correct order)
 		m_statsOutput << "_______________________________" << std::endl;
-		std::vector<FrameRenderDuration> toOut;
+		// std::vector<FrameRenderDuration> toOut;
 
 		/*
 		while (!m_frameRenderStats.empty())
@@ -295,11 +345,11 @@ private:
 		}
 		*/
 		
-		std::sort(toOut.begin(), toOut.end());
+		// std::sort(toOut.begin(), toOut.end());
 		
 		
 		
-
+		/*
 		for (int i = 0; i < toOut.size(); i++)
 		{
 
@@ -315,6 +365,20 @@ private:
 			}
 			
 		}
+		*/
+
+		std::sort(g_FRDs.begin(), g_FRDs.end());
+
+		for (int i = 0; i < m_numFramesToRender; i++)
+		{
+			steady_clock::duration frameRenderTime = g_FRDs[i].end - g_FRDs[i].start;
+			milliseconds ms = duration_cast<milliseconds>(frameRenderTime);
+			if (ms.count() > 0)
+			{
+				m_statsOutput << "Frame " << g_FRDs[i].frameNumber << " took " << ms.count() << " milliseconds to render " << std::endl;
+			}
+		} 
+
 
 		m_statsOutput << "---------------------------" << std::endl;
 		steady_clock::duration toVidDur = timeToCovertToVideo.end - timeToCovertToVideo.start;
@@ -383,6 +447,14 @@ private:
 			// m_frameRenderStats.push(frd);
 			std::cout << "Rendered frame: " << m_framesToRender[i].frameNumber << std::endl;
 		}
+	}
+
+	__attribute__((noreturn))
+	static void fiberStartFuncForMultiFrames(uint64_t onInitArgs, uint64_t onRunArgs)
+	{
+		FiberFrameRange * framesToRender = (FiberFrameRange *)onInitArgs;
+		renderFramesStatic(framesToRender->lerpedFramesArray, framesToRender->rangeStart, framesToRender->rangeEnd, framesToRender->outputFolder, framesToRender->outputFileStart);
+		sceFiberReturnToThread(0, &onRunArgs);
 	}
 
 	static void renderFramesStatic(LerpedFrame * lerpedFramesArray, unsigned int start, unsigned int end, std::string ouputFolder, std::string frameFileStart)
