@@ -74,19 +74,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h" />
-    <ClInclude Include="ExampleScenes.h" />
     <ClInclude Include="FibersAssist.h" />
     <ClInclude Include="Fios2Wrapper.h" />
-    <ClInclude Include="Frame.h" />
     <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
     <ClInclude Include="MathTypes.h" />
     <ClInclude Include="PS4FolderPath.h" />
     <ClInclude Include="Rendering.h" />
+    <ClInclude Include="RenderingStructs.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Sphere.h" />
-    <ClInclude Include="TestScenes.h" />
+    <ClInclude Include="Scenes.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />

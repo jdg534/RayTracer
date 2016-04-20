@@ -2,7 +2,7 @@
 #define _RENDER_MANAGER_H_
 
 #include "Rendering.h"
-#include "Frame.h"
+// #include "Frame.h"
 #include "KeyFrame.h"
 
 #include <thread>
@@ -16,26 +16,15 @@
 
 #include "Math.h" // my math's library, for lerp
 
+#include "RenderingStructs.h"
+
 // now the fibers
 #include <sce_fiber.h>
 #include <libsysmodule.h>
 #include "FibersAssist.h"
 
 
-struct RenderDuration
-{
-	std::chrono::steady_clock::time_point start;
-	std::chrono::steady_clock::time_point end;
-};
 
-struct FrameRenderDuration : public RenderDuration
-{
-	unsigned int frameNumber;
-	bool operator<(const FrameRenderDuration & other) const
-	{
-		return frameNumber < other.frameNumber;
-	}
-};
 
 std::vector<FrameRenderDuration> g_FRDs; // just resize and override
 
@@ -67,12 +56,6 @@ public:
 		m_framesToRender = new LerpedFrame[nFrames];
 		// m_frameRenderDurations = new FrameRenderDuration[nFrames];
 		g_FRDs.resize(nFrames);
-	}
-
-	void addFrame(Frame frameToRender)
-	{
-		// m_framesToRender[frameToRender.frameNumber] = frameToRender;
-		assert(false);
 	}
 
 	void addLerpFrame(LerpedFrame lf)
@@ -517,6 +500,48 @@ private:
 
 			std::cout << "Rendered frame: " << lf.frameNumber << std::endl;
 		}
+	}
+
+	void predictNumSecondsToFinshRendering(unsigned int msToRenderCurrentFrame, unsigned int numFramesLeftToRender)
+	{
+		unsigned long long estMsToGo = msToRenderCurrentFrame * numFramesLeftToRender;
+		unsigned long inSeconds = estMsToGo / 1000;
+		unsigned int inMinutes = inSeconds / 60;
+		unsigned short inHours = inMinutes / 60; // this can happen
+
+		unsigned short minRemainder = inMinutes - (inHours * 60);
+		unsigned short secRemainder = inSeconds;
+		// subtract in hours value
+		secRemainder -= (inHours * 3600);
+		// then minute remainder
+		secRemainder -= (minRemainder * 60);
+
+		std::cout << "Time to render the rest of the scene: ";
+
+		if (inHours > 0)
+		{
+			std::cout << inHours << "hr(s) " << minRemainder << "min(s) " << secRemainder << "sec(s)";
+		}
+		else
+		{
+			if (inMinutes > 0)
+			{
+				std::cout << inMinutes << "min(s) " << secRemainder << "sec(s)";
+			}
+			else
+			{
+				if (inSeconds > 0)
+				{
+					std::cout << inSeconds << " seconds";
+				}
+				else
+				{
+					std::cout << estMsToGo << "ms";
+				}
+			}
+		}
+
+		std::cout << std::endl;
 	}
 };
 

@@ -31,6 +31,8 @@
 
 #include "MathTypes.h" // my library :)
 
+#include "RenderingStructs.h"
+
 //[comment]
 // This variable controls the maximum recursion depth
 //[/comment]
@@ -62,10 +64,7 @@ static const size_t onionMemSz = 64 * 1024 * 1024; // 64 MB, chunks
 namespace rendering
 {
 	// unsigned int g_targetFps = 30; // can be overriden, this is only for when converting the still frames using FFMPEG
-	struct RenderAreaRect
-	{
-		unsigned int top, bottom, left, Right;
-	};
+	
 
 	
 
@@ -262,62 +261,7 @@ namespace rendering
 		//delete[] image;
 	}
 
-
-
-	void finshRender(int fps)
-	{
-		std::stringstream ss;
-		ss << "ffmpeg -r " << fps << " -y ";
-		ss << "-i " << "spheres%d.ppm outTest.mp4";
-
-		std::string ffmpegCmd = ss.str();
-
-		// system(ffmpegCmd.c_str());
-		// throw "NOT IMPLERMENTED";
-	}
-
-	void renderToFolder(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber)
-	{
-		// quick and dirty
-		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
-		// Recommended Testing Resolution
-		//unsigned width = 640, height = 480;
-
-		// Recommended Production Resolution
-		//unsigned width = 1920, height = 1080;
-		Vec3f *image = new Vec3f[width * height], *pixel = image;
-		float invWidth = 1 / float(width), invHeight = 1 / float(height);
-		float fov = 30, aspectratio = width / float(height);
-		float angle = tan(M_PI * 0.5 * fov / 180.);
-		// Trace rays
-		for (unsigned y = 0; y < height; ++y) {
-			for (unsigned x = 0; x < width; ++x, ++pixel) {
-				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
-				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
-				Vec3f raydir(xx, yy, -1);
-				raydir.normalize();
-				*pixel = trace(Vec3f(0), raydir, spheres, 0);
-			}
-		}
-		// Save result to a PPM image (keep these flags if you compile under Windows)
-		std::stringstream ss;
-		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
-		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
-		std::string tempString = ss.str();
-		char* filename = (char*)tempString.c_str();
-
-		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
-		ofs << "P6\n" << width << " " << height << "\n255\n";
-		for (unsigned i = 0; i < width * height; ++i) {
-			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
-				(unsigned char)(std::min(float(1), image[i].y) * 255) <<
-				(unsigned char)(std::min(float(1), image[i].z) * 255);
-		}
-		ofs.close();
-		
-		delete[] image;
-	}
-
+	
 	void renderToFolderProfileable(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber, std::chrono::steady_clock::time_point * startTimePoint, std::chrono::steady_clock::time_point * endTimePoint)
 	{
 		*startTimePoint = std::chrono::steady_clock::now();
@@ -408,6 +352,7 @@ namespace rendering
 		return rv;
 	}
 
+	
 	unsigned int getPixelIndex(unsigned int imageWidth, unsigned int imageHeight, Vector2D pixelCoord)
 	{
 		unsigned int rv = 0;
@@ -416,29 +361,6 @@ namespace rendering
 		return rv;
 	}
 
-	void traceRaysInRenderArea(Vec3f * img, unsigned int imgWidth, unsigned int imgHeight, const std::vector<Sphere> &spheres, RenderAreaRect rar)
-	{
-		float invWidth = 1 / float(imgWidth), invHeight = 1 / float(imgHeight);
-		float fov = 30, aspectratio = imgWidth / float(imgHeight);
-		float angle = tan(M_PI * 0.5 * fov / 180.);
-
-				
-		for (int y = rar.top; y < rar.bottom; y++)
-		{
-			for (int x = rar.left; x < rar.Right; x++)
-			{
-				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
-				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
-				Vec3f raydir(xx, yy, -1);
-				raydir.normalize();
-				Vec3f pixelValue = trace(Vec3f(0), raydir, spheres, 0);
-				
-				Vec3f * px = img + (imgWidth * y) + x; // this might need to be changed
-				
-				*px = pixelValue;
-			}
-		}
-	}
 
 	void traceRaysInRange(Vec3f * img, unsigned int imgWidth, unsigned int imgHeight, const std::vector<Sphere> &spheres, unsigned int rangeStart, unsigned int rangeEnd)
 	{
@@ -463,141 +385,6 @@ namespace rendering
 		}
 	}
 
-	void determineDrawArea(unsigned int w, unsigned int h, unsigned int startRay, unsigned int endRay, RenderAreaRect & output)
-	{
-		Vector2D topLeft = getPixelCoord(w, h, startRay);
-		Vector2D bottomRight = getPixelCoord(w, h, endRay);
-		output.top = topLeft.y;
-		output.left = topLeft.x;
-		output.Right = bottomRight.x;
-		output.bottom = bottomRight.y;
-	}
-
-	void renderToFolderMultiThread(std::string fileName, std::string folder, const std::vector<Sphere> & spheres, int frameNumber) // this isn't called delete it on clean up
-	{
-		// quick and dirty
-		unsigned width = FRAME_WIDTH, height = FRAME_HEIGHT;
-		// Recommended Testing Resolution
-		//unsigned width = 640, height = 480;
-
-		// Recommended Production Resolution
-		//unsigned width = 1920, height = 1080;
-		// Vec3f *image = new Vec3f[width * height], *pixel = image;
-
-
-		unsigned int memNeededForImage = width * height * sizeof(Vec3f);
-
-		LinearAllocator onionAllocator;
-
-		int onionAllocatorInitVal = onionAllocator.initialize(
-			onionMemSz,
-			SCE_KERNEL_WB_ONION,
-			SCE_KERNEL_PROT_CPU_RW | SCE_KERNEL_PROT_GPU_ALL);
-
-		if (onionAllocatorInitVal != SCE_OK)
-		{
-			// something went wrong,
-			// the initial example didn't do anything as a responce
-		}
-
-		// init it first
-
-		void * buffer = onionAllocator.allocate(
-			memNeededForImage, sce::Gnm::kAlignmentOfBufferInBytes);
-		
-
-		Vec3f *image = reinterpret_cast <Vec3f *>(buffer);
-		float invWidth = 1 / float(width), invHeight = 1 / float(height);
-		float fov = 30, aspectratio = width / float(height);
-		float angle = tan(M_PI * 0.5 * fov / 180.);
-
-		unsigned int nAvailableThreads = std::thread::hardware_concurrency();
-
-		unsigned int nRaysToTrace = width * height;
-
-		unsigned int nRaysPerThread = nRaysToTrace / nAvailableThreads;
-
-
-		// test run the traceRaysInRange approach
-		// traceRaysInRange(image, width, height, spheres, 0, width * height); // would do things this way if only wanted single thread. IT WORKED!!!
-
-
-		std::vector<std::thread *> traceThreads;
-
-		unsigned int toRaysToAllocate = nRaysToTrace;
-		unsigned int allocatedRays = 0;
-
-		// just devide into multiple render area rects
-		for (int i = 0; i < nAvailableThreads; i++)
-		{
-			// deal with this first
-
-
-			// traceRaysInRange(image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
-			
-			
-			// std::thread * tPtr = new std::thread(traceRaysInRange, image, width, height, spheres, allocatedRays, allocatedRays + nRaysPerThread);
-
-			allocatedRays += nRaysPerThread;
-
-			// traceThreads.push_back(tPtr);
-		}
-
-		// have the main thread deal with any left overs, if any
-		if (allocatedRays < nRaysToTrace)
-		{
-			traceRaysInRange(image, width, height, spheres, allocatedRays, nRaysToTrace);
-		}
-
-		// rejoin & clean up the threads
-		for (int i = 0; i < traceThreads.size(); i++)
-		{
-			if (traceThreads[i]->joinable())
-			{
-				traceThreads[i]->join();
-				delete traceThreads[i];
-			}
-			else
-			{
-				// the thread is still working
-				i--;
-			}
-		}
-
-		traceThreads.clear();
-
-		// Trace rays
-		/* (Old Single Threaded code)
-		for (unsigned y = 0; y < height; ++y)
-		{
-			for (unsigned x = 0; x < width; ++x, ++pixel)
-			{
-				float xx = (2 * ((x + 0.5) * invWidth) - 1) * angle * aspectratio;
-				float yy = (1 - 2 * ((y + 0.5) * invHeight)) * angle;
-				Vec3f raydir(xx, yy, -1);
-				raydir.normalize();
-				*pixel = trace(Vec3f(0), raydir, spheres, 0);
-			}
-		}
-		*/
-
-		// Save result to a PPM image (keep these flags if you compile under Windows)
-		std::stringstream ss;
-		// ss << "./spheres" << FrameIndexStr(iteration) << ".ppm";
-		ss << folder << OS_FOLDER_SEPERATOR << fileName << frameNumber << ".ppm";
-		std::string tempString = ss.str();
-		char* filename = (char*)tempString.c_str();
-
-		std::ofstream ofs(filename, std::ios::out | std::ios::binary);
-		ofs << "P6\n" << width << " " << height << "\n255\n";
-		for (unsigned i = 0; i < width * height; ++i) {
-			ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
-				(unsigned char)(std::min(float(1), image[i].y) * 255) <<
-				(unsigned char)(std::min(float(1), image[i].z) * 255);
-		}
-		ofs.close();
-		delete[] image;
-	}
 
 	__attribute__((noreturn))
 	void fiberTraceRaysEntryPoint(uint64_t initArgs, uint64_t runArgs)
@@ -782,24 +569,6 @@ namespace rendering
 		//delete[] image;
 	}
 
-
-
-	void finshRenderToFolderAndFileName(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, unsigned int outputFps = 30)
-	{
-		// code this!!!
-		std::stringstream ss;
-		ss << "ffmpeg -r " << outputFps << " -y ";
-		ss << "-i \"" << folderStr << OS_FOLDER_SEPERATOR << framefileNameStartStr << "%d.ppm\"";
-		ss << " \"" << folderStr << OS_FOLDER_SEPERATOR << outputFileName << "\"";
-
-		std::string ffmpegCmd = ss.str();
-
-		std::cout << "FFMPEG command:\n" << ffmpegCmd << std::endl;
-
-		// system(ffmpegCmd.c_str());
-		// throw "NOT IMPLERMENTED";
-
-	}
 
 	void finshRenderToFolderWithCleanUp(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, int nFrames, unsigned int outputFps = 30, bool deletePPMFiles = true)
 	{
