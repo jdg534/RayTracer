@@ -24,3 +24,12 @@ added the following dependencies:
 
 -lSceFios2_stub_weak
 -lSceFiber_stub_weak
+-lSceSysmodule_stub_weak
+
+PS4 Optimisation flags: flags precided by a: "-"
+O0 = "No Optimisation"
+O1 = "Light Optimisation"
+O2 = "Standard Optimisation"
+O3 = "Full Optimisation"
+Os = "Optimise and Reduce Size"
+Oz = "Aggressivly Reduce Size"

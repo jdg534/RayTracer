@@ -218,6 +218,8 @@ public:
 		RenderDuration timeToConvertToVideo;
 		timeToConvertToVideo.start = std::chrono::steady_clock::now();
 
+		// finshRenderToFolderWithCleanUp(std::string folderStr, std::string framefileNameStartStr, std::string outputFileName, int nFrames, unsigned int outputFps = 30, bool deletePPMFiles = true)
+
 		rendering::finshRenderToFolderWithCleanUp(outputFolder, frameFileName, outVidFile, nFramesToRender,fps, deleteFramesAtEnd);
 
 		timeToConvertToVideo.end = std::chrono::steady_clock::now();
@@ -286,7 +288,8 @@ public:
 			frd.frameNumber = i;
 			//m_frameRenderStats.push(frd);
 			std::cout << "Rendered frame: " << m_framesToRender[i].frameNumber << std::endl;
-			g_FRDs.push_back(frd);
+			// g_FRDs.push_back(frd);
+			g_FRDs[i] = frd;
 		}
 
 

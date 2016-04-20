@@ -1,0 +1,85 @@
+START_SCENE_FILE
+
+outputFolder: 1_SINGLE_THREAD_SHORT
+framesPerSecond: 5
+sceneDuration: 5.0
+frameFileNameStart: SINGLE_THREAD_
+statsOutFile: SingleThreadShortStats.txt
+outputFile: KFO.avi
+threadUsage: SINGLE // can be: SINGLE or MULTI_PER_FRAME or MULTI_PER_VIDEO
+cleanUpFrameFiles: NO // values: YES or NO
+
+// note that "sceneDuration:" and all "TIME_POINT"(s) are in seconds
+
+// now define the spheres
+// center point Vec3f, radius float, surface colour vec3f, reflectionValue float,  transparancyValue float, emmisive colour vec3f, id string
+
+NEW_SPHERE
+	POSITION 0.0 -10004.0 -20.0
+	RADIUS 1000
+	SURFACE_COLOUR 0.20 0.20 0.20
+	REFLECTION_VALUE 0.0
+	TRANSPARENCY_VALUE 0.0
+	EMISSIVE_COLOUR 0.0 0.0 0.0
+	ID testSphere1
+END_SPHERE
+
+NEW_SPHERE
+	POSITION 0.0 0.0 -20.0
+	RADIUS 4.0
+	SURFACE_COLOUR 1.0 0.32 0.36
+	REFLECTION_VALUE 1.0
+	TRANSPARENCY_VALUE 0.5
+	EMISSIVE_COLOUR 0.0 0.0 0.0
+	ID testSphere2
+END_SPHERE
+
+NEW_SPHERE
+	POSITION 5.0 -1.0 -15.0
+	RADIUS 2.0
+	SURFACE_COLOUR 0.90 0.76 0.46
+	REFLECTION_VALUE 1.0
+	TRANSPARENCY_VALUE 0.0
+	EMISSIVE_COLOUR 0.0 0.0 0.0
+	ID testSphere3
+END_SPHERE
+
+NEW_SPHERE
+	POSITION 5.0 0.0 -25.0
+	RADIUS 3.0
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE 1.0
+	TRANSPARENCY_VALUE 0.0
+	EMISSIVE_COLOUR 0.0 0.0 0.0
+	ID testSphere4
+END_SPHERE
+
+
+
+// after defining the spheres, define key frames
+
+
+START_KEY_FRAME
+	TIME_POINT 2.5
+
+
+	START_SPHERE_STATE
+		ID testSphere4
+		RADIUS 6.0 // the original radius should have been 3.0 (double in size)
+	END_SPHERE_STATE
+END_KEY_FRAME
+
+
+
+START_KEY_FRAME
+	TIME_POINT 5.0
+
+
+	START_SPHERE_STATE
+		ID testSphere4
+		RADIUS 3.0 // the original radius should have been 3.0 (return to normal)
+	END_SPHERE_STATE
+END_KEY_FRAME
+
+
+END_SCENE_FILE

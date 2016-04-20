@@ -1,4 +1,3 @@
-singleThread.txt
-multiThreadPerFrame.txt
-multiThreadForVideo.txt
-
+ShortSingleThread.txt
+ShortMultiThreadPerFrame.txt
+ShortMultiThreadPerVideo.txt
