@@ -17,6 +17,9 @@
     <Filter Include="Source Files\ProvidedAllocator">
       <UniqueIdentifier>{8e8a5f04-7aed-4f6c-8996-2246fb8fe8b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FIOS2">
+      <UniqueIdentifier>{dd168243-2397-42e8-83c3-65c669f56608}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +27,9 @@
     </ClCompile>
     <ClCompile Include="Math.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Fios2Wrapper.cpp">
+      <Filter>Source Files\FIOS2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +63,6 @@
     <ClInclude Include="PS4FolderPath.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Fios2Wrapper.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="FibersAssist.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="RenderingStructs.h">
       <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Fios2Wrapper.h">
+      <Filter>Source Files\FIOS2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

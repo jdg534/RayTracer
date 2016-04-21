@@ -69,6 +69,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fios2Wrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
   </ItemGroup>

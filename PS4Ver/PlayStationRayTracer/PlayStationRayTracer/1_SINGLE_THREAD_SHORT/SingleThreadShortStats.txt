@@ -250,3 +250,35 @@ Time point: 4.8
 First Key frame starting point: 0
 Second Key frame starting point: 0
 Lerp Value: 1
+
+___START_RENDERING_INFORMATION___
+_______________________________
+Frame 0 took 324 milliseconds to render 
+Frame 1 took 317 milliseconds to render 
+Frame 2 took 325 milliseconds to render 
+Frame 3 took 313 milliseconds to render 
+Frame 4 took 319 milliseconds to render 
+Frame 5 took 323 milliseconds to render 
+Frame 6 took 313 milliseconds to render 
+Frame 7 took 330 milliseconds to render 
+Frame 8 took 315 milliseconds to render 
+Frame 9 took 324 milliseconds to render 
+Frame 10 took 315 milliseconds to render 
+Frame 11 took 330 milliseconds to render 
+Frame 12 took 337 milliseconds to render 
+Frame 13 took 265 milliseconds to render 
+Frame 14 took 271 milliseconds to render 
+Frame 15 took 271 milliseconds to render 
+Frame 16 took 275 milliseconds to render 
+Frame 17 took 259 milliseconds to render 
+Frame 18 took 272 milliseconds to render 
+Frame 19 took 273 milliseconds to render 
+Frame 20 took 272 milliseconds to render 
+Frame 21 took 269 milliseconds to render 
+Frame 22 took 266 milliseconds to render 
+Frame 23 took 281 milliseconds to render 
+Frame 24 took 268 milliseconds to render 
+---------------------------
+Converting the frames to video took: 32 milliseconds
+---------------------------
+Rendering the entire scene took 16 seconds

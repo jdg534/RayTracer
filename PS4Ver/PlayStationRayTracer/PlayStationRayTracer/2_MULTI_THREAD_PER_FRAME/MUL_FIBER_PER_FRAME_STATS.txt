@@ -128,125 +128,125 @@ Time point: 5
 Stats for Frame: 0
 Time point: 0
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 1
 Time point: 0.2
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.08
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 2
 Time point: 0.4
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.16
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 3
 Time point: 0.6
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.24
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 4
 Time point: 0.8
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.32
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 5
 Time point: 1
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.4
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 6
 Time point: 1.2
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.48
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 7
 Time point: 1.4
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.56
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 8
 Time point: 1.6
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.64
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 9
 Time point: 1.8
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.72
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 10
 Time point: 2
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.8
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 11
 Time point: 2.2
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.88
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 12
 Time point: 2.4
 First Key frame starting point: 0
-Second Key frame starting point: 2.5
-Lerp Value: 0.96
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 13
 Time point: 2.6
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.0400001
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 14
 Time point: 2.8
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.12
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 15
 Time point: 3
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.2
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 16
 Time point: 3.2
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.28
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 17
 Time point: 3.4
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.36
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 18
 Time point: 3.6
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.44
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 19
 Time point: 3.8
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.52
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 20
 Time point: 4
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.6
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 21
 Time point: 4.2
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.68
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 22
 Time point: 4.4
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.76
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 23
 Time point: 4.6
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.84
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
 Stats for Frame: 24
 Time point: 4.8
-First Key frame starting point: 2.5
-Second Key frame starting point: 5
-Lerp Value: 0.92
+First Key frame starting point: 0
+Second Key frame starting point: 0
+Lerp Value: 1
