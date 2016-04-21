@@ -1,6 +1,8 @@
 #ifndef _RENDERING_STRUCTS_H_
 #define _RENDERING_STRUCTS_H_
 
+#include <chrono>
+
 struct RenderDuration
 {
 	std::chrono::steady_clock::time_point start;
