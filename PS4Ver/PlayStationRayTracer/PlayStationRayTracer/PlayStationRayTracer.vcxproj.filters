@@ -31,6 +31,9 @@
     <ClCompile Include="Fios2Wrapper.cpp">
       <Filter>Source Files\FIOS2</Filter>
     </ClCompile>
+    <ClCompile Include="Rendering.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h">

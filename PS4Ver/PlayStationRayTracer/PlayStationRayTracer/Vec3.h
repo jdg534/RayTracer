@@ -1,4 +1,7 @@
 #pragma once
+
+#include <cmath>
+
 template<typename T>
 class Vec3
 {
@@ -26,11 +29,7 @@ public:
 	Vec3<T> operator - () const { return Vec3<T>(-x, -y, -z); }
 	T length2() const { return x * x + y * y + z * z; }
 	T length() const { return sqrt(length2()); }
-	friend std::ostream & operator << (std::ostream &os, const Vec3<T> &v)
-	{
-		os << "[" << v.x << " " << v.y << " " << v.z << "]";
-		return os;
-	}
+	
 
 	bool operator ==(const Vec3<T> & v)
 	{

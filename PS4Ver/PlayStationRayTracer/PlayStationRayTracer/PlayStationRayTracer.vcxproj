@@ -72,6 +72,7 @@
     <ClCompile Include="Fios2Wrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Rendering.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h" />
