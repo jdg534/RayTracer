@@ -154,7 +154,7 @@ Stats for Frame: 5
 Time point: 1
 First Key frame starting point: 0
 Second Key frame starting point: 0
-Lerp Value: 1
+Lerp Value: -nan
 Stats for Frame: 6
 Time point: 1.2
 First Key frame starting point: 0
@@ -253,32 +253,32 @@ Lerp Value: 1
 
 ___START_RENDERING_INFORMATION___
 _______________________________
-Frame 0 took 299 milliseconds to render 
-Frame 1 took 299 milliseconds to render 
-Frame 2 took 299 milliseconds to render 
-Frame 3 took 299 milliseconds to render 
-Frame 4 took 299 milliseconds to render 
-Frame 5 took 299 milliseconds to render 
-Frame 6 took 300 milliseconds to render 
-Frame 7 took 299 milliseconds to render 
-Frame 8 took 299 milliseconds to render 
-Frame 9 took 299 milliseconds to render 
-Frame 10 took 299 milliseconds to render 
-Frame 11 took 299 milliseconds to render 
-Frame 12 took 299 milliseconds to render 
-Frame 13 took 253 milliseconds to render 
-Frame 14 took 253 milliseconds to render 
-Frame 15 took 252 milliseconds to render 
-Frame 16 took 252 milliseconds to render 
-Frame 17 took 253 milliseconds to render 
-Frame 18 took 252 milliseconds to render 
-Frame 19 took 252 milliseconds to render 
-Frame 20 took 253 milliseconds to render 
-Frame 21 took 252 milliseconds to render 
-Frame 22 took 252 milliseconds to render 
-Frame 23 took 253 milliseconds to render 
-Frame 24 took 252 milliseconds to render 
+Frame 0 took 667 milliseconds to render 
+Frame 1 took 666 milliseconds to render 
+Frame 2 took 666 milliseconds to render 
+Frame 3 took 666 milliseconds to render 
+Frame 4 took 666 milliseconds to render 
+Frame 5 took 293 milliseconds to render 
+Frame 6 took 666 milliseconds to render 
+Frame 7 took 666 milliseconds to render 
+Frame 8 took 666 milliseconds to render 
+Frame 9 took 666 milliseconds to render 
+Frame 10 took 667 milliseconds to render 
+Frame 11 took 667 milliseconds to render 
+Frame 12 took 666 milliseconds to render 
+Frame 13 took 547 milliseconds to render 
+Frame 14 took 547 milliseconds to render 
+Frame 15 took 547 milliseconds to render 
+Frame 16 took 547 milliseconds to render 
+Frame 17 took 547 milliseconds to render 
+Frame 18 took 547 milliseconds to render 
+Frame 19 took 547 milliseconds to render 
+Frame 20 took 548 milliseconds to render 
+Frame 21 took 548 milliseconds to render 
+Frame 22 took 548 milliseconds to render 
+Frame 23 took 547 milliseconds to render 
+Frame 24 took 547 milliseconds to render 
 ---------------------------
-Converting the frames to video took: 16 milliseconds
+Converting the frames to video took: 17 milliseconds
 ---------------------------
-Rendering the entire scene took 16 seconds
+Rendering the entire scene took 52 seconds

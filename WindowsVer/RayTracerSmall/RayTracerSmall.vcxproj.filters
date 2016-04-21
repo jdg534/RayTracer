@@ -52,9 +52,6 @@
     <ClInclude Include="MathTypes.h">
       <Filter>Source Files\Math\JoshMaths</Filter>
     </ClInclude>
-    <ClInclude Include="ExampleScenes.h">
-      <Filter>Source Files\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="TestScenes.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>

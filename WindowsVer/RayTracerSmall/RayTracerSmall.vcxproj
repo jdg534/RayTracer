@@ -146,7 +146,6 @@
     <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ExampleScenes.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="KeyFrame.h" />
     <ClInclude Include="Math.h" />

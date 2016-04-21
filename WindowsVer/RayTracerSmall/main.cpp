@@ -42,7 +42,7 @@
 
 #include "Rendering.h"
 
-#include "ExampleScenes.h"
+
 #include "TestScenes.h"
 
 

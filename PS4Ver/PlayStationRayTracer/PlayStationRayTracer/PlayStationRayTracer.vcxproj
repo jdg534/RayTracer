@@ -52,7 +52,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <OptimizationLevel>Level1</OptimizationLevel>
+      <OptimizationLevel>Level3</OptimizationLevel>
     </ClCompile>
     <Link>
       <AdditionalDependencies>-lSceFios2_stub_weak;-lSceFiber_stub_weak;-lSceSysmodule_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
@@ -61,7 +61,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <OptimizationLevel>Level1</OptimizationLevel>
+      <OptimizationLevel>Level3</OptimizationLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
