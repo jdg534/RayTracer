@@ -32,6 +32,12 @@
     <ClCompile Include="Math.cpp">
       <Filter>Source Files\Math\JoshMaths</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering.cpp">
+      <Filter>Source Files\Renndering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec3.h">
@@ -52,9 +58,6 @@
     <ClInclude Include="MathTypes.h">
       <Filter>Source Files\Math\JoshMaths</Filter>
     </ClInclude>
-    <ClInclude Include="TestScenes.h">
-      <Filter>Source Files\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="KeyFrame.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
@@ -62,6 +65,9 @@
       <Filter>Source Files\Renndering</Filter>
     </ClInclude>
     <ClInclude Include="Frame.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>

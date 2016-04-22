@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Rendering.cpp" />
+    <ClCompile Include="Scenes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h" />
@@ -154,7 +156,7 @@
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Sphere.h" />
-    <ClInclude Include="TestScenes.h" />
+    <ClInclude Include="Scenes.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

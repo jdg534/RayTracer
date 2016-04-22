@@ -43,15 +43,8 @@
 #include "Rendering.h"
 
 
-#include "TestScenes.h"
+#include "Scenes.h"
 
-
-
-//[comment]
-// In the main function, we will create the scene which is composed of 5 spheres
-// and 1 light (which is also a sphere). Then, once the scene description is complete
-// we render that scene, by calling the render() function.
-//[/comment]
 
 std::vector<std::string> parseIndexFile(std::string indexFile)
 {
@@ -72,43 +65,17 @@ std::vector<std::string> parseIndexFile(std::string indexFile)
 
 int main(int argc, char **argv)
 {
-	// This sample only allows one choice per program execution. Feel free to improve upon this
+	
 	srand(13);
-
-	// system("del \"*.ppm\""); // clear out any old images, bad idea will want to keep the files 
-
-	//BasicRender();
-	//SimpleShrinking();
-	// ExampleScenes::SmoothScaling();
-
-	// TestScenes::renderSceneForTime(10.0f, 24);
-	
-	// duration in seconds, frames per second, folder string, output video file string, start of frame file name
-	
-	// TestScenes::renderSceneForTimeSpecificOutput(120.0f, 30, "TestFrame", "TestVid.avi", "TestRenderFolder"); 
-
-	// TestScenes::renderSceneForTimeSpecificOutput(5.0f, 24, "TestFrame", "TestVid.avi", "TestRenderFolder");
-	
-	// TestScenes::renderStaticSceneFileFromFile("staticScene.txt");
-
-	
-	// TestScenes::renderKeyFrameSceneFromFile("keyFrameScene.txt");
-	// TestScenes::renderKeyFrameSceneFromFileMultiThread("keyFrameScene.txt");
 
 	std::vector<std::string> scenes = parseIndexFile("index.txt");
 
 	//TestScenes::renderKeyFrameScene("keyFrameScene.txt");
 	for (auto i = 0; i < scenes.size(); i++)
 	{
-		TestScenes::renderKeyFrameScene(scenes[i]);
+		Scenes::renderKeyFrameScene(scenes[i]);
 	}
 	
-
-	// ffmpeg to be called in the finaliseRender() in the rendering.h // once its coded
-	// system("ffmpeg -y -i spheres%d.ppm outVideo.avi"); // -y for overide output video if there's a conflict
-	// system("outVideo.avi"); // plays the video using the default player
-
-
 	return 0;
 }
 
