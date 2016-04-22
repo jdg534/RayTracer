@@ -145,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Rendering.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Scenes.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathDefines.h" />
     <ClInclude Include="MathTypes.h" />
+    <ClInclude Include="RenderingStructs.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Sphere.h" />

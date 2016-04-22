@@ -38,6 +38,9 @@
     <ClCompile Include="Rendering.cpp">
       <Filter>Source Files\Renndering</Filter>
     </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Source Files\Renndering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec3.h">
@@ -69,6 +72,9 @@
     </ClInclude>
     <ClInclude Include="Scenes.h">
       <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingStructs.h">
+      <Filter>Source Files\Renndering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
