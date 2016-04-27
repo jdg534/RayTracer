@@ -1,3 +1,2 @@
-multiThreadForVideo.txt
-singleThread.txt
-multiThreadPerFrame.txt
+singleThreadProfile.txt
+multiThreadPerFrameProfile.txt

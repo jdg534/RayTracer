@@ -17,15 +17,14 @@
 #define FRAME_WIDTH 640
 #define FRAME_HEIGHT 480
 #else
-/*
 #define FRAME_WIDTH 1920
 #define FRAME_HEIGHT 1080
-*/
-#define FRAME_WIDTH 640 // for profileing
-#define FRAME_HEIGHT 480
+#endif
+//#define FRAME_WIDTH 640 // for profileing
+// #define FRAME_HEIGHT 480
 
 // 1920 x 1080 = "Full HD"
-#endif
+
 
 #define OS_FOLDER_SEPERATOR "/" // may need to have different def based on the platform
 

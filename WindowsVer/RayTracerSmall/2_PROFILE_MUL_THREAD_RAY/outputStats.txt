@@ -1,0 +1,394 @@
+Loaded Scene from: multiThreadPerFrameProfile.txt
+Output folder: 2_PROFILE_MUL_THREAD_RAY
+Frames Per Second to use on Video: 10
+Start of output file name: KFO_FRAME_
+video Duration: 5
+Output video file: KFO.avi
+Total key frames (number in the file + 1): 2
+------------------------
+key frame: 0
+Time point: 0
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION 5 0 -25
+	RADIUS 3
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+------------------------
+key frame: 1
+Time point: 5
+	-------------
+	Sphere 0
+	POSITION 0 -10004 -20
+	RADIUS 1000
+	SURFACE_COLOUR 0.2 0.2 0.2
+	REFLECTION_VALUE  0
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere1
+	----------------------------------
+	Sphere 1
+	POSITION 0 0 -20
+	RADIUS 4
+	SURFACE_COLOUR 1 0.32 0.36
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere2
+	----------------------------------
+	Sphere 2
+	POSITION 5 -1 -15
+	RADIUS 2
+	SURFACE_COLOUR 0.9 0.76 0.46
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere3
+	----------------------------------
+	Sphere 3
+	POSITION 5 0 -25
+	RADIUS 6
+	SURFACE_COLOUR 0.65 0.77 0.97
+	REFLECTION_VALUE  1
+	TRANSPARENCY_VALUE 0
+	EMISSIVE_COLOUR  0 0 0
+	ID testSphere4
+	----------------------------------
+Stats for Frame: 0
+Time point: 0
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0
+Stats for Frame: 1
+Time point: 0.1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.02
+Stats for Frame: 2
+Time point: 0.2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.04
+Stats for Frame: 3
+Time point: 0.3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.06
+Stats for Frame: 4
+Time point: 0.4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.08
+Stats for Frame: 5
+Time point: 0.5
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.1
+Stats for Frame: 6
+Time point: 0.6
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.12
+Stats for Frame: 7
+Time point: 0.7
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.14
+Stats for Frame: 8
+Time point: 0.8
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.16
+Stats for Frame: 9
+Time point: 0.9
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.18
+Stats for Frame: 10
+Time point: 1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.2
+Stats for Frame: 11
+Time point: 1.1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.22
+Stats for Frame: 12
+Time point: 1.2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.24
+Stats for Frame: 13
+Time point: 1.3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.26
+Stats for Frame: 14
+Time point: 1.4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.28
+Stats for Frame: 15
+Time point: 1.5
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.3
+Stats for Frame: 16
+Time point: 1.6
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.32
+Stats for Frame: 17
+Time point: 1.7
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.34
+Stats for Frame: 18
+Time point: 1.8
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.36
+Stats for Frame: 19
+Time point: 1.9
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.38
+Stats for Frame: 20
+Time point: 2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.4
+Stats for Frame: 21
+Time point: 2.1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.42
+Stats for Frame: 22
+Time point: 2.2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.44
+Stats for Frame: 23
+Time point: 2.3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.46
+Stats for Frame: 24
+Time point: 2.4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.48
+Stats for Frame: 25
+Time point: 2.5
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.5
+Stats for Frame: 26
+Time point: 2.6
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.52
+Stats for Frame: 27
+Time point: 2.7
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.54
+Stats for Frame: 28
+Time point: 2.8
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.56
+Stats for Frame: 29
+Time point: 2.9
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.58
+Stats for Frame: 30
+Time point: 3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.6
+Stats for Frame: 31
+Time point: 3.1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.62
+Stats for Frame: 32
+Time point: 3.2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.64
+Stats for Frame: 33
+Time point: 3.3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.66
+Stats for Frame: 34
+Time point: 3.4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.68
+Stats for Frame: 35
+Time point: 3.5
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.7
+Stats for Frame: 36
+Time point: 3.6
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.72
+Stats for Frame: 37
+Time point: 3.7
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.74
+Stats for Frame: 38
+Time point: 3.8
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.76
+Stats for Frame: 39
+Time point: 3.9
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.78
+Stats for Frame: 40
+Time point: 4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.8
+Stats for Frame: 41
+Time point: 4.1
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.82
+Stats for Frame: 42
+Time point: 4.2
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.84
+Stats for Frame: 43
+Time point: 4.3
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.86
+Stats for Frame: 44
+Time point: 4.4
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.88
+Stats for Frame: 45
+Time point: 4.5
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.9
+Stats for Frame: 46
+Time point: 4.6
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.92
+Stats for Frame: 47
+Time point: 4.7
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.94
+Stats for Frame: 48
+Time point: 4.8
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.96
+Stats for Frame: 49
+Time point: 4.9
+First Key frame starting point: 0
+Second Key frame starting point: 5
+Lerp Value: 0.98
+
+___START_RENDERING_INFORMATION___
+_______________________________
+Frame 0 took 78 milliseconds to render
+Frame 1 took 62 milliseconds to render
+Frame 2 took 70 milliseconds to render
+Frame 3 took 78 milliseconds to render
+Frame 4 took 62 milliseconds to render
+Frame 5 took 78 milliseconds to render
+Frame 6 took 78 milliseconds to render
+Frame 7 took 72 milliseconds to render
+Frame 8 took 78 milliseconds to render
+Frame 9 took 78 milliseconds to render
+Frame 10 took 78 milliseconds to render
+Frame 11 took 72 milliseconds to render
+Frame 12 took 78 milliseconds to render
+Frame 13 took 78 milliseconds to render
+Frame 14 took 62 milliseconds to render
+Frame 15 took 78 milliseconds to render
+Frame 16 took 78 milliseconds to render
+Frame 17 took 78 milliseconds to render
+Frame 18 took 78 milliseconds to render
+Frame 19 took 78 milliseconds to render
+Frame 20 took 73 milliseconds to render
+Frame 21 took 78 milliseconds to render
+Frame 22 took 62 milliseconds to render
+Frame 23 took 78 milliseconds to render
+Frame 24 took 73 milliseconds to render
+Frame 25 took 78 milliseconds to render
+Frame 26 took 62 milliseconds to render
+Frame 27 took 78 milliseconds to render
+Frame 28 took 78 milliseconds to render
+Frame 29 took 71 milliseconds to render
+Frame 30 took 78 milliseconds to render
+Frame 31 took 78 milliseconds to render
+Frame 32 took 78 milliseconds to render
+Frame 33 took 74 milliseconds to render
+Frame 34 took 62 milliseconds to render
+Frame 35 took 78 milliseconds to render
+Frame 36 took 77 milliseconds to render
+Frame 37 took 75 milliseconds to render
+Frame 38 took 62 milliseconds to render
+Frame 39 took 78 milliseconds to render
+Frame 40 took 78 milliseconds to render
+Frame 41 took 62 milliseconds to render
+Frame 42 took 62 milliseconds to render
+Frame 43 took 78 milliseconds to render
+Frame 44 took 78 milliseconds to render
+Frame 45 took 78 milliseconds to render
+Frame 46 took 75 milliseconds to render
+Frame 47 took 78 milliseconds to render
+Frame 48 took 78 milliseconds to render
+Frame 49 took 62 milliseconds to render
+---------------------------
+Converting the frames to video took: 1154 milliseconds
+---------------------------
+Rendering the entire scene took 24 seconds
